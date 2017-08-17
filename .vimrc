@@ -35,45 +35,53 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> return return);<left><left>
 augroup END
 
-"change change to jk
+"change escape to jk
 
 inoremap jk <esc>
 
 inoremap <esc> <nop>
 
+" save all files
+nnoremap <silent><leader>wa :wa<cr>
+nnoremap <silent><leader>w :w<cr>
+
 "Make shortcuts
-nnoremap <leader>m :make<CR>
-nnoremap <leader>mn :cn<CR>
-nnoremap <leader>mp :cp<CR>
-nnoremap <leader>me :cw<CR>
+nnoremap <silent><leader>m :make<CR>
+nnoremap <silent><leader>mn :cn<CR>
+nnoremap <silent><leader>mp :cp<CR>
+nnoremap <silent><leader>me :cw<CR>
 
 " Buffer shortcuts
-nnoremap <leader>b :ls<cr>
-nnoremap <leader>bn :bn<cr>
-nnoremap <leader>bp :bp<cr>
+nnoremap <silent><leader>b :ls<cr>
+nnoremap <silent><leader>bn :bn<cr>
+nnoremap <silent><leader>bp :bp<cr>
 
 " Window shortcuts
-nnoremap <leader><Up> :wincmd k<CR>
-nnoremap <leader><Down> :wincmd j<CR>
-nnoremap <leader><Left> :wincmd h<CR>
-nnoremap <leader><Right> :wincmd l<CR>
-nnoremap <leader>z <c-w>_
+nnoremap <silent><leader><Up> :wincmd k<CR>
+nnoremap <silent><leader><Down> :wincmd j<CR>
+nnoremap <silent><leader><Left> :wincmd h<CR>
+nnoremap <silent><leader><Right> :wincmd l<CR>
+nnoremap <silent><leader>zi <C-w>_
+nnoremap <silent><leader>zo <C-w>=
+nnoremap <silent><leader>r <C-w>r
+nnoremap <silent><leader>ow <C-w>r
+
 
 " tab shortcuts
-nnoremap <leader>t :tabs<cr>
-nnoremap <leader>tn :tabn<cr>
-nnoremap <leader>tc :tabnew<cr>
-nnoremap <leader>tp :tabp<cr>
-nnoremap <leader>td :tabclose<cr>
-nnoremap <leader>t<F1> 1gt
-nnoremap <leader>t<F2> 2gt
-nnoremap <leader>t<F3> 3gt
-nnoremap <leader>t<F4> 4gt
-nnoremap <leader>t<F5> 5gt
-nnoremap <leader>t<F6> 6gt
-nnoremap <leader>t<F7> 7gt
-nnoremap <leader>t<F8> 8gt
-nnoremap <leader>t<F9> 9gt
+nnoremap <silent><leader>t :tabs<cr>
+nnoremap <silent><leader>tn :tabn<cr>
+nnoremap <silent><leader>tc :tabnew<cr>
+nnoremap <silent><leader>tp :tabp<cr>
+nnoremap <silent><silent><leader>td :tabclose<cr>
+nnoremap <silent><leader>t<F1> 1gt
+nnoremap <silent><leader>t<F2> 2gt
+nnoremap <silent><leader>t<F3> 3gt
+nnoremap <silent><leader>t<F4> 4gt
+nnoremap <silent><leader>t<F5> 5gt
+nnoremap <silent><leader>t<F6> 6gt
+nnoremap <silent><leader>t<F7> 7gt
+nnoremap <silent><leader>t<F8> 8gt
+nnoremap <silent><leader>t<F9> 9gt
 nnoremap <leader>t<F0> 10gt
 
 
@@ -128,7 +136,7 @@ iabbrev adn and
 
 filetype plugin indent on
 
-syntax enable
+syntax on
 
 " File finding
 set path=**
