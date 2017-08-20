@@ -1,4 +1,4 @@
-set nocompatible
+<set nocompatible
 
 "leader settings
 
@@ -14,11 +14,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr
 
 "C shortcuts : Remember to expand with "("
 
+iabbrev co* /*/<esc><left><left>
+iabbrev fun* {<cr><cr>}<up>
+
 augroup filetype_c
 	autocmd!
-	autocmd Filetype c nnoremap <buffer> <localleader>c I/*
 
-	autocmd Filetype c inoremap <buffer> <localleader>cc */<esc>
 
 	autocmd Filetype c iabbrev <buffer> whilee while)<cr>{<cr><cr>}jk3k$i
 
@@ -115,7 +116,7 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 	set statusline+=%= 			"separation point between left and right aligned items
 	set statusline+=%-14.(Line\ :\%l/%L\ Col:%c%V%)\  "Line display
 	set statusline+=\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}\  "Time
-	set statusline+=%P\  "Percentage of the file on screen
+	set statusline+=%P\  "Position of the window
 
 "movement mapings
 
