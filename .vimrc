@@ -1,4 +1,4 @@
-<set nocompatible
+set nocompatible
 
 "leader settings
 
@@ -12,15 +12,18 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr>
 
-"C shortcuts : Remember to expand with "("
-
-iabbrev co* /*/<esc><left><left>
-iabbrev fun* {<cr><cr>}<up>
+"C shortcuts : Remember to expand with right caracter
 
 augroup filetype_c
 	autocmd!
+	
+	"expand with tab
+	autocmd Filetype c iabbrev <buffer>  fun* {<cr><cr>}<up>
 
+	"expand with *
+	autocmd Filetype c iabbrev <buffer>  co* /*/<esc><left><left>
 
+	"expand with "("
 	autocmd Filetype c iabbrev <buffer> whilee while)<cr>{<cr><cr>}jk3k$i
 
 	autocmd Filetype c iabbrev <buffer> while; while)<cr>;jkk$
