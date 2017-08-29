@@ -80,3 +80,5 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls -G -l"
 
 alias k="clear"
+
+alias valgrind="/usr/local/Cellar/valgrind/3.13.0/bin/valgrind"

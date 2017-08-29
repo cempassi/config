@@ -36,6 +36,8 @@ augroup filetype_c
 
 	autocmd Filetype c iabbrev <buffer> if; if);<left><left>
 
+	autocmd Filetype c iabbrev <buffer> printf(" printf(");<left><left><left>
+
 	autocmd Filetype c iabbrev <buffer> return return);<left><left>
 augroup END
 
@@ -44,6 +46,12 @@ augroup END
 inoremap jk <esc>
 
 inoremap <esc> <nop>
+
+" dissable arrows
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 
 " save all files
 nnoremap <silent><leader>wa :wa<cr>
@@ -105,9 +113,6 @@ let g:netrw_liststyle=3 	" tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-"width check
-
-
 "statusline configuration
 
 	set laststatus=2
@@ -133,6 +138,14 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 
 onoremap il{ :<c-u>normal! F}vi{<cr>
 
+onoremap in" :<c-u>normal! f"vi"<cr>
+
+onoremap il" :<c-u>normal! F"vi"<cr>
+
+onoremap in[ :<c-u>normal! f[vi[<cr>
+
+onoremap il[ :<c-u>normal! F]vi[<cr>
+
 "typo corrector
 iabbrev adn and
 
@@ -142,6 +155,10 @@ filetype plugin indent on
 
 syntax on
 
+set showcmd
+
+set hlsearch
+
 " File finding
 set path=**
 
@@ -150,15 +167,17 @@ set wildmenu
 " Tag Jumping
 command! MakeTags !ctags -R
 
+" Indentation 
+
 set tabstop=4
 
-set number numberwidth=3
-
-set showcmd
+set shiftwidth=4
 
 set autoindent
 
-set hlsearch
+set number numberwidth=3
+
+" Folding Method
 
 set foldenable
 
