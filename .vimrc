@@ -1,13 +1,44 @@
 set nocompatible
 
+"General settings
+
+filetype plugin indent on
+
+syntax on
+
+set showcmd
+
+set hlsearch
+
+" File finding
+set path=**
+set wildmenu
+
+" Tag Jumping
+command! MakeTags !ctags -R
+
+" Indentation
+set tabstop=4
+set shiftwidth=4
+set autoindent
+
+" Numbers
+set relativenumber numberwidth=3
+set number
+hi LineNr ctermfg=white
+hi CursorLineNr ctermfg=cyan
+
 "leader settings
 
 let mapleader = "-"
 
 let maplocalleader = "_"
 
-"vundle install
- set rtp+=~/.vim/bundle/Vundle.vim
+"ALE config
+let g:ale_c_parse_makefile=1
+
+"vundle & plugin install
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
  Plugin 'chriskempson/base16-vim'
  Plugin 'gmarik/Vundle.vim'
@@ -16,31 +47,29 @@ call vundle#begin()
  Plugin 'vim-airline/vim-airline-themes'
  Plugin 'eagletmt/ghcmod-vim'
  Plugin 'Shougo/vimproc'
-
 call vundle#end()
 
+"Source background color
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
 
- let g:airline#extensions#ale#enabled = 1
- let g:airline_theme='solarized'
- nnoremap <Leader>ht :GhcModType<cr>
- nnoremap <Leader>htc :GhcModTypeClear<cr>
- autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
+let g:airline#extensions#ale#enabled = 1
+let g:airline_theme='solarized'
+nnoremap <Leader>ht :GhcModType<cr>
+nnoremap <Leader>htc :GhcModTypeClear<cr>
+autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
 
 "vimrc shortcuts
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
 nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr>
 
 "C shortcuts : Remember to expand with right caracter
-
 augroup filetype_c
 	autocmd!
-	
+
 	"expand with tab
 	autocmd Filetype c iabbrev <buffer>  fun* {<cr><cr>}<up>
 
@@ -63,7 +92,7 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> printf(" printf(");<left><left><left>
 
 	autocmd Filetype c iabbrev <buffer> return return);<left><left>
-	
+
 	autocmd Filetype c iabbrev <buffer> ret; return;
 augroup END
 
@@ -106,7 +135,6 @@ nnoremap <silent><leader>ow <C-w>r
 nnoremap <silent><leader>> <C-w>>
 nnoremap <silent><leader>< <C-w><
 
-
 " tab shortcuts
 nnoremap <silent><leader>t :tabs<cr>
 nnoremap <silent><leader>tn :tabn<cr>
@@ -141,19 +169,7 @@ let g:netrw_liststyle=3 	" tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-"statusline configuration
-
-""	set laststatus=2
-"	set statusline=%r			"Read-only flag
-""	set statusline+=%h			"Help buffer flag
-""	set statusline+=%m			"Modified flag
-""	set statusline+=%f\  		"Name of the file
-""	set statusline+=Filetype:\ %y
-""	set statusline+=%= 			"separation point between left and right aligned items
-""	set statusline+=%-14.(Line\ :\%l/%L\ Col:%c%V%)\  "Line display
-""	set statusline+=\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}\  "Time
-""	set statusline+=%P\  "Position of the window
-
+"folding and windows
 if has ('folding')
 	if has ('windows')
 		set fillchars=vert:\│ 			"Box drawing
@@ -166,55 +182,15 @@ if has ('folding')
 endif
 
 "movement mapings
-
 onoremap p i(
-
 onoremap in( :<c-u>normal! f(vi(<cr>
-
 onoremap il( :<c-u>normal! F)vi(<cr>
-
 onoremap in{ :<c-u>normal! f{vi{<cr>
-
 onoremap il{ :<c-u>normal! F}vi{<cr>
-
 onoremap in" :<c-u>normal! f"vi"<cr>
-
 onoremap il" :<c-u>normal! F"vi"<cr>
-
 onoremap in[ :<c-u>normal! f[vi[<cr>
-
 onoremap il[ :<c-u>normal! F]vi[<cr>
 
 "typo corrector
 iabbrev adn and
-
-"General settings
-
-filetype plugin indent on
-
-syntax on
-
-set showcmd
-
-set hlsearch
-
-" File finding
-set path=**
-
-set wildmenu
-
-" Tag Jumping
-command! MakeTags !ctags -R
-
-" Indentation 
-
-set tabstop=4
-
-set shiftwidth=4
-
-set autoindent
-
-set relativenumber numberwidth=3
-
-" Folding Method
-
