@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cedricmpassi/.oh-my-zsh
 
-ZSH_THEME=robbyrussell
+ZSH_THEME=theunraveler
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,3 +82,7 @@ alias ls="ls -G -l"
 alias k="clear"
 
 alias valgrind="/usr/local/Cellar/valgrind/3.13.0/bin/valgrind"
+
+export USER=cempassi
+
+export MAIL=cempassi@student.42.fr 

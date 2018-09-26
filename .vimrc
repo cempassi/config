@@ -6,6 +6,30 @@ let mapleader = "-"
 
 let maplocalleader = "_"
 
+"vundle install
+ set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+ Plugin 'chriskempson/base16-vim'
+ Plugin 'gmarik/Vundle.vim'
+ Plugin 'w0rp/ale'
+ Plugin 'vim-airline/vim-airline'
+ Plugin 'vim-airline/vim-airline-themes'
+ Plugin 'eagletmt/ghcmod-vim'
+ Plugin 'Shougo/vimproc'
+
+call vundle#end()
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+ let g:airline#extensions#ale#enabled = 1
+ let g:airline_theme='solarized'
+ nnoremap <Leader>ht :GhcModType<cr>
+ nnoremap <Leader>htc :GhcModTypeClear<cr>
+ autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
+
 "vimrc shortcuts
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -39,6 +63,8 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> printf(" printf(");<left><left><left>
 
 	autocmd Filetype c iabbrev <buffer> return return);<left><left>
+	
+	autocmd Filetype c iabbrev <buffer> ret; return;
 augroup END
 
 "change escape to jk
@@ -69,14 +95,16 @@ nnoremap <silent><leader>bn :bn<cr>
 nnoremap <silent><leader>bp :bp<cr>
 
 " Window shortcuts
-nnoremap <silent><leader><Up> :wincmd k<CR>
-nnoremap <silent><leader><Down> :wincmd j<CR>
-nnoremap <silent><leader><Left> :wincmd h<CR>
-nnoremap <silent><leader><Right> :wincmd l<CR>
+nnoremap <silent><leader>k :wincmd k<CR>
+nnoremap <silent><leader>j :wincmd j<CR>
+nnoremap <silent><leader>h :wincmd h<CR>
+nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>zi <C-w>_
-nnoremap <silent><leader>zo <C-w>=
+nnoremap <silent><leader>= <C-w>=
 nnoremap <silent><leader>r <C-w>r
 nnoremap <silent><leader>ow <C-w>r
+nnoremap <silent><leader>> <C-w>>
+nnoremap <silent><leader>< <C-w><
 
 
 " tab shortcuts
@@ -115,16 +143,27 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 "statusline configuration
 
-	set laststatus=2
-	set statusline=%r			"Read-only flag
-	set statusline+=%h			"Help buffer flag
-	set statusline+=%m			"Modified flag
-	set statusline+=%f\  		"Name of the file
-	set statusline+=Filetype:\ %y
-	set statusline+=%= 			"separation point between left and right aligned items
-	set statusline+=%-14.(Line\ :\%l/%L\ Col:%c%V%)\  "Line display
-	set statusline+=\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}\  "Time
-	set statusline+=%P\  "Position of the window
+""	set laststatus=2
+"	set statusline=%r			"Read-only flag
+""	set statusline+=%h			"Help buffer flag
+""	set statusline+=%m			"Modified flag
+""	set statusline+=%f\  		"Name of the file
+""	set statusline+=Filetype:\ %y
+""	set statusline+=%= 			"separation point between left and right aligned items
+""	set statusline+=%-14.(Line\ :\%l/%L\ Col:%c%V%)\  "Line display
+""	set statusline+=\%{strftime(\"%d/%m/%y\ -\ %H:%M\")}\  "Time
+""	set statusline+=%P\  "Position of the window
+
+if has ('folding')
+	if has ('windows')
+		set fillchars=vert:\│ 			"Box drawing
+		set fillchars+=fold:∙
+		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
+	endif
+	set foldenable
+	set foldnestmax=1
+	set foldmethod=syntax
+endif
 
 "movement mapings
 
@@ -175,12 +214,7 @@ set shiftwidth=4
 
 set autoindent
 
-set number numberwidth=3
+set relativenumber numberwidth=3
 
 " Folding Method
 
-set foldenable
-
-set foldnestmax=1
-
-set foldmethod=syntax
