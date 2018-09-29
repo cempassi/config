@@ -1,14 +1,16 @@
-set nocompatible
-
 "General settings
 
+set nocompatible
 filetype plugin indent on
-
 syntax on
-
 set showcmd
-
 set hlsearch
+set hidden
+set scrolloff=5
+set shortmess+=A	"Remove swap files message
+set textwidth=80
+set switchbuf=usetab
+set termguicolors
 
 " File finding
 set path=**
@@ -18,9 +20,9 @@ set wildmenu
 command! MakeTags !ctags -R
 
 " Indentation
+set autoindent
 set tabstop=4
 set shiftwidth=4
-set autoindent
 
 " Numbers
 set relativenumber numberwidth=3
@@ -28,14 +30,29 @@ set number
 hi LineNr ctermfg=white
 hi CursorLineNr ctermfg=cyan
 
+"Text colors
+"hi Statement term=bold ctermfg=14 gui=bold guifg=#ffff60
+"hi Constant term=underline ctermfg=01 guifg=#ffa0a0
+
 "leader settings
-
 let mapleader = "-"
-
 let maplocalleader = "_"
+
+"change escape to jk
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+"vimrc shortcuts
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr>
+
+"CommandT mapping
+nnoremap <silent><leader>t :CommandT<cr>
 
 "ALE config
 let g:ale_c_parse_makefile=1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
 
 "vundle & plugin install
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,7 +62,9 @@ call vundle#begin()
  Plugin 'w0rp/ale'
  Plugin 'vim-airline/vim-airline'
  Plugin 'vim-airline/vim-airline-themes'
- Plugin 'eagletmt/ghcmod-vim'
+ Plugin 'wincent/command-t'
+ Plugin 'pbondoer/vim-42header'
+" Plugin 'eagletmt/ghcmod-vim' Not working for now
  Plugin 'Shougo/vimproc'
 call vundle#end()
 
@@ -55,16 +74,21 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+"Airline config
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='solarized'
-nnoremap <Leader>ht :GhcModType<cr>
-nnoremap <Leader>htc :GhcModTypeClear<cr>
+let g:airline_theme='base16'
+let airline#extensions#ale#warning_symbol = '☞'
+let airline#extensions#ale#error_symbol = '✘:'
+let airline#extensions#ale#open_lnum_symbol = '[l'
+let airline#extensions#ale#close_lnum_symbol = ']'
+"let g:airline_base16_improved_contrast = 1
+
+"Haskell Config
+"nnoremap <Leader>ht :GhcModType<cr>
+"nnoremap <Leader>htc :GhcModTypeClear<cr>
 autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
+let $PATH = $PATH . ':' . expand('~/LibraryHaskell/bin')
 
-"vimrc shortcuts
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr>
 
 "C shortcuts : Remember to expand with right caracter
 augroup filetype_c
@@ -96,11 +120,6 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> ret; return;
 augroup END
 
-"change escape to jk
-
-inoremap jk <esc>
-
-inoremap <esc> <nop>
 
 " dissable arrows
 nnoremap <up> <nop>
@@ -136,7 +155,7 @@ nnoremap <silent><leader>> <C-w>>
 nnoremap <silent><leader>< <C-w><
 
 " tab shortcuts
-nnoremap <silent><leader>t :tabs<cr>
+nnoremap <silent><leader>tt :tabs<cr>
 nnoremap <silent><leader>tn :tabn<cr>
 nnoremap <silent><leader>tc :tabnew<cr>
 nnoremap <silent><leader>tp :tabp<cr>
