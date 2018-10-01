@@ -12,17 +12,23 @@ set textwidth=80
 set switchbuf=usetab
 set termguicolors
 
-" File finding
-set path=**
-set wildmenu
-
-" Tag Jumping
-command! MakeTags !ctags -R
 
 " Indentation
 set autoindent
 set tabstop=4
 set shiftwidth=4
+
+"folding and windows
+if has ('folding')
+	if has ('windows')
+		set fillchars=vert:\│ 			"Box drawing
+		set fillchars+=fold:∙
+		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
+	endif
+	set foldenable
+	set foldnestmax=1
+	set foldmethod=syntax
+endif
 
 " Numbers
 set relativenumber numberwidth=3
@@ -30,9 +36,67 @@ set number
 hi LineNr ctermfg=white
 hi CursorLineNr ctermfg=cyan
 
-"Text colors
-"hi Statement term=bold ctermfg=14 gui=bold guifg=#ffff60
-"hi Constant term=underline ctermfg=01 guifg=#ffa0a0
+" Create Tags
+command! MakeTags !ctags -R
+
+"ALE config
+let g:ale_c_parse_makefile=1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let airline#extensions#ale#warning_symbol = '☞'
+let airline#extensions#ale#error_symbol = '✘:'
+let airline#extensions#ale#open_lnum_symbol = '[l'
+let airline#extensions#ale#close_lnum_symbol = ']'
+
+"vundle & plugin install
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'chriskempson/base16-vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'w0rp/ale'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'wincent/command-t'
+Plugin 'pbondoer/vim-42header'
+" Plugin 'eagletmt/ghcmod-vim' Not working for now
+Plugin 'Shougo/vimproc'
+call vundle#end()
+
+"Source background color
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
+
+"Airline config
+let g:airline#extensions#ale#enabled = 1
+let g:airline_theme='base16'
+let g:airline_base16_improved_contrast = 1
+
+"Haskell Config
+"nnoremap <Leader>ht :GhcModType<cr>
+"nnoremap <Leader>htc :GhcModTypeClear<cr>
+autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
+let $PATH = $PATH . ':' . expand('~/LibraryHaskell/bin')
+
+"C shortcuts : Remember to expand with right caracter
+augroup filetype_c
+	autocmd!
+	"expand with tab
+	autocmd Filetype c iabbrev <buffer>  fun* {<cr><cr>}<up>
+	"expand with *
+	autocmd Filetype c iabbrev <buffer>  co* /*/<esc><left><left>
+	"expand with "("
+	autocmd Filetype c iabbrev <buffer> whilee while)<cr>{<cr><cr>}jk3k$i
+	autocmd Filetype c iabbrev <buffer> while; while)<cr>;jkk$
+	autocmd Filetype c iabbrev <buffer> fore for)<cr>{<cr><cr>}jk3k$i
+	autocmd Filetype c iabbrev <buffer> for; for)<cr>;jkk$i
+	autocmd Filetype c iabbrev <buffer> ife if)<cr>{<cr><cr>}jk3k$i
+	autocmd Filetype c iabbrev <buffer> if; if);<left><left>
+	autocmd Filetype c iabbrev <buffer> printf(" printf(");<left><left><left>
+	autocmd Filetype c iabbrev <buffer> return return);<left><left>
+	autocmd Filetype c iabbrev <buffer> ret; return;
+augroup END
 
 "leader settings
 let mapleader = "-"
@@ -48,78 +112,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr
 
 "CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
-
-"ALE config
-let g:ale_c_parse_makefile=1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
-
-"vundle & plugin install
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
- Plugin 'chriskempson/base16-vim'
- Plugin 'gmarik/Vundle.vim'
- Plugin 'w0rp/ale'
- Plugin 'vim-airline/vim-airline'
- Plugin 'vim-airline/vim-airline-themes'
- Plugin 'wincent/command-t'
- Plugin 'pbondoer/vim-42header'
-" Plugin 'eagletmt/ghcmod-vim' Not working for now
- Plugin 'Shougo/vimproc'
-call vundle#end()
-
-"Source background color
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-"Airline config
-let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='base16'
-let airline#extensions#ale#warning_symbol = '☞'
-let airline#extensions#ale#error_symbol = '✘:'
-let airline#extensions#ale#open_lnum_symbol = '[l'
-let airline#extensions#ale#close_lnum_symbol = ']'
-"let g:airline_base16_improved_contrast = 1
-
-"Haskell Config
-"nnoremap <Leader>ht :GhcModType<cr>
-"nnoremap <Leader>htc :GhcModTypeClear<cr>
-autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
-let $PATH = $PATH . ':' . expand('~/LibraryHaskell/bin')
-
-
-"C shortcuts : Remember to expand with right caracter
-augroup filetype_c
-	autocmd!
-
-	"expand with tab
-	autocmd Filetype c iabbrev <buffer>  fun* {<cr><cr>}<up>
-
-	"expand with *
-	autocmd Filetype c iabbrev <buffer>  co* /*/<esc><left><left>
-
-	"expand with "("
-	autocmd Filetype c iabbrev <buffer> whilee while)<cr>{<cr><cr>}jk3k$i
-
-	autocmd Filetype c iabbrev <buffer> while; while)<cr>;jkk$
-
-	autocmd Filetype c iabbrev <buffer> fore for)<cr>{<cr><cr>}jk3k$i
-
-	autocmd Filetype c iabbrev <buffer> for; for)<cr>;jkk$i
-
-	autocmd Filetype c iabbrev <buffer> ife if)<cr>{<cr><cr>}jk3k$i
-
-	autocmd Filetype c iabbrev <buffer> if; if);<left><left>
-
-	autocmd Filetype c iabbrev <buffer> printf(" printf(");<left><left><left>
-
-	autocmd Filetype c iabbrev <buffer> return return);<left><left>
-
-	autocmd Filetype c iabbrev <buffer> ret; return;
-augroup END
-
 
 " dissable arrows
 nnoremap <up> <nop>
@@ -171,7 +163,6 @@ nnoremap <silent><leader>t<F8> 8gt
 nnoremap <silent><leader>t<F9> 9gt
 nnoremap <leader>t<F0> 10gt
 
-
 " autocomple binding
 inoremap [Z<tab> <C-x><C-n>
 inoremap [Zf <C-x><C-f>
@@ -188,18 +179,6 @@ let g:netrw_liststyle=3 	" tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-"folding and windows
-if has ('folding')
-	if has ('windows')
-		set fillchars=vert:\│ 			"Box drawing
-		set fillchars+=fold:∙
-		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
-	endif
-	set foldenable
-	set foldnestmax=1
-	set foldmethod=syntax
-endif
-
 "movement mapings
 onoremap p i(
 onoremap in( :<c-u>normal! f(vi(<cr>
@@ -210,6 +189,3 @@ onoremap in" :<c-u>normal! f"vi"<cr>
 onoremap il" :<c-u>normal! F"vi"<cr>
 onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap il[ :<c-u>normal! F]vi[<cr>
-
-"typo corrector
-iabbrev adn and
