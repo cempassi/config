@@ -40,10 +40,13 @@ hi CursorLineNr ctermfg=cyan
 command! MakeTags !ctags -R
 
 "ALE config
-let g:ale_c_parse_makefile=1
+if filereadable(".lvimrc")
+    source .lvimrc
+endif
+let g:ale_c_parse_makefile=0
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
-let airline#extensions#ale#warning_symbol = '☞'
+let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
 let airline#extensions#ale#close_lnum_symbol = ']'
