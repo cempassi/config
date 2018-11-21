@@ -9,8 +9,11 @@ set hidden
 set scrolloff=5
 set shortmess+=A	"Remove swap files message
 set textwidth=80
+set wrap linebreak nolist
 set switchbuf=usetab
-set termguicolors
+if exists('termguicolors')
+	set termguicolors
+endif
 
 
 " Indentation
@@ -107,7 +110,6 @@ let maplocalleader = "_"
 
 "change escape to jk
 inoremap jk <esc>
-inoremap <esc> <nop>
 
 "vimrc shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -115,12 +117,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr
 
 "CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
-
-" dissable arrows
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
 
 " save all files
 nnoremap <silent><leader>wa :wa<cr>

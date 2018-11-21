@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/cedricmpassi/.oh-my-zsh
+export ZSH=/Users/cempassi/.oh-my-zsh
 
 ZSH_THEME=theunraveler
 
@@ -86,3 +86,9 @@ alias valgrind="/usr/local/Cellar/valgrind/3.13.0/bin/valgrind"
 export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
+
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
+
+# Load Homebrew Fix script
+source $HOME/.brew_fix.zsh
