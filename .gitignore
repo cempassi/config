@@ -4,6 +4,10 @@
 *.so
 *.out
 
+# Static librairies #
+###################
+*.a
+
 # Vim generated files #
 #######################
 *.swp
@@ -23,6 +27,7 @@
 ######################
 .DS_Store
 .DS_Store?
+*.dSYM
 ._*
 .Spotlight-V100
 .Trashes

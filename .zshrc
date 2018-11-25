@@ -48,7 +48,7 @@ ZSH_THEME=theunraveler
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git osx brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,7 +81,9 @@ alias ls="ls -G -l"
 
 alias k="clear"
 
-alias valgrind="/usr/local/Cellar/valgrind/3.13.0/bin/valgrind"
+alias status="git status"
+
+alias python=python3
 
 export USER=cempassi
 

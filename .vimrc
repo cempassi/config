@@ -69,14 +69,14 @@ Plugin 'Shougo/vimproc'
 call vundle#end()
 
 "Source background color
-if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
-endif
+"if filereadable(expand("~/.vimrc_background"))
+"let base16colorspace=256
+"source ~/.vimrc_background
+"endif
 
 "Airline config
 let g:airline#extensions#ale#enabled = 1
-let g:airline_theme='base16'
+let g:airline_theme='angr'
 let g:airline_base16_improved_contrast = 1
 
 "Haskell Config
@@ -118,9 +118,14 @@ nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr
 "CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
 
-" save all files
+"Git
+nnoremap <silent><leader>gu :!git commit -a<cr>
+nnoremap <silent><leader>gp :!git push <cr>
+
+" save files
 nnoremap <silent><leader>wa :wa<cr>
 nnoremap <silent><leader>w :w<cr>
+nnoremap <silent><leader>x :x<cr>
 
 "Make shortcuts
 nnoremap <silent><leader>m :make<CR>
