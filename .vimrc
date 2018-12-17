@@ -46,9 +46,12 @@ command! MakeTags !ctags -R
 if filereadable(".lvimrc")
     source .lvimrc
 endif
-let g:ale_c_parse_makefile=0
+let g:ale_c_parse_makefile=1
+let g:ale_linters_explicit=1
+let g:ale_linters={'c': ['clang']}
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
+let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/Libft/includes/ -I includes/"
 let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
@@ -104,6 +107,13 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> ret; return;
 augroup END
 
+"syntax hilighting
+highlight Error ctermbg=196
+highlight ALEError ctermbg=196
+
+"backspace
+set backspace=indent,eol,start
+
 "leader settings
 let mapleader = "-"
 let maplocalleader = "_"
@@ -128,7 +138,7 @@ nnoremap <silent><leader>w :w<cr>
 nnoremap <silent><leader>x :x<cr>
 
 "Make shortcuts
-nnoremap <silent><leader>m :make<CR>
+nnoremap <silent><leader>mk :wa<cr>:make<CR>
 nnoremap <silent><leader>mn :cn<CR>
 nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
@@ -168,7 +178,8 @@ nnoremap <silent><leader>t<F9> 9gt
 nnoremap <leader>t<F0> 10gt
 
 " autocomple binding
-inoremap [Z<tab> <C-x><C-n>
+inoremap <silent><leader><tab> <C-x><C-n>
+inoremap <silent><leader><S-tab> <C-x><C-p>
 inoremap [Zf <C-x><C-f>
 inoremap [Zt <C-x><C-]>
 inoremap [Zp <C-x><C-p>

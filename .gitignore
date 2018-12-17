@@ -11,6 +11,7 @@
 # Vim generated files #
 #######################
 *.swp
+*.swo
 
 # Packages #
 ############

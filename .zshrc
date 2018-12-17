@@ -83,6 +83,8 @@ alias k="clear"
 
 alias status="git status"
 
+alias vim="/Users/cempassi/.brew/Cellar/vim/8.1.0500_1/bin/vim"
+
 alias python=python3
 
 export USER=cempassi
