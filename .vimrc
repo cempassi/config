@@ -1,3 +1,15 @@
+" **************************************************************************** "
+"                                                                              "
+"                                                         :::      ::::::::    "
+"    .vimrc                                             :+:      :+:    :+:    "
+"                                                     +:+ +:+         +:+      "
+"    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
+"                                                 +#+#+#+#+#+   +#+            "
+"    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
+"    Updated: 2019/02/13 15:43:52 by cempassi         ###   ########.fr        "
+"                                                                              "
+" **************************************************************************** "
+
 "General settings
 
 set nocompatible
@@ -6,6 +18,7 @@ syntax on
 set showcmd
 set hlsearch
 set hidden
+set mouse=a
 set scrolloff=5
 set shortmess+=A	"Remove swap files message
 set textwidth=80
@@ -51,7 +64,7 @@ let g:ale_linters_explicit=1
 let g:ale_linters={'c': ['clang']}
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/Libft/includes/ -I includes/"
+let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/Libft/includes/ -I libft/includes/ -I includes/"
 let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
@@ -67,6 +80,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wincent/command-t'
 Plugin 'pbondoer/vim-42header'
+Plugin 'gilligan/vim-lldb'
 " Plugin 'eagletmt/ghcmod-vim' Not working for now
 Plugin 'Shougo/vimproc'
 call vundle#end()
@@ -103,8 +117,9 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> ife if)<cr>{<cr><cr>}jk3k$i
 	autocmd Filetype c iabbrev <buffer> if; if);<left><left>
 	autocmd Filetype c iabbrev <buffer> printf(" printf(");<left><left><left>
+	autocmd Filetype c iabbrev <buffer> ft_printf(" ft_printf(");<left><left><left>
 	autocmd Filetype c iabbrev <buffer> return return);<left><left>
-	autocmd Filetype c iabbrev <buffer> ret; return;
+	autocmd Filetype c iabbrev <buffer> ret; return ;
 augroup END
 
 "syntax hilighting
@@ -139,6 +154,10 @@ nnoremap <silent><leader>x :x<cr>
 
 "Make shortcuts
 nnoremap <silent><leader>mk :wa<cr>:make<CR>
+nnoremap <silent><leader>md :wa<cr>:make debug<CR>
+nnoremap <silent><leader>mr :wa<cr>:make re<CR>
+nnoremap <silent><leader>mf :wa<cr>:make fclean<CR>
+nnoremap <silent><leader>mc :wa<cr>:make clean<CR>
 nnoremap <silent><leader>mn :cn<CR>
 nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
