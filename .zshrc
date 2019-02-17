@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/cempassi/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
+export PATH=/usr/local/share:$PATH
 
 ZSH_THEME=theunraveler
 
@@ -83,16 +84,8 @@ alias k="clear"
 
 alias status="git status"
 
-alias vim="/Users/cempassi/.brew/Cellar/vim/8.1.0500_1/bin/vim"
-
 alias python=python3
 
 export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
-
-# Load Homebrew config script
-source $HOME/.brewconfig.zsh
-
-# Load Homebrew Fix script
-source $HOME/.brew_fix.zsh
