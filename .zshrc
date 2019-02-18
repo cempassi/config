@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cempassi/.oh-my-zsh
 
+export PATH="/Users/cempassi/Applications/bin/:$PATH"
+
 ZSH_THEME=theunraveler
 
 # Uncomment the following line to use case-sensitive completion.
@@ -54,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+ export MANPATH="~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -83,16 +85,8 @@ alias k="clear"
 
 alias status="git status"
 
-alias vim="/Users/cempassi/.brew/Cellar/vim/8.1.0500_1/bin/vim"
-
 alias python=python3
 
 export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
-
-# Load Homebrew config script
-source $HOME/.brewconfig.zsh
-
-# Load Homebrew Fix script
-source $HOME/.brew_fix.zsh
