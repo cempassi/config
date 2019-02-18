@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/cempassi/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
+export PATH=/usr/local/share:$PATH
 
 export PATH="/Users/cempassi/Applications/bin/:$PATH"
 

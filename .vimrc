@@ -6,12 +6,11 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/02/13 15:43:52 by cempassi         ###   ########.fr        "
+"    Updated: 2019/02/17 23:51:32 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
 "General settings
-
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -27,7 +26,6 @@ set switchbuf=usetab
 if exists('termguicolors')
 	set termguicolors
 endif
-
 
 " Indentation
 set autoindent
@@ -125,6 +123,7 @@ augroup END
 "syntax hilighting
 highlight Error ctermbg=196
 highlight ALEError ctermbg=196
+match Type /\<e_[a-z]\+\>\|\<t_[a-z]\+\>\|\<s_[a-z]\+\>\|\<u_[a-z]\+\>/
 
 "backspace
 set backspace=indent,eol,start
@@ -138,7 +137,46 @@ inoremap jk <esc>
 
 "vimrc shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>:echom ".vimrc sourced successfully!"<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<cr>
+
+"Automatic norme
+nnoremap <silent><leader>nm :call Norme()<cr>
+
+function TrailingWhitespaces()
+	:%s/\s\+$//ge
+endfunction
+
+function SpaceAfterIdentifier()
+	12,$s/if(/if (/ge
+	12,$s/while(/while (/ge
+	12,$s/(\s\+/(/ge
+	12,$s/\s\+)/)/ge
+	12,$s/=\s\s\+/= /ge
+	12,$s/&&\s\s\+/& /ge
+	12,$s/|\s\s\+/| /ge
+	12,$s/+\s\s\+/+ /ge
+	12,$s/\(=\)\(\S\)/\1 \2/ge
+	12,$s/\(&&\)\(\S\)/\1 \2/ge
+	12,$s/\(|\)\(\S\)/\1 \2/ge
+	12,$s/\(+\)\(\S\)/\1 \2/ge
+	12,$s/\(%\)\(\S\)/\1 \2/ge
+	12,$s/\(\S\)\(=\)/\1 \2/ge
+	12,$s/\(\S\)\(&&\)/\1 \2/ge
+	12,$s/\(\S\)\(|\)/\1 \2/ge
+	12,$s/\(\S\)\(+\)/\1 \2/ge
+	12,$s/\(\S\)\(%\)/\1 \2/ge
+	12,$s/\(,\)\(\S\)/\1 \2/ge
+	12,$s/\(\s\+\)\(,\)/\2/ge
+	12,$s/\(\s\+\)\(;\)/\2/ge
+	12,$s/return(/return (/ge
+endfunction
+
+function Norme()
+	call TrailingWhitespaces()
+	call SpaceAfterIdentifier()
+	let @/ = ""
+	echom "Normed successfully"
+endfunction
 
 "CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
@@ -146,6 +184,7 @@ nnoremap <silent><leader>t :CommandT<cr>
 "Git
 nnoremap <silent><leader>gu :!git commit -a<cr>
 nnoremap <silent><leader>gp :!git push <cr>
+nnoremap <silent><leader>gs :!git status <cr>
 
 " save files
 nnoremap <silent><leader>wa :wa<cr>
