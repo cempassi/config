@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/02/18 14:41:44 by cempassi         ###   ########.fr        "
+"    Updated: 2019/02/18 19:04:27 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -159,6 +159,9 @@ function Norme()
 	echom "Normed successfully"
 endfunction
 
+"Split
+nnoremap <silent><leader>vs :vsplit<cr>
+
 "CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
 
@@ -170,7 +173,9 @@ nnoremap <silent><leader>gs :!git status <cr>
 " save files
 nnoremap <silent><leader>wa :wa<cr>
 nnoremap <silent><leader>w :w<cr>
-nnoremap <silent><leader>x :x<cr>
+nnoremap <silent><leader>xa :xa<cr>
+nnoremap <silent><leader>q :q<cr>
+nnoremap <silent><leader>qa :qa<cr>
 
 "Make shortcuts
 nnoremap <silent><leader>mk :wa<cr>:make<CR>
