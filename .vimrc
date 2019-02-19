@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/02/18 19:04:27 by cempassi         ###   ########.fr        "
+"    Updated: 2019/02/19 00:21:54 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -134,6 +134,7 @@ let maplocalleader = "_"
 
 "change escape to jk
 inoremap jk <esc>
+vnoremap jk <esc>
 
 "vimrc shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -161,6 +162,12 @@ endfunction
 
 "Split
 nnoremap <silent><leader>vs :vsplit<cr>
+nnoremap <silent><leader>vb <C-v>
+
+"System copy-paste
+vnoremap <silent><leader>y "*y
+inoremap <silent><leader>p "*p
+nnoremap <silent><leader>p "*p
 
 "CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
