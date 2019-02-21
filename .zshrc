@@ -96,7 +96,7 @@ alias ezsh="vim ~/.zshrc"
 
 alias tt="make test"
 
-alias uconf= "~/.config/update_config.sh"
+alias uconf=~/.config/update_config.sh
 
 export USER=cempassi
 
