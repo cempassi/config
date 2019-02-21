@@ -88,6 +88,14 @@ alias status="git status"
 
 alias python=python3
 
+alias vime="vim -O4"
+
+alias szsh="source ~/.zshrc"
+
+alias ezsh="vim ~/.zshrc"
+
+alias tt="make test"
+
 export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 

@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/02/19 00:21:54 by cempassi         ###   ########.fr        "
+"    Updated: 2019/02/19 19:41:58 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -57,12 +57,12 @@ command! MakeTags !ctags -R
 if filereadable(".lvimrc")
     source .lvimrc
 endif
-let g:ale_c_parse_makefile=1
+let g:ale_c_parse_makefile=0
 let g:ale_linters_explicit=1
 let g:ale_linters={'c': ['clang']}
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/Libft/includes/ -I libft/includes/ -I includes/"
+let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/libft/includes/ -I libft/includes/ -I includes/"
 let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
@@ -179,9 +179,9 @@ nnoremap <silent><leader>gs :!git status <cr>
 
 " save files
 nnoremap <silent><leader>wa :wa<cr>
-nnoremap <silent><leader>w :w<cr>
+nnoremap <silent><leader>ww :w<cr>
 nnoremap <silent><leader>xa :xa<cr>
-nnoremap <silent><leader>q :q<cr>
+nnoremap <silent><leader>qq :q<cr>
 nnoremap <silent><leader>qa :qa<cr>
 
 "Make shortcuts
@@ -207,7 +207,8 @@ nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>zi <C-w>_
 nnoremap <silent><leader>= <C-w>=
 nnoremap <silent><leader>r <C-w>r
-nnoremap <silent><leader>ow <C-w>r
+nnoremap <silent><leader>R <C-w>R
+nnoremap <silent><leader><BS> <C-w><C-x>
 nnoremap <silent><leader>> <C-w>>
 nnoremap <silent><leader>< <C-w><
 
