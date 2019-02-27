@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/02/18 06:47:44 by cempassi         ###   ########.fr        "
+"    Updated: 2019/02/27 18:03:41 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -57,12 +57,12 @@ command! MakeTags !ctags -R
 if filereadable(".lvimrc")
     source .lvimrc
 endif
-let g:ale_c_parse_makefile=1
+let g:ale_c_parse_makefile=0
 let g:ale_linters_explicit=1
 let g:ale_linters={'c': ['clang']}
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/Libft/includes/ -I libft/includes/ -I includes/"
+let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/libft/includes/ -I libft/includes/ -I includes/"
 let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
@@ -120,19 +120,19 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> ret; return ;
 augroup END
 
-"syntax hilighting
+" syntax hilighting
 highlight Error ctermbg=196
 highlight ALEError ctermbg=196
 match Type /\<e_[a-z]\+\>\|\<t_[a-z]\+\>\|\<s_[a-z]\+\>\|\<u_[a-z]\+\>\|\<[a-z]*_t\>/
 
-"backspace
+" backspace
 set backspace=indent,eol,start
 
-"leader settings
+" leader settings
 let mapleader = "-"
 let maplocalleader = "_"
 
-"change escape to jk
+" change escape to jk
 inoremap jk <esc>
 vnoremap jk <esc>
 
@@ -142,11 +142,11 @@ nnoremap <leader>vs :vsplit<cr>
 "visual block
 nnoremap <leader>vb <C-v>
 
-"vimrc shortcuts
+" vimrc shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<cr>
 
-"Automatic norme
+" Automatic norme
 nnoremap <silent><leader>nm :call Norme()<cr>
 
 function! TrailingWhitespaces()
@@ -166,20 +166,29 @@ function! Norme()
 	echom "Normed successfully"
 endfunction
 
-"CommandT mapping
+" Split
+nnoremap <silent><leader>vs :vsplit<cr>
+nnoremap <silent><leader>vb <C-v>
+
+" System copy-paste
+vnoremap <silent><leader>y "*y
+inoremap <silent><leader>p "*p
+nnoremap <silent><leader>p "*p
+
+" CommandT mapping
 nnoremap <silent><leader>t :CommandT<cr>
 
-"Git
+" Git
 nnoremap <silent><leader>gu :!git commit -a<cr>
 nnoremap <silent><leader>gp :!git push <cr>
 nnoremap <silent><leader>gs :!git status <cr>
 
 " save files and quit
+nnoremap <silent><leader>ww :w<cr>
 nnoremap <silent><leader>wa :wa<cr>
-nnoremap <silent><leader>w :w<cr>
-nnoremap <silent><leader>x :x<cr>
+nnoremap <silent><leader>xx :x<cr>
 nnoremap <silent><leader>xa :xa<cr>
-nnoremap <silent><leader>q :q<cr>
+nnoremap <silent><leader>qq :q<cr>
 nnoremap <silent><leader>qa :qa<cr>
 
 "Make shortcuts
@@ -205,7 +214,8 @@ nnoremap <silent><leader>l :wincmd l<CR>
 nnoremap <silent><leader>zi <C-w>_
 nnoremap <silent><leader>= <C-w>=
 nnoremap <silent><leader>r <C-w>r
-nnoremap <silent><leader>ow <C-w>r
+nnoremap <silent><leader>R <C-w>R
+nnoremap <silent><leader><BS> <C-w><C-x>
 nnoremap <silent><leader>> <C-w>>
 nnoremap <silent><leader>< <C-w><
 
