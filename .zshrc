@@ -94,7 +94,7 @@ alias szsh="source ~/.zshrc"
 
 alias ezsh="vim ~/.zshrc"
 
-alias tt="make test"
+alias tt="clear && make test"
 
 alias uconf=~/.config/update_config.sh
 
