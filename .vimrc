@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/03/02 21:37:37 by cempassi         ###   ########.fr        "
+"    Updated: 2019/03/02 21:39:15 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -125,7 +125,7 @@ augroup END
 " syntax hilighting
 highlight Error ctermbg=196
 highlight ALEError ctermbg=196
-match Type /\<e_[a-z]\+\>\|\<t_[a-z]\+\>\|\<s_[a-z]\+\>\|\<u_[a-z]\+\>/
+match Type /\<e_[a-z]\+\>\|\<t_[a-z]\+\>\|\<s_[a-z]\+\>\|\<u_[a-z]\+\>\|\<[a-z]*_t\>/
 
 " backspace
 set backspace=indent,eol,start
@@ -138,6 +138,12 @@ let maplocalleader = "_"
 inoremap jk <esc>
 vnoremap jk <esc>
 
+"vsplit
+nnoremap <leader>vs :vsplit<cr>
+
+"visual block
+nnoremap <leader>vb <C-v>
+
 " vimrc shortcuts
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<cr>
@@ -145,17 +151,17 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<c
 " Automatic norme
 nnoremap <silent><leader>nm :call Norme()<cr>
 
-function TrailingWhitespaces()
+function! TrailingWhitespaces()
 	:%s/\s\+$//ge
 endfunction
 
-function SpaceAfterIdentifier()
+function! SpaceAfterIdentifier()
 	12,$s/if(/if (/ge
 	12,$s/while(/while (/ge
 	12,$s/return(/return (/ge
 endfunction
 
-function Norme()
+function! Norme()
 	call TrailingWhitespaces()
 	call SpaceAfterIdentifier()
 	let @/ = ""
@@ -185,9 +191,9 @@ nnoremap <silent><leader>gu :!git commit -a<cr>
 nnoremap <silent><leader>gp :!git push <cr>
 nnoremap <silent><leader>gs :!git status <cr>
 
-" save files
-nnoremap <silent><leader>wa :wa<cr>
+" save files and quit
 nnoremap <silent><leader>ww :w<cr>
+nnoremap <silent><leader>wa :wa<cr>
 nnoremap <silent><leader>xx :x<cr>
 nnoremap <silent><leader>xa :xa<cr>
 nnoremap <silent><leader>qq :q<cr>
