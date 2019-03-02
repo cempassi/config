@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/02/21 21:40:11 by cempassi         ###   ########.fr        "
+"    Updated: 2019/03/02 21:37:37 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -79,6 +79,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wincent/command-t'
 Plugin 'pbondoer/vim-42header'
 Plugin 'gilligan/vim-lldb'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 " Plugin 'eagletmt/ghcmod-vim' Not working for now
 Plugin 'Shougo/vimproc'
 call vundle#end()
@@ -164,6 +166,12 @@ endfunction
 nnoremap <silent><leader>vs :vsplit<cr>
 nnoremap <silent><leader>vb <C-v>
 
+"Jump to defined tag
+nnoremap <silent><leader>gf <C-]>zz
+
+"delete previous hilighting turn of hilighting
+nnoremap <silent><leader>nh :let @/ = ""<cr>
+
 " System copy-paste
 vnoremap <silent><leader>y "*y
 inoremap <silent><leader>p "*p
@@ -180,6 +188,7 @@ nnoremap <silent><leader>gs :!git status <cr>
 " save files
 nnoremap <silent><leader>wa :wa<cr>
 nnoremap <silent><leader>ww :w<cr>
+nnoremap <silent><leader>xx :x<cr>
 nnoremap <silent><leader>xa :xa<cr>
 nnoremap <silent><leader>qq :q<cr>
 nnoremap <silent><leader>qa :qa<cr>
@@ -198,6 +207,7 @@ nnoremap <silent><leader>me :cw<CR>
 nnoremap <silent><leader>b :ls<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <silent><leader>bp :bp<cr>
+nnoremap <silent><leader>bd :bdelete<cr>
 
 " Window shortcuts
 nnoremap <silent><leader>k :wincmd k<CR>

@@ -86,6 +86,8 @@ alias k="clear"
 
 alias status="git status"
 
+alias ctags="~/.brew/bin/ctags"
+
 alias python=python3
 
 alias vime="vim -O4"
