@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/03/02 21:39:15 by cempassi         ###   ########.fr        "
+"    Updated: 2019/03/13 01:34:24 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -21,11 +21,26 @@ set mouse=a
 set scrolloff=5
 set shortmess+=A	"Remove swap files message
 set textwidth=80
+set splitbelow
 set wrap linebreak nolist
-set switchbuf=usetab
+set switchbuf=useopen,usetab
 if exists('termguicolors')
 	set termguicolors
 endif
+
+" leader settings
+let mapleader = "-"
+let maplocalleader = "_"
+
+"Path finding
+set path=~/Programming/42/libft/**,**,/usr/include,,
+set suffixesadd=.c,.h
+
+"ignore filetypes
+set wildignore=*.o
+
+"Remove system include from completion
+set complete-=i
 
 " Indentation
 set autoindent
@@ -50,9 +65,6 @@ set number
 hi LineNr ctermfg=white
 hi CursorLineNr ctermfg=cyan
 
-" Create Tags
-command! MakeTags !ctags -R
-
 "ALE config
 if filereadable(".lvimrc")
     source .lvimrc
@@ -67,6 +79,8 @@ let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
 let airline#extensions#ale#close_lnum_symbol = ']'
+nnoremap <silent><leader>fn :ALENext<cr>
+nnoremap <silent><leader>fp :ALEPrevious<cr>
 
 "vundle & plugin install
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -102,6 +116,10 @@ let g:airline_base16_improved_contrast = 1
 autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
 let $PATH = $PATH . ':' . expand('~/LibraryHaskell/bin')
 
+"easytags config
+let g:easytags_async = 1
+let g:easytags_events = ['BufWritePost']
+
 "C shortcuts : Remember to expand with right caracter
 augroup filetype_c
 	autocmd!
@@ -122,6 +140,9 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> ret; return ;
 augroup END
 
+"remove whitespaces on save
+autocmd BufWrite *h,*.c :call TrailingWhitespaces()
+
 " syntax hilighting
 highlight Error ctermbg=196
 highlight ALEError ctermbg=196
@@ -130,9 +151,9 @@ match Type /\<e_[a-z]\+\>\|\<t_[a-z]\+\>\|\<s_[a-z]\+\>\|\<u_[a-z]\+\>\|\<[a-z]*
 " backspace
 set backspace=indent,eol,start
 
-" leader settings
-let mapleader = "-"
-let maplocalleader = "_"
+" Old cursor
+nnoremap <silent><leader>o <C-o>
+nnoremap <silent><leader>i <C-i>
 
 " change escape to jk
 inoremap jk <esc>
@@ -149,7 +170,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<cr>
 
 " Automatic norme
-nnoremap <silent><leader>nm :call Norme()<cr>
+nnoremap <silent><leader>nm :call Norme()<cr>:w<cr>
 
 function! TrailingWhitespaces()
 	:%s/\s\+$//ge
@@ -162,18 +183,33 @@ function! SpaceAfterIdentifier()
 endfunction
 
 function! Norme()
-	call TrailingWhitespaces()
 	call SpaceAfterIdentifier()
 	let @/ = ""
 	echom "Normed successfully"
 endfunction
 
+"Clever tab
+function! CleverTab()
+	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+		return "\<Tab>"
+	else
+		return "\<C-N>"
+	endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
+
 " Split
 nnoremap <silent><leader>vs :vsplit<cr>
 nnoremap <silent><leader>vb <C-v>
 
-"Jump to defined tag
+"Tag
 nnoremap <silent><leader>gf <C-]>zz
+nnoremap <silent><leader>gt <C-t>zz
+nnoremap <silent><leader>gg :tn<cr>zz
+nnoremap <silent><leader>gs <C-w>}
+nnoremap <silent><leader>gn :ptnext<cr>
+nnoremap <silent><leader>gd :pc<cr>
+set tags+=~/.vimtags
 
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
@@ -184,12 +220,12 @@ inoremap <silent><leader>p "*p
 nnoremap <silent><leader>p "*p
 
 " CommandT mapping
-nnoremap <silent><leader>t :CommandT<cr>
+nnoremap <silent><leader><cr> :CommandT<cr>
 
 " Git
-nnoremap <silent><leader>gu :!git commit -a<cr>
-nnoremap <silent><leader>gp :!git push <cr>
-nnoremap <silent><leader>gs :!git status <cr>
+nnoremap <silent><leader>cc :bo terminal git commit -a<cr>
+nnoremap <silent><leader>ss :bo terminal git status<cr>
+nnoremap <silent><leader>pu :bo terminal git push<cr>
 
 " save files and quit
 nnoremap <silent><leader>ww :w<cr>
@@ -200,11 +236,11 @@ nnoremap <silent><leader>qq :q<cr>
 nnoremap <silent><leader>qa :qa<cr>
 
 "Make shortcuts
-nnoremap <silent><leader>mk :wa<cr>:make<CR>
-nnoremap <silent><leader>md :wa<cr>:make debug<CR>
-nnoremap <silent><leader>mr :wa<cr>:make re<CR>
-nnoremap <silent><leader>mf :wa<cr>:make fclean<CR>
-nnoremap <silent><leader>mc :wa<cr>:make clean<CR>
+nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
+nnoremap <silent><leader>md :wa<cr>:bo terminal make debug<CR>
+nnoremap <silent><leader>mr :wa<cr>:bo terminal make run<CR>
+nnoremap <silent><leader>mf :wa<cr>:bo terminal make fclean<CR>
+nnoremap <silent><leader>mc :wa<cr>:bo terminal make clean<CR>
 nnoremap <silent><leader>mn :cn<CR>
 nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
@@ -246,13 +282,16 @@ nnoremap <silent><leader>t<F9> 9gt
 nnoremap <leader>t<F0> 10gt
 
 " autocomple binding
-inoremap <silent><leader><tab> <C-x><C-n>
+inoremap <silent><leader><tab><tab> <C-x><C-n>
 inoremap <silent><leader><S-tab> <C-x><C-p>
-inoremap [Zf <C-x><C-f>
-inoremap [Zt <C-x><C-]>
-inoremap [Zp <C-x><C-p>
-inoremap [Zl <C-x><C-l>
-inoremap [Zo <C-x><C-o>
+inoremap <silent><leader><tab>f <C-x><C-f>
+inoremap <silent><leader>] <C-x><C-]>
+inoremap <silent><leader><tab>p <C-x><C-p>
+inoremap <silent><leader><tab>l <C-x><C-l>
+inoremap <silent><leader><tab>o <C-x><C-o>
+inoremap <silent><leader>- <C-Y>
+inoremap [[ <C-n>
+inoremap [p <C-p>
 
 "File browsing
 let g:netrw_banner=0		"disable file

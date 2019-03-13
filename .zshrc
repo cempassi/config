@@ -92,6 +92,8 @@ alias python=python3
 
 alias vime="vim -O4"
 
+alias norme="clear && norminette"
+
 alias szsh="source ~/.zshrc"
 
 alias ezsh="vim ~/.zshrc"
