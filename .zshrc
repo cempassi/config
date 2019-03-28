@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx zsh-syntax-highlighting)
+plugins=(git osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,7 +80,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-alias ls="ls -G -l"
+alias ls="clear ; ls -G -l"
 
 alias k="clear"
 
@@ -100,8 +100,11 @@ alias ezsh="vim ~/.zshrc"
 
 alias tt="clear && make test"
 
+alias 42="cd ~/Programming/42"
+
 alias uconf=~/.config/update_config.sh
 
 export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
+source /Users/cempassi/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
