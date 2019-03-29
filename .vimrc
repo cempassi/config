@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/03/13 01:34:24 by cempassi         ###   ########.fr        "
+"    Updated: 2019/03/29 02:26:20 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -19,7 +19,7 @@ set hlsearch
 set hidden
 set mouse=a
 set scrolloff=5
-set shortmess+=A	"Remove swap files message
+set shortmess+=AaO	"Remove swap files message
 set textwidth=80
 set splitbelow
 set wrap linebreak nolist
@@ -27,6 +27,9 @@ set switchbuf=useopen,usetab
 if exists('termguicolors')
 	set termguicolors
 endif
+
+"Man page reader
+let $PAGER=''
 
 " leader settings
 let mapleader = "-"

@@ -5,9 +5,11 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=~/.brew/bin:~/Applications/bin:/usr/local/share:$PATH
+export PATH=~/.brew/bin:~/Applications/bin:/usr/local/share:$(getconf PATH)
 
-ZSH_THEME=theunraveler
+ZSH_THEME=personal
+
+bindkey -v
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,13 +53,22 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx)
+plugins=(git osx vi-mode themes zsh-syntax-highlighting)
+
+function zle-keymap-select {
+    VIMODE="${${KEYMAP/vicmd/ M:command}/(main|viins)/}"
+    zle reset-prompt
+}
+
+zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
- export MANPATH="~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:$MANPATH"
+ export MANPATH="~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -102,9 +113,12 @@ alias tt="clear && make test"
 
 alias 42="cd ~/Programming/42"
 
+alias git_tree="git log --pretty=oneline --graph --decorate --all"
+
 alias uconf=~/.config/update_config.sh
 
 export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
-source /Users/cempassi/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export MANPAGER="col -b | vim  -MRn --not-a-term -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
