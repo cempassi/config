@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
- export MANPATH="~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/"
+ export MANPATH="~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/local/share/man:/usr/share/man"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
