@@ -109,6 +109,8 @@ alias szsh="source ~/.zshrc"
 
 alias ezsh="vim ~/.zshrc"
 
+alias evim="vim ~/.vimrc"
+
 alias tt="clear && make test"
 
 alias 42="cd ~/Programming/42"

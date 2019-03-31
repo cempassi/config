@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/03/29 02:26:20 by cempassi         ###   ########.fr        "
+"    Updated: 2019/03/31 03:51:30 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -70,7 +70,7 @@ hi CursorLineNr ctermfg=cyan
 
 "ALE config
 if filereadable(".lvimrc")
-    source .lvimrc
+	source .lvimrc
 endif
 let g:ale_c_parse_makefile=0
 let g:ale_linters_explicit=1
@@ -98,6 +98,7 @@ Plugin 'pbondoer/vim-42header'
 Plugin 'gilligan/vim-lldb'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+Plugin 'tpope/vim-fugitive'
 " Plugin 'eagletmt/ghcmod-vim' Not working for now
 Plugin 'Shougo/vimproc'
 call vundle#end()
@@ -119,9 +120,7 @@ let g:airline_base16_improved_contrast = 1
 autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
 let $PATH = $PATH . ':' . expand('~/LibraryHaskell/bin')
 
-"easytags config
-let g:easytags_async = 1
-let g:easytags_events = ['BufWritePost']
+autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
 "C shortcuts : Remember to expand with right caracter
 augroup filetype_c
@@ -142,6 +141,13 @@ augroup filetype_c
 	autocmd Filetype c iabbrev <buffer> return return);<left><left>
 	autocmd Filetype c iabbrev <buffer> ret; return ;
 augroup END
+
+"easytags config
+let g:easytags_async = 1
+let g:easytags_events = ['BufWritePost']
+let g:easytags_by_filetype = '~/.vim/tags/'
+set tags=./.tags;
+let g:easytags_dynamic_files = 2
 
 "remove whitespaces on save
 autocmd BufWrite *h,*.c :call TrailingWhitespaces()
@@ -212,7 +218,6 @@ nnoremap <silent><leader>gg :tn<cr>zz
 nnoremap <silent><leader>gs <C-w>}
 nnoremap <silent><leader>gn :ptnext<cr>
 nnoremap <silent><leader>gd :pc<cr>
-set tags+=~/.vimtags
 
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
