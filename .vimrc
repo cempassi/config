@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/03/31 03:51:30 by cempassi         ###   ########.fr        "
+"    Updated: 2019/04/20 01:21:44 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -36,7 +36,7 @@ let mapleader = "-"
 let maplocalleader = "_"
 
 "Path finding
-set path=~/Programming/42/libft/**,**,/usr/include,,
+set path=**,/usr/include,,
 set suffixesadd=.c,.h
 
 "ignore filetypes
@@ -74,10 +74,10 @@ if filereadable(".lvimrc")
 endif
 let g:ale_c_parse_makefile=0
 let g:ale_linters_explicit=1
-let g:ale_linters={'c': ['clang']}
+let g:ale_linters={'c': ['clang'], 'python': ['flake8', 'pyre']}
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clang_options="-Wall -Werror -Wextra -I ~/Programming/42/libft/includes/ -I libft/includes/ -I includes/"
+let g:ale_c_clang_options="-Wall -Werror -Wextra -I libft/includes/ -I includes/"
 let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
@@ -148,6 +148,7 @@ let g:easytags_events = ['BufWritePost']
 let g:easytags_by_filetype = '~/.vim/tags/'
 set tags=./.tags;
 let g:easytags_dynamic_files = 2
+set cpoptions+="d"
 
 "remove whitespaces on save
 autocmd BufWrite *h,*.c :call TrailingWhitespaces()
@@ -163,6 +164,10 @@ set backspace=indent,eol,start
 " Old cursor
 nnoremap <silent><leader>o <C-o>
 nnoremap <silent><leader>i <C-i>
+
+"Jump between errors
+nnoremap <silent><leader>en :ALENext<cr>
+nnoremap <silent><leader>ep :ALEPrevious<cr>
 
 " change escape to jk
 inoremap jk <esc>

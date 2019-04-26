@@ -56,7 +56,7 @@ ENABLE_CORRECTION="true"
 plugins=(git osx vi-mode themes zsh-syntax-highlighting)
 
 function zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/ M:command}/(main|viins)/}"
+    VIMODE="${${KEYMAP/vicmd/green}/(main|viins)/blue}"
     zle reset-prompt
 }
 
@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
- export MANPATH="~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/local/share/man:/usr/share/man"
+export MANPATH=~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/share/man:/usr/local/share/man:/usr/X11/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man/:~/.brew/share/man/
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -101,6 +101,8 @@ alias ctags="~/.brew/bin/ctags"
 
 alias python=python3
 
+alias pydoc=pydoc3
+
 alias vime="vim -O4"
 
 alias norme="clear && norminette"
@@ -115,9 +117,11 @@ alias tt="clear && make test"
 
 alias 42="cd ~/Programming/42"
 
-alias git_tree="git log --pretty=oneline --graph --decorate --all"
+alias git_tree="git log --all --graph --date=relative --pretty=format:'%C(auto,yellow)[%h][%ad]%C(auto,white) %s %C(auto, blue)%d %C(auto,red)[%an]'"
 
 alias uconf=~/.config/update_config.sh
+
+alias chrome="open -a /Applications/Google\ Chrome.app"
 
 export USER=cempassi
 

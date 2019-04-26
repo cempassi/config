@@ -13,6 +13,7 @@
 *.swp
 *.swo
 *.swn
+.tags
 
 # Packages #
 ############

@@ -10,6 +10,7 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 
 PERSONAL_DATE="%{$fg[yellow]%}%D %T%{$reset_color%}"
+
 PROMPT='%{$fg[$VIMODE]%}[%c] %{$reset_color%}'
 
 RPROMPT='$(git_prompt_status)%{$reset_color%} %{$fg[cyan]%}$(git_prompt_info)%{$reset_color%} [$PERSONAL_DATE]'
