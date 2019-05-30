@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/04/20 01:21:44 by cempassi         ###   ########.fr        "
+"    Updated: 2019/05/30 18:41:23 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -191,9 +191,12 @@ function! TrailingWhitespaces()
 endfunction
 
 function! SpaceAfterIdentifier()
-	12,$s/if(/if (/ge
-	12,$s/while(/while (/ge
-	12,$s/return(/return (/ge
+	12,$s/if (/if (/ge
+	12,$s/while (/while (/ge
+	12,$s/return (/return (/ge
+	12,$s/break;/break ;/ge
+	12,$s/return;/return ;/ge
+	12,$s/\(\s*,\)\(\S\)/, \2/ge
 endfunction
 
 function! Norme()
@@ -214,6 +217,9 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " Split
 nnoremap <silent><leader>vs :vsplit<cr>
+nnoremap <silent><leader>hs :split<cr>
+
+"Visual Block
 nnoremap <silent><leader>vb <C-v>
 
 "Tag
@@ -229,8 +235,8 @@ nnoremap <silent><leader>nh :let @/ = ""<cr>
 
 " System copy-paste
 vnoremap <silent><leader>y "*y
-inoremap <silent><leader>p "*p
 nnoremap <silent><leader>p "*p
+inoremap <silent><leader>p <esc>"*pa
 
 " CommandT mapping
 nnoremap <silent><leader><cr> :CommandT<cr>

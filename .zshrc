@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export MANPATH=~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/share/man:/usr/local/share/man:/usr/X11/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man/:~/.brew/share/man/
+export MANPATH=~/.brew/share/man/:~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/share/man:/usr/local/share/man:/usr/X11/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man/:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -116,6 +116,8 @@ alias evim="vim ~/.vimrc"
 alias tt="clear && make test"
 
 alias 42="cd ~/Programming/42"
+
+alias mysql="~/Applications/mamp/mysql/bin/mysql"
 
 alias git_tree="git log --all --graph --date=relative --pretty=format:'%C(auto,yellow)[%h][%ad]%C(auto,white) %s %C(auto, blue)%d %C(auto,red)[%an]'"
 
