@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/05/30 18:41:23 by cempassi         ###   ########.fr        "
+"    Updated: 2019/06/11 14:47:06 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -99,8 +99,11 @@ Plugin 'gilligan/vim-lldb'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'eagletmt/ghcmod-vim' Not working for now
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'Shougo/vimproc'
+" Plugin 'eagletmt/ghcmod-vim' Not working for now
 call vundle#end()
 
 "Source background color
@@ -149,6 +152,9 @@ let g:easytags_by_filetype = '~/.vim/tags/'
 set tags=./.tags;
 let g:easytags_dynamic_files = 2
 set cpoptions+="d"
+
+"deoplete config
+let g:deoplete#enable_at_startup = 1
 
 "remove whitespaces on save
 autocmd BufWrite *h,*.c :call TrailingWhitespaces()

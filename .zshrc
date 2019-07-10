@@ -5,7 +5,7 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=~/.brew/bin:~/Applications/bin:/usr/local/share:$(getconf PATH)
+export PATH=~/.brew/bin:~/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
 
 ZSH_THEME=personal
 
