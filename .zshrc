@@ -70,6 +70,7 @@ source $ZSH/oh-my-zsh.sh
 
 export MANPATH=~/.brew/share/man/:~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/share/man:/usr/local/share/man:/usr/X11/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man/:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/
 
+export CDPATH=:..:~:~/Programming/42
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
