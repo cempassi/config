@@ -1,7 +1,7 @@
 [submodule "ALE"]
-	path = /Users/cempassi/.config/vim/pack/bundle/opt/ale
+	path = vim/pack/bundle/opt/ale
 	url = https://github.com/dense-analysis/ale.git
 
 [submodule "airline"]
-	path = /Users/cempassi/.config/vim/pack/bundle/opt/airline
+	path = vim/pack/bundle/opt/airline
 	url = https://github.com/vim-airline/vim-airline.git
