@@ -6,44 +6,21 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/02/06 19:37:02 by cempassi          #+#    #+#              "
-"    Updated: 2019/06/11 14:47:06 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/01 23:27:50 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
-"General settings
-set nocompatible
-filetype plugin indent on
-syntax on
-set showcmd
-set hlsearch
-set hidden
-set mouse=a
-set scrolloff=5
-set shortmess+=AaO	"Remove swap files message
-set textwidth=80
-set splitbelow
-set wrap linebreak nolist
-set switchbuf=useopen,usetab
-if exists('termguicolors')
-	set termguicolors
+if filereadable(expand("~/.config/vim/settings/mappings/normal.vim"))
+	source ~/.config/vim/settings/mappings/normal.vim
 endif
 
-"Man page reader
-let $PAGER=''
+if filereadable(expand("~/.config/vim/settings/general.vim"))
+	source ~/.config/vim/settings/general.vim
+endif
 
-" leader settings
-let mapleader = "-"
-let maplocalleader = "_"
-
-"Path finding
-set path=**,/usr/include,,
-set suffixesadd=.c,.h
-
-"ignore filetypes
-set wildignore=*.o
-
-"Remove system include from completion
-set complete-=i
+if filereadable(expand("~/.config/vim/plugins/ALE.vim"))
+	source ~/.config/vim/plugins/ALE.vim
+endif
 
 " Indentation
 set autoindent
@@ -62,29 +39,6 @@ if has ('folding')
 	set foldmethod=syntax
 endif
 
-" Numbers
-set relativenumber numberwidth=3
-set number
-hi LineNr ctermfg=white
-hi CursorLineNr ctermfg=cyan
-
-"ALE config
-if filereadable(".lvimrc")
-	source .lvimrc
-endif
-let g:ale_c_parse_makefile=0
-let g:ale_linters_explicit=1
-let g:ale_linters={'c': ['clang'], 'python': ['flake8', 'pyre']}
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clang_options="-Wall -Werror -Wextra -I libft/includes/ -I includes/"
-let airline#extensions#ale#warning_symbol = '☞  '
-let airline#extensions#ale#error_symbol = '✘:'
-let airline#extensions#ale#open_lnum_symbol = '[l'
-let airline#extensions#ale#close_lnum_symbol = ']'
-nnoremap <silent><leader>fn :ALENext<cr>
-nnoremap <silent><leader>fp :ALEPrevious<cr>
-
 "vundle & plugin install
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -95,15 +49,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wincent/command-t'
 Plugin 'pbondoer/vim-42header'
-Plugin 'gilligan/vim-lldb'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'Shougo/vimproc'
-" Plugin 'eagletmt/ghcmod-vim' Not working for now
+Plugin 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call vundle#end()
 
 "Source background color
@@ -212,18 +162,14 @@ function! Norme()
 endfunction
 
 "Clever tab
-function! CleverTab()
-	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-		return "\<Tab>"
-	else
-		return "\<C-N>"
-	endif
-endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
-
-" Split
-nnoremap <silent><leader>vs :vsplit<cr>
-nnoremap <silent><leader>hs :split<cr>
+"function! CleverTab()
+"	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+"	return "\<Tab>"
+"else
+"	return "\<C-N>"
+"endif
+"endfunction
+"inoremap <Tab> <C-R>=CleverTab()<CR>
 
 "Visual Block
 nnoremap <silent><leader>vb <C-v>
@@ -252,14 +198,6 @@ nnoremap <silent><leader>cc :bo terminal git commit -a<cr>
 nnoremap <silent><leader>ss :bo terminal git status<cr>
 nnoremap <silent><leader>pu :bo terminal git push<cr>
 
-" save files and quit
-nnoremap <silent><leader>ww :w<cr>
-nnoremap <silent><leader>wa :wa<cr>
-nnoremap <silent><leader>xx :x<cr>
-nnoremap <silent><leader>xa :xa<cr>
-nnoremap <silent><leader>qq :q<cr>
-nnoremap <silent><leader>qa :qa<cr>
-
 "Make shortcuts
 nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
 nnoremap <silent><leader>md :wa<cr>:bo terminal make debug<CR>
@@ -269,42 +207,6 @@ nnoremap <silent><leader>mc :wa<cr>:bo terminal make clean<CR>
 nnoremap <silent><leader>mn :cn<CR>
 nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
-
-" Buffer shortcuts
-nnoremap <silent><leader>b :ls<cr>
-nnoremap <silent><leader>bn :bn<cr>
-nnoremap <silent><leader>bp :bp<cr>
-nnoremap <silent><leader>bd :bdelete<cr>
-
-" Window shortcuts
-nnoremap <silent><leader>k :wincmd k<CR>
-nnoremap <silent><leader>j :wincmd j<CR>
-nnoremap <silent><leader>h :wincmd h<CR>
-nnoremap <silent><leader>l :wincmd l<CR>
-nnoremap <silent><leader>zi <C-w>_
-nnoremap <silent><leader>= <C-w>=
-nnoremap <silent><leader>r <C-w>r
-nnoremap <silent><leader>R <C-w>R
-nnoremap <silent><leader><BS> <C-w><C-x>
-nnoremap <silent><leader>> <C-w>>
-nnoremap <silent><leader>< <C-w><
-
-" tab shortcuts
-nnoremap <silent><leader>tt :tabs<cr>
-nnoremap <silent><leader>tn :tabn<cr>
-nnoremap <silent><leader>tc :tabnew<cr>
-nnoremap <silent><leader>tp :tabp<cr>
-nnoremap <silent><silent><leader>td :tabclose<cr>
-nnoremap <silent><leader>t<F1> 1gt
-nnoremap <silent><leader>t<F2> 2gt
-nnoremap <silent><leader>t<F3> 3gt
-nnoremap <silent><leader>t<F4> 4gt
-nnoremap <silent><leader>t<F5> 5gt
-nnoremap <silent><leader>t<F6> 6gt
-nnoremap <silent><leader>t<F7> 7gt
-nnoremap <silent><leader>t<F8> 8gt
-nnoremap <silent><leader>t<F9> 9gt
-nnoremap <leader>t<F0> 10gt
 
 " autocomple binding
 inoremap <silent><leader><tab><tab> <C-x><C-n>
