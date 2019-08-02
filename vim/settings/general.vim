@@ -1,7 +1,5 @@
-"General settings
+" General settings
 set nocompatible
-filetype plugin indent on
-syntax on
 set showcmd
 set hlsearch
 set hidden
@@ -16,21 +14,21 @@ if exists('termguicolors')
 	set termguicolors
 endif
 
-"Man page reader
+" Man page reader
 let $PAGER=''
 
 " leader settings
-let mapleader = "-"
-let maplocalleader = "_"
+let mapleader="-"
+let maplocalleader="_"
 
-"Path finding
+" Path finding
 set path=**,/usr/include,,
 set suffixesadd=.c,.h
 
-"ignore filetypes
+" ignore filetypes
 set wildignore=*.o
 
-"Remove system include from completion
+" Remove system include from completion
 set complete-=i
 
 " Numbers
@@ -38,3 +36,23 @@ set relativenumber numberwidth=3
 set number
 hi LineNr ctermfg=white
 hi CursorLineNr ctermfg=cyan
+
+" Folding and windows
+if has ('folding')
+	if has ('windows')
+		set fillchars=vert:\│ 			"Box drawing
+		set fillchars+=fold:∙
+		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
+	endif
+	set foldenable
+	set foldnestmax=1
+	set foldmethod=syntax
+endif
+
+" backspace
+set backspace=indent,eol,start
+
+" Default Indentation
+set autoindent
+set tabstop=4
+set shiftwidth=4

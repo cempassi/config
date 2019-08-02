@@ -12,7 +12,3 @@ let airline#extensions#ale#warning_symbol = '☞  '
 let airline#extensions#ale#error_symbol = '✘:'
 let airline#extensions#ale#open_lnum_symbol = '[l'
 let airline#extensions#ale#close_lnum_symbol = ']'
-
-"Key mappings
-nnoremap <silent><leader>fn :ALENext<cr>
-nnoremap <silent><leader>fp :ALEPrevious<cr>

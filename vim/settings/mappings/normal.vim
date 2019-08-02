@@ -45,3 +45,29 @@ nnoremap <silent><leader>t<F7> 7gt
 nnoremap <silent><leader>t<F8> 8gt
 nnoremap <silent><leader>t<F9> 9gt
 nnoremap <leader>t<F0> 10gt
+
+"Tags
+nnoremap <silent><leader>gf <C-]>zz
+nnoremap <silent><leader>gt <C-t>zz
+nnoremap <silent><leader>gg :tn<cr>zz
+nnoremap <silent><leader>gs <C-w>}
+nnoremap <silent><leader>gn :ptnext<cr>
+nnoremap <silent><leader>gd :pc<cr>
+
+" Old cursor
+nnoremap <silent><leader>o <C-o>
+nnoremap <silent><leader>i <C-i>
+
+"visual block
+nnoremap <leader>vb <C-v>
+
+" vimrc shortcuts
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<cr>
+
+"delete previous hilighting turn of hilighting
+nnoremap <silent><leader>nh :let @/ = ""<cr>
+
+"ALE -- Jump between errors
+nnoremap <silent><leader>en :ALENext<cr>
+nnoremap <silent><leader>ep :ALEPrevious<cr>
