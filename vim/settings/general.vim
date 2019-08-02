@@ -8,6 +8,8 @@ set scrolloff=5
 set shortmess+=AaO	"Remove swap files message
 set textwidth=80
 set splitbelow
+set ignorecase
+set smartcase
 set wrap linebreak nolist
 set switchbuf=useopen,usetab
 if exists('termguicolors')
