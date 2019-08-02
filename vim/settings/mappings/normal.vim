@@ -68,6 +68,19 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<c
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
 
+"Make shortcuts
+nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
+nnoremap <silent><leader>md :wa<cr>:bo terminal make debug<CR>
+nnoremap <silent><leader>mr :wa<cr>:bo terminal make run<CR>
+nnoremap <silent><leader>mf :wa<cr>:bo terminal make fclean<CR>
+nnoremap <silent><leader>mc :wa<cr>:bo terminal make clean<CR>
+nnoremap <silent><leader>mn :cn<CR>
+nnoremap <silent><leader>mp :cp<CR>
+nnoremap <silent><leader>me :cw<CR>
+
 "ALE -- Jump between errors
 nnoremap <silent><leader>en :ALENext<cr>
 nnoremap <silent><leader>ep :ALEPrevious<cr>
+
+" CommandT -- Mapping
+nnoremap <silent><leader><cr> :CommandT<cr>
