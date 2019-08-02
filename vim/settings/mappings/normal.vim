@@ -68,6 +68,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<c
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
 
+" Browse from current file path
+nnoremap <silent><leader>. :E<cr>
+
 "Make shortcuts
 nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
 nnoremap <silent><leader>md :wa<cr>:bo terminal make debug<CR>

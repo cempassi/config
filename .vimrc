@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/02 03:51:13 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/02 04:43:12 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -67,6 +67,15 @@ vnoremap <silent><leader>y "*y
 nnoremap <silent><leader>p "*p
 inoremap <silent><leader>p <esc>"*pa
 
+function! Netrw_close_win()
+	if &ft ==# "netrw"
+		normal! :bwipe<cr>
+	endif
+endfunction
+
+autocmd BufLeave * :call Netrw_close_win()
+
+let g:netrw_browse_split = 0
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 filetype plugin indent on
 syntax on
