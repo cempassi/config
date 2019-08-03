@@ -1,5 +1,6 @@
 " General settings
-set nocompatible
+scriptencoding utf-8
+
 set showcmd
 set hlsearch
 set hidden
@@ -18,7 +19,6 @@ endif
 
 " Man page reader
 let $PAGER=''
-
 
 " Path finding
 set path=**,/usr/include,,
@@ -55,11 +55,3 @@ set backspace=indent,eol,start
 set autoindent
 set tabstop=4
 set shiftwidth=4
-
-" No backup files 
-set nobackup
-set nowritebackup
-
-set updatetime=300
-
-set signcolumn=no

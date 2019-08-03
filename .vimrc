@@ -6,40 +6,17 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/02 06:29:04 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/03 19:27:55 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
+set nocompatible
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
-if filereadable(expand("~/.vim/settings/general.vim"))
-	source ~/.vim/settings/general.vim
-endif
-
-if filereadable(expand("~/.vim/settings/mappings/normal.vim"))
-	source ~/.vim/settings/mappings/normal.vim
-endif
-
-if filereadable(expand("~/.vim/settings/mappings/insert.vim"))
-	source ~/.vim/settings/mappings/insert.vim
-endif
-
-if filereadable(expand("~/.vim/settings/mappings/visual.vim"))
-	source ~/.vim/settings/mappings/visual.vim
-endif
-
-if filereadable(expand("~/.vim/plugins/ALE.vim"))
-	source ~/.vim/plugins/ALE.vim
-endif
-
-if filereadable(expand("~/.vim/plugins/airline.vim"))
-	source ~/.vim/plugins/airline.vim
-endif
-
-if filereadable(expand("~/.vim/plugins/easytags.vim"))
-	source ~/.vim/plugins/easytags.vim
-endif
+" leader settings
+let mapleader="-"
+let maplocalleader="_"
 
 if &loadplugins
 	if has('packages')
@@ -63,7 +40,7 @@ if has("nvim")
 endif
 
 " System copy-paste
-vnoremap <silent><leader>y "*y
+vnoremap <silent><leader>y "*
 nnoremap <silent><leader>p "*p
 inoremap <silent><leader>p <esc>"*pa
 
@@ -72,6 +49,24 @@ function! Netrw_close_win()
 		normal! :bwipe<cr>
 	endif
 endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 autocmd BufLeave * :call Netrw_close_win()
 
