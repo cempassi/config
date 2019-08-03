@@ -10,10 +10,6 @@
 [submodule "command-t"]
 	path = vim/pack/bundle/opt/command-t
 	url = https://github.com/wincent/command-t.git
-[submodule "coc"]
-	path = vim/pack/bundle/opt/coc
-	url = https://github.com/neoclide/coc.nvim.git
-	branch = release
 [submodule "gutentags"]
 	path = vim/pack/bundle/opt/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
