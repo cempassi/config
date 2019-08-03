@@ -4,7 +4,7 @@ if filereadable(".lvimrc")
 endif
 let g:ale_c_parse_makefile=0
 let g:ale_linters_explicit=1
-let g:ale_linters={'c': ['clang'], 'python': ['flake8', 'pyre']}
+let g:ale_linters={'c': ['clang'], 'python': ['flake8', 'pyre'], 'elm': ['elm_ls'] }
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_c_clang_options="-Wall -Werror -Wextra -I libft/includes/ -I includes/"
