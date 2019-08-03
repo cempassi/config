@@ -6,9 +6,13 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/03 19:27:55 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/03 19:34:39 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
+
+if v:progname == 'vi'
+  set noloadplugins
+endif
 
 set nocompatible
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
@@ -70,7 +74,12 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 autocmd BufLeave * :call Netrw_close_win()
 
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
 let g:netrw_browse_split = 0
+
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 filetype plugin indent on
 syntax on
