@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/03 19:34:39 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/04 01:06:25 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -32,6 +32,7 @@ if &loadplugins
 		packadd! coc
 		packadd! gutentags
 		packadd! fugitive
+		packadd! elm-syntax
 	endif
 endif
 
