@@ -19,3 +19,6 @@
 [submodule "elm-syntax"]
 	path = vim/pack/bundle/opt/elm-syntax
 	url = https://github.com/andys8/vim-elm-syntax.git
+[submodule "coc"]
+	path = vim/pack/bundle/opt/coc
+	url = https://github.com/neoclide/coc.nvim.git
