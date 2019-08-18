@@ -7,9 +7,6 @@
 [submodule "airline-theme"]
 	path = vim/pack/bundle/opt/airline-theme
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "gutentags"]
-	path = vim/pack/bundle/opt/gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags.git
 [submodule "fugitive"]
 	path = vim/pack/bundle/opt/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
