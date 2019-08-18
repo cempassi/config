@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/09 02:21:31 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/18 23:06:30 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -28,9 +28,7 @@ if &loadplugins
 		packadd! airline
 		packadd! airline-theme
 		packadd! ale
-		packadd! command-t
 		packadd! coc
-		packadd! gutentags
 		packadd! fugitive
 		packadd! elm-syntax
 	endif

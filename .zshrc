@@ -5,7 +5,7 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=~/.brew/bin:~/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
+export PATH=~/.cargo/bin:~/.brew/bin:~/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
 
 ZSH_THEME=personal
 
@@ -31,7 +31,7 @@ bindkey -v
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -94,17 +94,13 @@ export CDPATH=:..:~:~/Programming/42
 #
 alias ls="clear ; ls -G -l"
 
-alias k="clear"
-
 alias status="git status"
 
 alias ctags="~/.brew/bin/ctags"
 
-alias python=python3
+alias vime="vim -O4 "
 
-alias pydoc=pydoc3
-
-alias vime="vim -O4"
+alias vim="nvim "
 
 alias norme="clear && norminette"
 
@@ -113,12 +109,6 @@ alias szsh="source ~/.zshrc"
 alias ezsh="vim ~/.zshrc"
 
 alias evim="vim ~/.vimrc"
-
-alias tt="clear && make test"
-
-alias 42="cd ~/Programming/42"
-
-alias mysql="~/Applications/mamp/mysql/bin/mysql"
 
 alias git_tree="git log --all --graph --date=relative --pretty=format:'%C(auto,yellow)[%h][%ad]%C(auto,white) %s %C(auto, blue)%d %C(auto,red)[%an]'"
 
@@ -130,4 +120,4 @@ export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
 
-export MANPAGER="col -b | vim  -MRn --not-a-term -c 'set ft=man ts=8 nomod nolist nonu' -c 'nnoremap i <nop>' -"
+export MANPAGER="col -b | nvim -RO  '+set ft=man ts=8 nomod nolist nonu' '+nnoremap i <nop>' -"
