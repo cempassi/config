@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/04 01:06:25 by cempassi         ###   ########.fr        "
+"    Updated: 2019/08/09 02:21:31 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -83,4 +83,9 @@ let g:netrw_browse_split = 0
 
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 filetype plugin indent on
-syntax on
+syntax on 
+
+"Completion menu hilighting
+highlight Pmenu ctermbg=111 
+
+let g:gutentags_ctags_tagfile=".tags"
