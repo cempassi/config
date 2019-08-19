@@ -1,0 +1,28 @@
+{
+	"diagnostic.messageTarget": "float",
+	"diagnostic.errorSign": "✘",
+	"diagnostic.warningSign": "⚠︎",
+	"coc.preferences.colorSupport": true,
+
+	"languageserver": {
+		"elmLS": {
+			"command": "elm-language-server",
+			"args": ["--stdio"],
+			"filetypes": ["elm"],
+			"rootPatterns": ["elm.json"],
+			"initializationOptions": {
+				"runtime": "node",
+				"elmPath": "elm",
+				"elmFormatPath": "elm-format",
+				"elmTestPath": "elm-test"
+			}
+		},
+		"clangd": {
+			"command": "clangd",
+			"trace.server": "verbose",
+			"args": ["--background-index"],
+			"rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+			"filetypes": ["c", "cpp", "objc", "objcpp"]
+		}
+	}
+}
