@@ -84,6 +84,3 @@ nnoremap <silent><leader>me :cw<CR>
 "ALE -- Jump between errors
 nnoremap <silent><leader>en :ALENext<cr>
 nnoremap <silent><leader>ep :ALEPrevious<cr>
-
-" CommandT -- Mapping
-nnoremap <silent><leader><cr> :CommandT<cr>

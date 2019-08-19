@@ -16,3 +16,9 @@
 [submodule "coc"]
 	path = vim/pack/bundle/opt/coc
 	url = https://github.com/neoclide/coc.nvim.git
+[submodule "denite"]
+	path = vim/pack/bundle/opt/denite
+	url = https://github.com/Shougo/denite.nvim.git
+[submodule "chromatica"]
+	path = vim/pack/bundle/opt/chromatica
+	url = https://github.com/arakashic/chromatica.nvim.git
