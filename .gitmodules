@@ -22,3 +22,6 @@
 [submodule "chromatica"]
 	path = vim/pack/bundle/opt/chromatica
 	url = https://github.com/arakashic/chromatica.nvim.git
+[submodule "Clamp"]
+	path = vim/pack/bundle/opt/clamp
+	url = https://github.com/bbchung/Clamp.git

@@ -1,6 +1,7 @@
 " General settings
 scriptencoding utf-8
 
+set clipboard+=unnamed
 set showcmd
 set hlsearch
 set hidden
@@ -13,6 +14,7 @@ set ignorecase
 set smartcase
 set wrap linebreak nolist
 set switchbuf=useopen,usetab
+set autoread
 if exists('termguicolors')
 	set termguicolors
 endif

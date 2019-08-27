@@ -5,7 +5,7 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=/Users/cempassi/Applications/llvm-project/bin:~/.cargo/bin:~/.brew/bin:~/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
+export PATH=/Users/cempassi/Library/Python/3.7/bin:/Users/cempassi/Library/Python/2.7/bin:/Users/cempassi/Applications/llvm-project/bin:~/.cargo/bin:~/.brew/bin:~/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
 
 ZSH_THEME=personal
 
@@ -101,8 +101,6 @@ alias ctags="~/.brew/bin/ctags"
 alias vime="vim -O4 "
 
 alias vim="nvim "
-
-alias make="bear -a make"
 
 alias norme="clear && norminette"
 

@@ -1,5 +1,4 @@
 " Buffer shortcuts
-nnoremap <silent><leader>b :ls<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bd :bdelete<cr>
@@ -46,14 +45,6 @@ nnoremap <silent><leader>t<F8> 8gt
 nnoremap <silent><leader>t<F9> 9gt
 nnoremap <leader>t<F0> 10gt
 
-"Tags
-nnoremap <silent><leader>gf <C-]>zz
-nnoremap <silent><leader>gt <C-t>zz
-nnoremap <silent><leader>gg :tn<cr>zz
-nnoremap <silent><leader>gs <C-w>}
-nnoremap <silent><leader>gn :ptnext<cr>
-nnoremap <silent><leader>gd :pc<cr>
-
 " Old cursor
 nnoremap <silent><leader>o <C-o>
 nnoremap <silent><leader>i <C-i>
@@ -71,6 +62,8 @@ nnoremap <silent><leader>nh :let @/ = ""<cr>
 " Browse from current file path
 nnoremap <silent><leader>. :E<cr>
 
+" Browse from current directory path
+nnoremap <silent><leader>f :e.<cr>
 "Make shortcuts
 nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
 nnoremap <silent><leader>md :wa<cr>:bo terminal make debug<CR>
