@@ -17,12 +17,14 @@
 				"elmTestPath": "elm-test"
 			}
 		},
-		"clangd": {
-			"command": "clangd",
-			"trace.server": "verbose",
-			"args": ["--background-index"],
+		"cquery": {
+			"command": "cquery",
+			"args": ["--log-file=/tmp/cq.log"],
+			"filetypes": ["c", "cpp"],
 			"rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-			"filetypes": ["c", "cpp", "objc", "objcpp"]
+			"initializationOptions": {
+				"cacheDirectory": "/tmp/cquery"
+			}
 		}
 	}
 }

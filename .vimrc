@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/08/21 00:28:46 by cempassi         ###   ########.fr        "
+"    Updated: 2019/09/13 03:31:11 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -30,9 +30,12 @@ if &loadplugins
 		packadd! coc
 		packadd! denite
 		packadd! fugitive
-		packadd! chromatica
+		"packadd! ColorCoder
 		"packadd! Clamp
+		"packadd! semantic-highlight
 		packadd! elm-syntax
+		packadd! misc
+		"packadd! easytags
 	endif
 endif
 
@@ -40,9 +43,6 @@ function! TrailingWhitespaces()
 	:%s/\s\+$//ge
 endfunction
 
-let g:clamp_libclang_file = '/Users/cempassi/Applications/llvm-project/lib/libclang.dylib'
-let g:chromatica#libclang_path='/Users/cempassi/Applications/llvm-project/lib/libclang.dylib'
-let g:chromatica#enable_at_startup=1
 
 " System copy-paste
 vnoremap <silent><leader>y "*
@@ -61,7 +61,8 @@ syntax on
 highlight Pmenu ctermbg=16 ctermfg=111 
 highlight clear SignColumn
 highlight CocErrorFloat cterm=none ctermfg=9 ctermbg=none
-highlight link chromaticaConditionalOperator Operator
+
+let g:colorcoder_enable_filetypes=['c', 'cpp', 'python']
 
 "Get syntax group
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

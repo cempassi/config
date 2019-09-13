@@ -72,7 +72,7 @@ call denite#custom#var('grep', 'final_opts', [])
 
 let s:denite_options = {'default' : {
 \ 'prompt': '$',
-\ 'split': 'horizontal',
+\ 'split': 'floating',
 \ 'auto_resize': 1,
 \ 'source_names': 'short',
 \ 'direction': 'botright',
