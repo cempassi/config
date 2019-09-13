@@ -1,6 +1,3 @@
-[submodule "ALE"]
-	path = vim/pack/bundle/opt/ale
-	url = https://github.com/dense-analysis/ale.git
 [submodule "airline"]
 	path = vim/pack/bundle/opt/airline
 	url = https://github.com/vim-airline/vim-airline.git
@@ -19,9 +16,6 @@
 [submodule "denite"]
 	path = vim/pack/bundle/opt/denite
 	url = https://github.com/Shougo/denite.nvim.git
-[submodule "chromatica"]
-	path = vim/pack/bundle/opt/chromatica
-	url = https://github.com/arakashic/chromatica.nvim.git
-[submodule "Clamp"]
-	path = vim/pack/bundle/opt/clamp
-	url = https://github.com/bbchung/Clamp.git
+[submodule "vim-misc"]
+	path = vim/pack/bundle/opt/misc
+	url = https://github.com/xolox/vim-misc.git
