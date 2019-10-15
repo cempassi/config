@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2019/09/13 03:31:11 by cempassi         ###   ########.fr        "
+"    Updated: 2019/10/15 14:11:20 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -17,6 +17,9 @@ endif
 set nocompatible
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+set lazyredraw
+
+set updatetime=300
 
 " leader settings
 let mapleader="-"
@@ -30,12 +33,9 @@ if &loadplugins
 		packadd! coc
 		packadd! denite
 		packadd! fugitive
-		"packadd! ColorCoder
-		"packadd! Clamp
-		"packadd! semantic-highlight
 		packadd! elm-syntax
 		packadd! misc
-		"packadd! easytags
+		packadd! polyglot
 	endif
 endif
 

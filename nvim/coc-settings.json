@@ -3,6 +3,9 @@
 	"diagnostic.errorSign": "✘",
 	"diagnostic.warningSign": "⚠︎",
 	"coc.preferences.colorSupport": true,
+	"python.linting.pylintArgs": ["--load-plugins", "pylint_flask"],
+	"python.jediEnabled": false,
+	"python.analysis.disabled": ["inherit-non-class"],
 
 	"languageserver": {
 		"elmLS": {
