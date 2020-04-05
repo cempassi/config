@@ -1,0 +1,33 @@
+{
+	"diagnostic.messageTarget": "float",
+	"diagnostic.errorSign": "✘",
+	"diagnostic.warningSign": "⚠︎",
+	"coc.preferences.colorSupport": true,
+	"python.linting.pylintArgs": ["--load-plugins", "pylint_flask"],
+	"python.jediEnabled": false,
+	"python.analysis.disabled": ["inherit-non-class"],
+
+	"languageserver": {
+		"elmLS": {
+			"command": "elm-language-server",
+			"args": ["--stdio"],
+			"filetypes": ["elm"],
+			"rootPatterns": ["elm.json"],
+			"initializationOptions": {
+				"runtime": "node",
+				"elmPath": "elm",
+				"elmFormatPath": "elm-format",
+				"elmTestPath": "elm-test"
+			}
+		},
+		"cquery": {
+			"command": "cquery",
+			"args": ["--log-file=/tmp/cq.log"],
+			"filetypes": ["c", "cpp"],
+			"rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+			"initializationOptions": {
+				"cacheDirectory": "/tmp/cquery"
+			}
+		}
+	}
+}

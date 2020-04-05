@@ -1,0 +1,24 @@
+[submodule "airline"]
+	path = vim/pack/bundle/opt/airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "airline-theme"]
+	path = vim/pack/bundle/opt/airline-theme
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "fugitive"]
+	path = vim/pack/bundle/opt/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "elm-syntax"]
+	path = vim/pack/bundle/opt/elm-syntax
+	url = https://github.com/andys8/vim-elm-syntax.git
+[submodule "coc"]
+	path = vim/pack/bundle/opt/coc
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule "denite"]
+	path = vim/pack/bundle/opt/denite
+	url = https://github.com/Shougo/denite.nvim.git
+[submodule "vim-misc"]
+	path = vim/pack/bundle/opt/misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "vim-polyglot"]
+	path = vim/pack/bundle/opt/polyglot
+	url = https://github.com/sheerun/vim-polyglot
