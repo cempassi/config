@@ -22,3 +22,11 @@
 [submodule "vim-polyglot"]
 	path = vim/pack/bundle/opt/polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "coc-denite"]
+	path = vim/pack/bundle/opt/coc-denite
+	url = https://github.com/neoclide/coc-denite.git
+[submodule "vim/pack/bundle/opt/coc"]
+	branch = master
+[submodule "vim-lsp-cxx-highlight"]
+	path = vim/pack/bundle/opt/vim-lsp-cxx-highlight
+	url = https://github.com/jackguo380/vim-lsp-cxx-highlight.git

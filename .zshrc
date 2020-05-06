@@ -5,7 +5,7 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=/Users/cempassi/Library/Python/3.7/bin:/Users/cempassi/Library/Python/2.7/bin:/Users/cempassi/Applications/llvm-project/bin:~/.cargo/bin:~/.brew/bin:~/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
+export PATH=$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/Applications/bin:/usr/local/share:/usr/local/bin:$(getconf PATH)
 
 ZSH_THEME=personal
 
@@ -53,24 +53,30 @@ bindkey -v
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx vi-mode themes zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting rust docker)
 
-function zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/green}/(main|viins)/blue}"
-    zle reset-prompt
-}
-
-zle -N zle-keymap-select
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=230'
 
 export KEYTIMEOUT=1
+
+# FROM: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2609770
+# On slow systems, checking the cached .zcompdump file to see if it must be
+# regenerated adds a noticable delay to zsh startup.  This little hack restricts
+# it to once a day.
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export MANPATH=~/.brew/share/man/:~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/share/man:/usr/local/share/man:/usr/X11/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man/:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/
+#export MANPATH=~/.brew/share/man/:~/Applications/valgrind/share/man/man1:~/Applications/vim/share/man/:/usr/share/man:/usr/local/share/man:/usr/X11/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man/:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man/
 
-export CDPATH=:..:~:~/Programming/42
+export CDPATH=:..:~:~/Programming:~/Programming/42
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -92,7 +98,9 @@ export CDPATH=:..:~:~/Programming/42
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-alias ls="clear ; ls -G -l"
+alias ls="ls -G -l"
+
+alias ll="clear ; ls -G -l"
 
 alias status="git status"
 
@@ -120,4 +128,11 @@ export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
 
+export PYENV_ROOT=$HOME/.pyenv
+
+export PATH=$PYENV_ROOT/bin:$PATH
+
 export MANPAGER="col -b | nvim -RO  '+set ft=man ts=8 nomod nolist nonu' '+nnoremap i <nop>' -"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
