@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2020/05/06 06:17:35 by cempassi         ###   ########.fr        "
+"    Updated: 2020/05/08 02:30:26 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -289,6 +289,8 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nmap <silent> <leader>cf <Plug>(coc-format)
 
 " Denite config
 " Define mappings while in 'filter' mode
