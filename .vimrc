@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2020/05/08 02:30:26 by cempassi         ###   ########.fr        "
+"    Updated: 2020/06/02 01:18:11 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -18,6 +18,8 @@ endif
 
 " General settings
 scriptencoding utf-8
+set encoding=UTF-8
+set guifont=Hasklug_Light_Nerd_Font_Complete:h5
 set nocompatible
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -34,7 +36,7 @@ set splitbelow
 set ignorecase
 set smartcase
 set wrap linebreak nolist
-set switchbuf=useopen,usetab
+set switchbuf="useopen,usetab"
 set autoread
 
 if exists('termguicolors')
@@ -79,8 +81,8 @@ set backspace=indent,eol,start
 
 " Default Indentation
 set autoindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 set updatetime=300
 
@@ -101,8 +103,10 @@ if &loadplugins
 		packadd! misc
 		packadd! polyglot
 		packadd! vim-lsp-cxx-highlight
+		packadd! vim-startify
 	endif
 endif
+
 
 function! TrailingWhitespaces()
 	:%s/\s\+$//ge
@@ -230,10 +234,6 @@ nnoremap <silent><leader>mn :cn<CR>
 nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
 
-"ALE -- Jump between errors
-nnoremap <silent><leader>en :ALENext<cr>
-nnoremap <silent><leader>ep :ALEPrevious<cr>
-
 "Explore folders
 nnoremap <silent><leader>ee :e.<cr>
 nnoremap <silent><leader>E :E<cr>
@@ -289,6 +289,10 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gt <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>gh :call CocAction('doHover')<cr>
+nmap <silent> <leader>en <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev-error)
+
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> <leader>cf <Plug>(coc-format)
 
@@ -388,3 +392,22 @@ nmap <leader>b :Denite buffer<cr>
 nmap <leader>cc :Denite coc-command<cr>
 nmap <leader>ce :Denite coc-diagnostic<cr>
 nmap <leader>f :Denite -start-filter file/rec<cr>
+
+if &loadplugins
+	if has('packages')
+		packadd! vim-devicons
+	endif
+endif
+"" Startify config
+let g:startify_session_dir = '~/.vim/session'
+let g:startify_session_persistence = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_dir = 0
+let g:webdevicons_enable_startify = 1
+nmap <leader>sl :SLoad<cr>
+nmap <leader>ss :SSave!<cr>
+
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
