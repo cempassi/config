@@ -36,3 +36,6 @@
 [submodule "vim-devicons"]
 	path = vim/pack/bundle/opt/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim-omnisharp"]
+	path = vim/pack/bundle/opt/vim-omnisharp
+	url = git://github.com/OmniSharp/omnisharp-vim

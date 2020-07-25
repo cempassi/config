@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2020/06/02 01:18:11 by cempassi         ###   ########.fr        "
+"    Updated: 2020/07/22 06:39:38 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -104,6 +104,7 @@ if &loadplugins
 		packadd! polyglot
 		packadd! vim-lsp-cxx-highlight
 		packadd! vim-startify
+		packadd! vim-omnisharp
 	endif
 endif
 
@@ -292,6 +293,7 @@ nmap <silent> <leader>gr <Plug>(coc-references)
 nmap <silent> <leader>gh :call CocAction('doHover')<cr>
 nmap <silent> <leader>en <Plug>(coc-diagnostic-next-error)
 nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>ci :CocInfo<cr>
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> <leader>cf <Plug>(coc-format)
@@ -390,7 +392,9 @@ call s:profile(s:denite_options)
 
 nmap <leader>b :Denite buffer<cr>
 nmap <leader>cc :Denite coc-command<cr>
-nmap <leader>ce :Denite coc-diagnostic<cr>
+nmap <leader>ce :Denite coc-extension<cr>
+nmap <leader>cs :Denite coc-symbols<cr>
+nmap <leader>el :Denite coc-diagnostic<cr>
 nmap <leader>f :Denite -start-filter file/rec<cr>
 
 if &loadplugins
@@ -407,6 +411,7 @@ let g:webdevicons_enable_startify = 1
 nmap <leader>sl :SLoad<cr>
 nmap <leader>ss :SSave!<cr>
 
+let g:OmniSharp_server_stdio = 1
 
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
