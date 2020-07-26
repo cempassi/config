@@ -1,30 +1,53 @@
 {
-  "diagnostic.messageTarget": "float",
-  "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "⚠︎",
-  "coc.preferences.colorSupport": true,
-  "python.linting.pylintArgs": ["--load-plugins", "pylint_flask"],
-  "python.jediEnabled": false,
-  "python.analysis.disabled": ["inherit-non-class"],
-  "clangd.semanticHighlighting": true,
+    "diagnostic.messageTarget": "float",
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "⚠︎",
+    "coc.preferences.colorSupport": true,
+    "clangd.semanticHighlighting": true,
 
-  "languageserver": {
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile", "Dockerfile"],
-      "args": ["--stdio"]
+    "explorer.floating.width": 100,
+    "explorer.position": "floating",
+    "explorer.floating.position": "center",
+    "explorer.floating.height": 20,
+    "explorer.openAction.strategy": "previousBuffer",
+    "explorer.icon.enableNerdfont": true,
+    "explorer.previewAction.onHover": false,
+    "explorer.keyMappings": {
+        "<cr>": [
+            "expandable?",
+            "expand",
+            "open"
+        ],
+        "v": "open:vsplit"
     },
-    "elmLS": {
-      "command": "elm-language-server",
-      "args": ["--stdio"],
-      "filetypes": ["elm"],
-      "rootPatterns": ["elm.json"],
-      "initializationOptions": {
-        "runtime": "node",
-        "elmPath": "elm",
-        "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test"
-      }
+    "languageserver": {
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": [
+                "dockerfile",
+                "Dockerfile"
+            ],
+            "args": [
+                "--stdio"
+            ]
+        },
+        "elmLS": {
+            "command": "elm-language-server",
+            "args": [
+                "--stdio"
+            ],
+            "filetypes": [
+                "elm"
+            ],
+            "rootPatterns": [
+                "elm.json"
+            ],
+            "initializationOptions": {
+                "runtime": "node",
+                "elmPath": "elm",
+                "elmFormatPath": "elm-format",
+                "elmTestPath": "elm-test"
+            }
+        }
     }
-  }
 }

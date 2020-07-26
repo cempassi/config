@@ -39,3 +39,9 @@
 [submodule "vim-omnisharp"]
 	path = vim/pack/bundle/opt/vim-omnisharp
 	url = git://github.com/OmniSharp/omnisharp-vim
+[submodule "defx"]
+	path = vim/pack/bundle/opt/defx
+	url = https://github.com/Shougo/defx.nvim.git
+[submodule "defx-icons"]
+	path = vim/pack/bundle/opt/defx-icons
+	url = https://github.com/kristijanhusak/defx-icons.git

@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2020/07/22 06:39:38 by cempassi         ###   ########.fr        "
+"    Updated: 2020/07/25 09:12:14 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -17,9 +17,8 @@ if v:progname == 'vi'
 endif
 
 " General settings
-scriptencoding utf-8
+scriptencoding UTF-8
 set encoding=UTF-8
-set guifont=Hasklug_Light_Nerd_Font_Complete:h5
 set nocompatible
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -105,6 +104,9 @@ if &loadplugins
 		packadd! vim-lsp-cxx-highlight
 		packadd! vim-startify
 		packadd! vim-omnisharp
+		packadd! vim-devicons
+		packadd! defx
+		packadd! defx-icons
 	endif
 endif
 
@@ -236,7 +238,6 @@ nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
 
 "Explore folders
-nnoremap <silent><leader>ee :e.<cr>
 nnoremap <silent><leader>E :E<cr>
 
 " ------------------------------------- Plugins -------------------------------
@@ -298,6 +299,10 @@ nmap <silent> <leader>ci :CocInfo<cr>
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> <leader>cf <Plug>(coc-format)
 
+
+"" Coc Explorer Config
+
+
 " Denite config
 " Define mappings while in 'filter' mode
 "   <leader>q     - Switch to normal mode inside of search results
@@ -305,33 +310,33 @@ nmap <silent> <leader>cf <Plug>(coc-format)
 "   <CR>          - Open currently selected file in any mode
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
-	imap <silent><buffer> <leader>q
-				\ <Plug>(denite_filter_quit)
-	inoremap <silent><buffer><expr> <Esc>
-				\ denite#do_map('quit')
-	nnoremap <silent><buffer><expr> <Esc>
-				\ denite#do_map('quit')
-	inoremap <silent><buffer><expr> <CR>
-				\ denite#do_map('do_action')
+imap <silent><buffer> <leader>q
+			\ <Plug>(denite_filter_quit)
+inoremap <silent><buffer><expr> <Esc>
+			\ denite#do_map('quit')
+nnoremap <silent><buffer><expr> <Esc>
+			\ denite#do_map('quit')
+inoremap <silent><buffer><expr> <CR>
+			\ denite#do_map('do_action')
 endfunction
 
 " Define mappings denite
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
-	nnoremap <silent><buffer><expr> <CR>
-				\ denite#do_map('do_action')
-	nnoremap <silent><buffer><expr> <leader>vs
-				\ denite#do_map('do_action', 'vsplit')
-	nnoremap <silent><buffer><expr> d
-				\ denite#do_map('do_action', 'delete')
-	nnoremap <silent><buffer><expr> p
-				\ denite#do_map('do_action', 'preview')
-	nnoremap <silent><buffer><expr> q
-				\ denite#do_map('quit')
-	nnoremap <silent><buffer><expr> i
-				\ denite#do_map('open_filter_buffer')
-	nnoremap <silent><buffer><expr> <Space>
-				\ denite#do_map('toggle_select').j
+nnoremap <silent><buffer><expr> <CR>
+			\ denite#do_map('do_action')
+nnoremap <silent><buffer><expr> <leader>vs
+			\ denite#do_map('do_action', 'vsplit')
+nnoremap <silent><buffer><expr> d
+			\ denite#do_map('do_action', 'delete')
+nnoremap <silent><buffer><expr> p
+			\ denite#do_map('do_action', 'preview')
+nnoremap <silent><buffer><expr> q
+			\ denite#do_map('quit')
+nnoremap <silent><buffer><expr> i
+			\ denite#do_map('open_filter_buffer')
+nnoremap <silent><buffer><expr> <Space>
+			\ denite#do_map('toggle_select').j
 endfunction
 
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
@@ -351,13 +356,13 @@ call denite#custom#var('grep', 'final_opts', [])
 
 " Ripgrep command on grep source
 call denite#custom#var('grep', {
-			\ 'command': ['rg'],
-			\ 'default_opts': ['-S', '--vimgrep', '--no-heading'],
-			\ 'recursive_opts': [],
-			\ 'pattern_opt': ['--regexp'],
-			\ 'separator': ['--'],
-			\ 'final_opts': [],
-			\ })
+		\ 'command': ['rg'],
+		\ 'default_opts': ['-S', '--vimgrep', '--no-heading'],
+		\ 'recursive_opts': [],
+		\ 'pattern_opt': ['--regexp'],
+		\ 'separator': ['--'],
+		\ 'final_opts': [],
+		\ })
 
 " Custom options for Denite
 "   auto_resize             - Auto resize the Denite window height automatically.
@@ -370,22 +375,22 @@ call denite#custom#var('grep', {
 "   highlight_matched_range - matched range highlight
 
 let s:denite_options = {'default' : {
-			\ 'prompt': '$',
-			\ 'split': 'floating',
-			\ 'floating-preview': 1,
-			\ 'auto_resize': 1,
-			\ 'source_names': 'short',
-			\ 'direction': 'botright',
-			\ 'unique': 1,
-			\ }}
+		\ 'prompt': '$',
+		\ 'split': 'floating',
+		\ 'floating-preview': 1,
+		\ 'auto_resize': 1,
+		\ 'source_names': 'short',
+		\ 'direction': 'botright',
+		\ 'unique': 1,
+		\ }}
 
 " Loop through denite options and enable them
 function! s:profile(opts) abort
-	for l:fname in keys(a:opts)
-		for l:dopt in keys(a:opts[l:fname])
-			call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
-		endfor
+for l:fname in keys(a:opts)
+	for l:dopt in keys(a:opts[l:fname])
+		call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
 	endfor
+endfor
 endfunction
 
 call s:profile(s:denite_options)
@@ -394,25 +399,131 @@ nmap <leader>b :Denite buffer<cr>
 nmap <leader>cc :Denite coc-command<cr>
 nmap <leader>ce :Denite coc-extension<cr>
 nmap <leader>cs :Denite coc-symbols<cr>
+nmap <leader>cr :CocRestart<cr>
 nmap <leader>el :Denite coc-diagnostic<cr>
 nmap <leader>f :Denite -start-filter file/rec<cr>
 
-if &loadplugins
-	if has('packages')
-		packadd! vim-devicons
-	endif
-endif
 "" Startify config
 let g:startify_session_dir = '~/.vim/session'
 let g:startify_session_persistence = 1
 let g:startify_session_delete_buffers = 1
 let g:startify_change_to_dir = 0
-let g:webdevicons_enable_startify = 1
 nmap <leader>sl :SLoad<cr>
 nmap <leader>ss :SSave!<cr>
 
 let g:OmniSharp_server_stdio = 1
 
+"" Devicons
+let g:webdevicons_enable_startify = 1
+let g:webdevicons_enable_denite = 1
+
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
+
+
+
+"" Defx
+call defx#custom#column('filename', {
+            \ 'directory_icon': '⯈',
+            \ 'opened_icon': '⯆',
+            \ })
+" Git
+let g:defx_git#indicators = {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ }
+let g:defx_git#column_length = 1
+let g:defx_git#show_ignored = 0
+let g:defx_git#raw_mode = 0
+
+" Icons
+"
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 2
+let g:defx_icons_directory_icon = ''
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+
+" Options below are applicable only when using "tree" feature
+let g:defx_icons_root_opened_tree_icon = ''
+let g:defx_icons_nested_opened_tree_icon = ''
+let g:defx_icons_nested_closed_tree_icon = ''
+
+
+nnoremap <space>ee :Defx -split=floating -buffer-name="Defxr" -columns=git:indent:icons:filename:type -toggle -search=`expand('%:p')` `getcwd()`<CR>
+
+autocmd FileType defx call s:defx_my_settings()
+	function! s:defx_my_settings() abort
+	  " Define mappings
+	  nnoremap <silent><buffer><expr> <CR>
+	  \ defx#do_action('open')
+	  nnoremap <silent><buffer><expr> c
+	  \ defx#do_action('copy')
+	  nnoremap <silent><buffer><expr> m
+	  \ defx#do_action('move')
+	  nnoremap <silent><buffer><expr> p
+	  \ defx#do_action('paste')
+	  nnoremap <silent><buffer><expr> l
+	  \ defx#do_action('open')
+	  nnoremap <silent><buffer><expr> E
+	  \ defx#do_action('open', 'vsplit')
+	  nnoremap <silent><buffer><expr> P
+	  \ defx#do_action('preview')
+	  nnoremap <silent><buffer><expr> o
+	  \ defx#do_action('open_tree', 'toggle')
+	  nnoremap <silent><buffer><expr> K
+	  \ defx#do_action('new_directory')
+	  nnoremap <silent><buffer><expr> N
+	  \ defx#do_action('new_file')
+	  nnoremap <silent><buffer><expr> M
+	  \ defx#do_action('new_multiple_files')
+	  nnoremap <silent><buffer><expr> C
+	  \ defx#do_action('toggle_columns',
+	  \                'mark:indent:icon:filename:type:size:time')
+	  nnoremap <silent><buffer><expr> S
+	  \ defx#do_action('toggle_sort', 'time')
+	  nnoremap <silent><buffer><expr> d
+	  \ defx#do_action('remove')
+	  nnoremap <silent><buffer><expr> r
+	  \ defx#do_action('rename')
+	  nnoremap <silent><buffer><expr> !
+	  \ defx#do_action('execute_command')
+	  nnoremap <silent><buffer><expr> x
+	  \ defx#do_action('execute_system')
+	  nnoremap <silent><buffer><expr> yy
+	  \ defx#do_action('yank_path')
+	  nnoremap <silent><buffer><expr> .
+	  \ defx#do_action('toggle_ignored_files')
+	  nnoremap <silent><buffer><expr> ;
+	  \ defx#do_action('repeat')
+	  nnoremap <silent><buffer><expr> -
+	  \ defx#do_action('cd', ['..'])
+	  nnoremap <silent><buffer><expr> ~
+	  \ defx#do_action('cd')
+	  nnoremap <silent><buffer><expr> q
+	  \ defx#do_action('quit')
+	  nnoremap <silent><buffer><expr> <Space>
+	  \ defx#do_action('toggle_select') . 'j'
+	  nnoremap <silent><buffer><expr> *
+	  \ defx#do_action('toggle_select_all')
+	  nnoremap <silent><buffer><expr> j
+	  \ line('.') == line('$') ? 'gg' : 'j'
+	  nnoremap <silent><buffer><expr> k
+	  \ line('.') == 1 ? 'G' : 'k'
+	  nnoremap <silent><buffer><expr> <C-l>
+	  \ defx#do_action('redraw')
+	  nnoremap <silent><buffer><expr> <C-g>
+	  \ defx#do_action('print')
+	  nnoremap <silent><buffer><expr> cd
+	  \ defx#do_action('change_vim_cwd')
+	endfunction
+
