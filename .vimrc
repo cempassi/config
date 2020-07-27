@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/07/27 04:04:32 by cempassi         ###   ########.fr        "
+"    Updated: 2020/07/27 06:08:11 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -64,7 +64,7 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
   call dein#add('Shougo/defx.nvim')
   call dein#add('Shougo/denite.nvim')
   call dein#add('neoclide/coc-denite')
-	call dein#add('liuchengxu/coc-clap')
+	call dein#add('vn-ki/coc-clap')
 	call dein#add('liuchengxu/vim-which-key')
 	call dein#add('mhinz/vim-startify')
 	call dein#add('ryanoasis/vim-devicons')
@@ -85,26 +85,6 @@ endif
 
 "End dein Scripts-------------------------
 
-"if &loadplugins
-"	if has('packages')
-"		packadd! 42header
-"		packadd! airline
-"		packadd! airline-theme
-"		packadd! coc
-"		packadd! coc-denite
-"		packadd! denite
-"		packadd! fugitive
-"		packadd! elm-syntax
-"		packadd! misc
-"		packadd! polyglot
-"		packadd! vim-lsp-cxx-highlight
-"		packadd! vim-startify
-"		packadd! vim-omnisharp
-"		packadd! vim-devicons
-"		packadd! defx
-"		packadd! defx-icons
-"	endif
-"endif
 
 "Color Settings
 if exists('termguicolors')
@@ -435,7 +415,7 @@ nmap <leader>cc :Clap coc_commands<cr>
 nmap <leader>ce :Denite coc-extension<cr>
 nmap <leader>cs :Denite coc-symbols<cr>
 nmap <leader>cr :CocRestart<cr>
-nmap <leader>el :Clap coc_diagnostic<cr>
+nmap <leader>el :Clap coc_diagnostics<cr>
 
 " Startify config
 let g:startify_session_dir = '~/.vim/session'
