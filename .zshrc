@@ -134,5 +134,7 @@ export PATH=$PYENV_ROOT/bin:$PATH
 
 export MANPAGER="col -b | nvim -RO  '+set ft=man ts=8 nomod nolist nonu' '+nnoremap i <nop>' -"
 
+export LSCOLORS="exfxcxdxbxegedabagacad"
+
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

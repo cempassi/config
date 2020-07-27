@@ -2,24 +2,9 @@
     "diagnostic.messageTarget": "float",
     "diagnostic.errorSign": "✘",
     "diagnostic.warningSign": "⚠︎",
+    "python.jediEnabled": false,
     "coc.preferences.colorSupport": true,
     "clangd.semanticHighlighting": true,
-
-    "explorer.floating.width": 100,
-    "explorer.position": "floating",
-    "explorer.floating.position": "center",
-    "explorer.floating.height": 20,
-    "explorer.openAction.strategy": "previousBuffer",
-    "explorer.icon.enableNerdfont": true,
-    "explorer.previewAction.onHover": false,
-    "explorer.keyMappings": {
-        "<cr>": [
-            "expandable?",
-            "expand",
-            "open"
-        ],
-        "v": "open:vsplit"
-    },
     "languageserver": {
         "dockerfile": {
             "command": "docker-langserver",

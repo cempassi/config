@@ -5,8 +5,8 @@
 "                                                     +:+ +:+         +:+      "
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
-"    Created: 2019/08/02 03:50:37 by cempassi          #+#    #+#              "
-"    Updated: 2020/07/25 09:12:14 by cempassi         ###   ########.fr        "
+"    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
+"    Updated: 2020/07/27 04:04:32 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -16,10 +16,13 @@ if v:progname == 'vi'
 	set noloadplugins
 endif
 
+if &compatible
+	set nocompatible
+endif
+
 " General settings
 scriptencoding UTF-8
 set encoding=UTF-8
-set nocompatible
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 set lazyredraw
@@ -38,6 +41,72 @@ set wrap linebreak nolist
 set switchbuf="useopen,usetab"
 set autoread
 
+"" Plugin Management
+"" Required:
+set runtimepath+=/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vim
+
+"" Required:
+if dein#load_state('/Users/cedricmpassi/.cache/dein')
+  call dein#begin('/Users/cedricmpassi/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+	call dein#add('wsdjeg/dein-ui.vim')
+  call dein#add('neoclide/coc.nvim', {'rev': 'release'})
+	call dein#add('pbondoer/vim-42header')
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('vim-airline/vim-airline-themes')
+	call dein#add('sheerun/vim-polyglot')
+	call dein#add('liuchengxu/vim-clap', {'build': 'make'})
+  call dein#add('Shougo/defx.nvim')
+  call dein#add('Shougo/denite.nvim')
+  call dein#add('neoclide/coc-denite')
+	call dein#add('liuchengxu/coc-clap')
+	call dein#add('liuchengxu/vim-which-key')
+	call dein#add('mhinz/vim-startify')
+	call dein#add('ryanoasis/vim-devicons')
+	call dein#add('kristijanhusak/defx-git')
+	call dein#add('kristijanhusak/defx-icons')
+	call dein#add('jackguo380/vim-lsp-cxx-highlight')
+  "call dein#add('Shougo/neosnippet-snippets')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+"if &loadplugins
+"	if has('packages')
+"		packadd! 42header
+"		packadd! airline
+"		packadd! airline-theme
+"		packadd! coc
+"		packadd! coc-denite
+"		packadd! denite
+"		packadd! fugitive
+"		packadd! elm-syntax
+"		packadd! misc
+"		packadd! polyglot
+"		packadd! vim-lsp-cxx-highlight
+"		packadd! vim-startify
+"		packadd! vim-omnisharp
+"		packadd! vim-devicons
+"		packadd! defx
+"		packadd! defx-icons
+"	endif
+"endif
+
+"Color Settings
 if exists('termguicolors')
 	set termguicolors
 endif
@@ -89,28 +158,7 @@ set updatetime=300
 nnoremap <Space> <nop>
 let mapleader=" "
 
-if &loadplugins
-	if has('packages')
-		packadd! 42header
-		packadd! airline
-		packadd! airline-theme
-		packadd! coc
-		packadd! coc-denite
-		packadd! denite
-		packadd! fugitive
-		packadd! elm-syntax
-		packadd! misc
-		packadd! polyglot
-		packadd! vim-lsp-cxx-highlight
-		packadd! vim-startify
-		packadd! vim-omnisharp
-		packadd! vim-devicons
-		packadd! defx
-		packadd! defx-icons
-	endif
-endif
-
-
+" Remove trailing whitespaces
 function! TrailingWhitespaces()
 	:%s/\s\+$//ge
 endfunction
@@ -175,6 +223,8 @@ nnoremap <silent><leader>k :wincmd k<CR>
 nnoremap <silent><leader>j :wincmd j<CR>
 nnoremap <silent><leader>h :wincmd h<CR>
 nnoremap <silent><leader>l :wincmd l<CR>
+nnoremap <silent><leader>J <C-f>
+nnoremap <silent><leader>K <C-b>
 nnoremap <silent><leader>zi <C-w>_
 nnoremap <silent><leader>= <C-w>=
 nnoremap <silent><leader>r <C-w>r
@@ -238,25 +288,9 @@ nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
 
 "Explore folders
-nnoremap <silent><leader>E :E<cr>
+"nnoremap <silent><leader>E :E<cr>
 
 " ------------------------------------- Plugins -------------------------------
-"ALE config
-if filereadable(".lvimrc")
-	source .lvimrc
-endif
-let g:ale_c_parse_makefile=0
-let g:ale_linters_explicit=1
-let g:ale_linters={'c': ['clang'], 'python': ['flake8', 'pyre'], 'elm': ['elm_ls'] }
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
-let g:ale_c_clang_options="-Wall -Werror -Wextra -I libft/includes/ -I includes/"
-
-let airline#extensions#ale#warning_symbol = '☞  '
-let airline#extensions#ale#error_symbol = '✘:'
-let airline#extensions#ale#open_lnum_symbol = '[l'
-let airline#extensions#ale#close_lnum_symbol = ']'
-
 "Airline config
 let g:airline#extensions#ale#enabled = 1
 let g:airline_theme='angr'
@@ -265,7 +299,6 @@ let g:airline_extensions = ['coc']
 
 " Disable vim-airline in preview mode
 let g:airline_exclude_preview = 1
-
 
 " Coc Config
 function! s:check_back_space() abort
@@ -299,15 +332,18 @@ nmap <silent> <leader>ci :CocInfo<cr>
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> <leader>cf <Plug>(coc-format)
 
-
-"" Coc Explorer Config
-
+" Clap config
+let g:clap_layout = { 'relative': 'editor' }
+nnoremap <silent> <leader>bb :Clap buffers<cr>
+nnoremap <silent> <leader>f :Clap files<cr>
+nnoremap <silent> <leader>lj :Clap jumps<cr>
 
 " Denite config
 " Define mappings while in 'filter' mode
 "   <leader>q     - Switch to normal mode inside of search results
 "   <Esc>         - Exit denite window in any mode
 "   <CR>          - Open currently selected file in any mode
+"
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
 imap <silent><buffer> <leader>q
@@ -395,15 +431,13 @@ endfunction
 
 call s:profile(s:denite_options)
 
-nmap <leader>b :Denite buffer<cr>
-nmap <leader>cc :Denite coc-command<cr>
+nmap <leader>cc :Clap coc_commands<cr>
 nmap <leader>ce :Denite coc-extension<cr>
 nmap <leader>cs :Denite coc-symbols<cr>
 nmap <leader>cr :CocRestart<cr>
-nmap <leader>el :Denite coc-diagnostic<cr>
-nmap <leader>f :Denite -start-filter file/rec<cr>
+nmap <leader>el :Clap coc_diagnostic<cr>
 
-"" Startify config
+" Startify config
 let g:startify_session_dir = '~/.vim/session'
 let g:startify_session_persistence = 1
 let g:startify_session_delete_buffers = 1
@@ -421,13 +455,8 @@ if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
 
+" Defx
 
-
-"" Defx
-call defx#custom#column('filename', {
-            \ 'directory_icon': '⯈',
-            \ 'opened_icon': '⯆',
-            \ })
 " Git
 let g:defx_git#indicators = {
   \ 'Modified'  : '✹',
@@ -458,14 +487,28 @@ let g:defx_icons_root_opened_tree_icon = ''
 let g:defx_icons_nested_opened_tree_icon = ''
 let g:defx_icons_nested_closed_tree_icon = ''
 
+call defx#custom#column('filename', {
+\ 'min_width': 120,
+\})
 
-nnoremap <space>ee :Defx -split=floating -buffer-name="Defxr" -columns=git:indent:icons:filename:type -toggle -search=`expand('%:p')` `getcwd()`<CR>
+call defx#custom#option('_', {
+\ 'winwidth': 150,
+\ 'ignored_files': '.*,target*',
+\ 'direction': 'leftabove',
+\ 'columns': 'mark:git:size:indent:icons:filename:time',
+\ 'split': 'floating',
+\ })
 
-autocmd FileType defx call s:defx_my_settings()
+nnoremap <space>ee :Defx<CR>
+nnoremap <space>E :Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+autocmd FileType defx call s:defx_my_settings() 
 	function! s:defx_my_settings() abort
 	  " Define mappings
-	  nnoremap <silent><buffer><expr> <CR>
-	  \ defx#do_action('open')
+		nnoremap <silent><buffer><expr> <CR>
+		\ defx#is_directory() ?
+		\ defx#do_action('open_directory') :
+		\ defx#do_action('multi', ['drop', 'quit'])
 	  nnoremap <silent><buffer><expr> c
 	  \ defx#do_action('copy')
 	  nnoremap <silent><buffer><expr> m
@@ -475,7 +518,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> l
 	  \ defx#do_action('open')
 	  nnoremap <silent><buffer><expr> E
-	  \ defx#do_action('open', 'vsplit')
+	  \ defx#do_action('drop', 'vsplit')
 	  nnoremap <silent><buffer><expr> P
 	  \ defx#do_action('preview')
 	  nnoremap <silent><buffer><expr> o
@@ -526,4 +569,3 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
 	endfunction
-
