@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/07/28 05:48:02 by cempassi         ###   ########.fr        "
+"    Updated: 2020/07/29 09:54:27 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -75,6 +75,7 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('kristijanhusak/defx-git')
 	call dein#add('kristijanhusak/defx-icons')
 	call dein#add('jackguo380/vim-lsp-cxx-highlight')
+	call dein#add('honza/vim-snippets')
   "call dein#add('Shougo/neosnippet-snippets')
 
   " Required:
@@ -152,8 +153,8 @@ set backspace=indent,eol,start
 
 " Default Indentation
 set autoindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 
 set updatetime=300
 
@@ -218,9 +219,9 @@ let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
 " change escape to jk
 inoremap jk <esc>
 inoremap <> <><Left>
-inoremap () ()<Left>
-inoremap {} {}<Left>
-inoremap [] []<Left>
+inoremap (( ()<Left>
+inoremap {{ {}<Left>
+inoremap [[ []<Left>
 inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
@@ -345,6 +346,8 @@ nmap <silent> <leader>gh :call CocAction('doHover')<cr>
 nmap <silent> <leader>en <Plug>(coc-diagnostic-next-error)
 nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>ci :CocInfo<cr>
+let g:coc_snippet_next = '<leader>sn'
+let g:coc_snippet_prev = '<leader>sp'
 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> <leader>cf <Plug>(coc-format)

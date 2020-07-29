@@ -1,38 +1,36 @@
 {
-    "diagnostic.messageTarget": "float",
-    "diagnostic.errorSign": "✘",
-    "diagnostic.warningSign": "⚠︎",
-    "python.jediEnabled": false,
-    "coc.preferences.colorSupport": true,
-    "clangd.semanticHighlighting": true,
-    "languageserver": {
-        "dockerfile": {
-            "command": "docker-langserver",
-            "filetypes": [
-                "dockerfile",
-                "Dockerfile"
-            ],
-            "args": [
-                "--stdio"
-            ]
-        },
-        "elmLS": {
-            "command": "elm-language-server",
-            "args": [
-                "--stdio"
-            ],
-            "filetypes": [
-                "elm"
-            ],
-            "rootPatterns": [
-                "elm.json"
-            ],
-            "initializationOptions": {
-                "runtime": "node",
-                "elmPath": "elm",
-                "elmFormatPath": "elm-format",
-                "elmTestPath": "elm-test"
-            }
-        }
+  "diagnostic.messageTarget": "float",
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "⚠︎",
+  "python.jediEnabled": false,
+  "coc.preferences.colorSupport": true,
+  "clangd.semanticHighlighting": true,
+  "snippets.ultisnips.directories": [
+    "UtilSnips",
+    "/Users/cedricmpassi/.cache/dein/repos/github.com/honza/vim-snippets/snippets"
+  ],
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile", "Dockerfile"],
+      "args": ["--stdio"]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "runtime": "node",
+        "elmPath": "elm",
+        "elmFormatPath": "elm-format",
+        "elmTestPath": "elm-test"
+      }
     }
+  }
 }
