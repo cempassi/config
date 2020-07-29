@@ -1,12 +1,12 @@
 " **************************************************************************** "
 "                                                                              "
 "                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
+"    init.vim                                           :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/07/27 06:08:11 by cempassi         ###   ########.fr        "
+"    Updated: 2020/07/28 05:48:02 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -39,7 +39,10 @@ set ignorecase
 set smartcase
 set wrap linebreak nolist
 set switchbuf="useopen,usetab"
+
+"Reload file after external modification
 set autoread
+au FocusGained * :checktime
 
 "" Plugin Management
 "" Required:
@@ -64,6 +67,7 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
   call dein#add('Shougo/defx.nvim')
   call dein#add('Shougo/denite.nvim')
   call dein#add('neoclide/coc-denite')
+	call dein#add('mcchrish/nnn.vim')
 	call dein#add('vn-ki/coc-clap')
 	call dein#add('liuchengxu/vim-which-key')
 	call dein#add('mhinz/vim-startify')
@@ -85,6 +89,25 @@ endif
 
 "End dein Scripts-------------------------
 
+"Persistent undo
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+	" define a path to store persistent_undo files.
+	let target_path = expand('~/.vim/undodir/')
+
+	" create the directory and any parent directories
+  " if the location does not exist.
+	if !isdirectory(target_path)
+		call mkdir(target_path, "p")
+	endif
+
+	" Point Vim to the defined undo directory.
+	let &undodir = target_path
+
+	" Enable undo persistence.
+	set undofile
+	set undolevels=1000
+endif
 
 "Color Settings
 if exists('termguicolors')
@@ -177,6 +200,14 @@ if has("autocmd")
 	augroup END
 endif
 
+"This autocommand jumps to the last known position in a file
+"just after opening it, if the '" mark is set:
+
+au BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+\ |   exe "normal! g`\""
+\ | endif
+
 "python configuration
 let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
@@ -186,6 +217,13 @@ let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
 " Insert mode
 " change escape to jk
 inoremap jk <esc>
+inoremap <> <><Left>
+inoremap () ()<Left>
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap `` ``<Left>
 
 " Visual mode
 " change escape to jk
@@ -256,7 +294,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<c
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
 
-
 "Make shortcuts
 nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
 nnoremap <silent><leader>md :wa<cr>:bo terminal make debug<CR>
@@ -315,7 +352,9 @@ nmap <silent> <leader>cf <Plug>(coc-format)
 " Clap config
 let g:clap_layout = { 'relative': 'editor' }
 nnoremap <silent> <leader>bb :Clap buffers<cr>
-nnoremap <silent> <leader>f :Clap files<cr>
+nnoremap <silent> <leader>fe :Clap files<cr>
+nnoremap <silent> <leader>fb :Clap blines<cr>
+nnoremap <silent> <leader>fl :Clap lines<cr>
 nnoremap <silent> <leader>lj :Clap jumps<cr>
 
 " Denite config
@@ -479,8 +518,8 @@ call defx#custom#option('_', {
 \ 'split': 'floating',
 \ })
 
-nnoremap <space>ee :Defx<CR>
-nnoremap <space>E :Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
+"nnoremap <space>ee :Defx<CR>
+"nnoremap <space>E :Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
 autocmd FileType defx call s:defx_my_settings() 
 	function! s:defx_my_settings() abort
@@ -549,3 +588,9 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
 	endfunction
+
+" nnn config
+
+let g:nnn#set_default_mappings = 0
+nnoremap <silent><leader>ee :NnnPicker<CR>
+nnoremap <silent><leader>E :NnnPicker '%:p:h'<CR>

@@ -1,0 +1,8 @@
+Language: Cpp
+BasedOnStyle: Webkit
+BreakBeforeBraces: Linux
+ColumnLimit: 80
+AlignAfterOpenBracket: true
+AllowAllArgumentsOnNextLine: true
+AllowShortBlocksOnASingleLine: Never
+SpaceBeforeCpp11BracedList: false

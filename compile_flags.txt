@@ -1,0 +1,7 @@
+-std=c++17
+-Wall
+-Werror
+-Wextra
+-Wshadow
+-Wnon-virtual-dtor
+-Wunused
