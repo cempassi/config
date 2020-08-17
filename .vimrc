@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/07/29 09:54:27 by cempassi         ###   ########.fr        "
+"    Updated: 2020/08/08 12:28:58 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -69,6 +69,7 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
   call dein#add('neoclide/coc-denite')
 	call dein#add('mcchrish/nnn.vim')
 	call dein#add('vn-ki/coc-clap')
+	call dein#add('tpope/vim-fugitive')
 	call dein#add('liuchengxu/vim-which-key')
 	call dein#add('mhinz/vim-startify')
 	call dein#add('ryanoasis/vim-devicons')
@@ -144,7 +145,7 @@ if has ('folding')
 		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
 	endif
 	set foldenable
-	set foldnestmax=1
+	set foldnestmax=3
 	set foldmethod=syntax
 endif
 
@@ -185,7 +186,7 @@ syntax on
 "Completion menu hilighting
 highlight Pmenu ctermbg=16 ctermfg=111 
 highlight clear SignColumn
-highlight CocErrorFloat cterm=none ctermfg=9 ctermbg=none
+highlight CocErrorFloat cterm=none ctermfg=8 ctermbg=none
 
 let g:colorcoder_enable_filetypes=['c', 'cpp', 'python']
 
@@ -352,8 +353,12 @@ let g:coc_snippet_prev = '<leader>sp'
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> <leader>cf <Plug>(coc-format)
 
+" Highlight the symbol and its references when holding the cursor.
+nmap <silent> <leader>* :call CocActionAsync('highlight')<cr>
+
 " Clap config
 let g:clap_layout = { 'relative': 'editor' }
+let g:clap_provider_grep_opts =  '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
 nnoremap <silent> <leader>bb :Clap buffers<cr>
 nnoremap <silent> <leader>fe :Clap files<cr>
 nnoremap <silent> <leader>fb :Clap blines<cr>
@@ -595,5 +600,5 @@ autocmd FileType defx call s:defx_my_settings()
 " nnn config
 
 let g:nnn#set_default_mappings = 0
-nnoremap <silent><leader>ee :NnnPicker<CR>
-nnoremap <silent><leader>E :NnnPicker '%:p:h'<CR>
+nnoremap <silent><leader>ee :e.<CR>
+nnoremap <silent><leader>E :Ex<CR>
