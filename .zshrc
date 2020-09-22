@@ -5,7 +5,7 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/Applications/bin:/usr/local/bin:$(getconf PATH)
+export PATH=$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/Applications/bin:/usr/local/sbin:/usr/local/bin:$(getconf PATH)
 
 ZSH_THEME=personal
 
@@ -135,6 +135,10 @@ export PATH=$PYENV_ROOT/bin:$PATH
 export MANPAGER="col -b | nvim -RO  '+set ft=man ts=8 nomod nolist nonu' '+nnoremap i <nop>' -"
 
 export LSCOLORS="exfxcxdxbxegedabagacad"
+
+export VISUAL="nvim"
+
+export EDITOR="nvim"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

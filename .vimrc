@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/08/08 12:28:58 by cempassi         ###   ########.fr        "
+"    Updated: 2020/09/16 00:37:11 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -50,24 +50,22 @@ set runtimepath+=/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vi
 
 "" Required:
 if dein#load_state('/Users/cedricmpassi/.cache/dein')
-  call dein#begin('/Users/cedricmpassi/.cache/dein')
+	call dein#begin('/Users/cedricmpassi/.cache/dein')
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vim')
+	" Let dein manage dein
+	" Required:
+	call dein#add('/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-  " Add or remove your plugins here like this:
+	" Add or remove your plugins here like this:
 	call dein#add('wsdjeg/dein-ui.vim')
-  call dein#add('neoclide/coc.nvim', {'rev': 'release'})
+	call dein#add('neoclide/coc.nvim', {'rev': 'release'})
 	call dein#add('pbondoer/vim-42header')
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('vim-airline/vim-airline-themes')
 	call dein#add('sheerun/vim-polyglot')
 	call dein#add('liuchengxu/vim-clap', {'build': 'make'})
-  call dein#add('Shougo/defx.nvim')
-  call dein#add('Shougo/denite.nvim')
-  call dein#add('neoclide/coc-denite')
-	call dein#add('mcchrish/nnn.vim')
+	call dein#add('Shougo/denite.nvim')
+	call dein#add('neoclide/coc-denite')
 	call dein#add('vn-ki/coc-clap')
 	call dein#add('tpope/vim-fugitive')
 	call dein#add('liuchengxu/vim-which-key')
@@ -77,16 +75,16 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('kristijanhusak/defx-icons')
 	call dein#add('jackguo380/vim-lsp-cxx-highlight')
 	call dein#add('honza/vim-snippets')
-  "call dein#add('Shougo/neosnippet-snippets')
+	"call dein#add('Shougo/neosnippet-snippets')
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
+	" Required:
+	call dein#end()
+	call dein#save_state()
 endif
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
-  call dein#install()
+	call dein#install()
 endif
 
 "End dein Scripts-------------------------
@@ -98,7 +96,7 @@ if has('persistent_undo')
 	let target_path = expand('~/.vim/undodir/')
 
 	" create the directory and any parent directories
-  " if the location does not exist.
+	" if the location does not exist.
 	if !isdirectory(target_path)
 		call mkdir(target_path, "p")
 	endif
@@ -145,7 +143,7 @@ if has ('folding')
 		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
 	endif
 	set foldenable
-	set foldnestmax=3
+	set foldnestmax=1
 	set foldmethod=syntax
 endif
 
@@ -168,12 +166,6 @@ function! TrailingWhitespaces()
 	:%s/\s\+$//ge
 endfunction
 
-
-" System copy-paste
-vnoremap <silent><leader>y "*
-nnoremap <silent><leader>p "*p
-noremap Q <nop>
-
 "Netrw settings
 autocmd FileType netrw setl bufhidden=wipe
 let g:netrw_fastbrowse=0
@@ -195,6 +187,8 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+"mutt syntax
+autocmd BufNewFile,BufRead *.mutt set syntax=neomuttrc
 if has("autocmd")
 	augroup config
 		autocmd!
@@ -206,9 +200,9 @@ endif
 "just after opening it, if the '" mark is set:
 
 au BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-\ |   exe "normal! g`\""
-\ | endif
+			\ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+			\ |   exe "normal! g`\""
+			\ | endif
 
 "python configuration
 let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
@@ -231,12 +225,21 @@ inoremap `` ``<Left>
 " change escape to jk
 vnoremap jk <esc>
 
+" System copy-paste
+vnoremap <silent><leader>y "*
+nnoremap <silent><leader>p "*p
+noremap Q <nop>
+
 " Normal mode
 
 " Buffer shortcuts
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bd :bdelete<cr>
+
+" File exploration
+nnoremap <silent><leader>ee :e.<CR>
+nnoremap <silent><leader>E :Ex<CR>
 
 " Window shortcuts
 nnoremap <silent><leader>k :wincmd k<CR>
@@ -306,9 +309,6 @@ nnoremap <silent><leader>mn :cn<CR>
 nnoremap <silent><leader>mp :cp<CR>
 nnoremap <silent><leader>me :cw<CR>
 
-"Explore folders
-"nnoremap <silent><leader>E :E<cr>
-
 " ------------------------------------- Plugins -------------------------------
 "Airline config
 let g:airline#extensions#ale#enabled = 1
@@ -356,7 +356,7 @@ nmap <silent> <leader>cf <Plug>(coc-format)
 " Highlight the symbol and its references when holding the cursor.
 nmap <silent> <leader>* :call CocActionAsync('highlight')<cr>
 
-" Clap config
+" Clap mappings
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_provider_grep_opts =  '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
 nnoremap <silent> <leader>bb :Clap buffers<cr>
@@ -364,105 +364,11 @@ nnoremap <silent> <leader>fe :Clap files<cr>
 nnoremap <silent> <leader>fb :Clap blines<cr>
 nnoremap <silent> <leader>fl :Clap lines<cr>
 nnoremap <silent> <leader>lj :Clap jumps<cr>
-
-" Denite config
-" Define mappings while in 'filter' mode
-"   <leader>q     - Switch to normal mode inside of search results
-"   <Esc>         - Exit denite window in any mode
-"   <CR>          - Open currently selected file in any mode
-"
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-imap <silent><buffer> <leader>q
-			\ <Plug>(denite_filter_quit)
-inoremap <silent><buffer><expr> <Esc>
-			\ denite#do_map('quit')
-nnoremap <silent><buffer><expr> <Esc>
-			\ denite#do_map('quit')
-inoremap <silent><buffer><expr> <CR>
-			\ denite#do_map('do_action')
-endfunction
-
-" Define mappings denite
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-nnoremap <silent><buffer><expr> <CR>
-			\ denite#do_map('do_action')
-nnoremap <silent><buffer><expr> <leader>vs
-			\ denite#do_map('do_action', 'vsplit')
-nnoremap <silent><buffer><expr> d
-			\ denite#do_map('do_action', 'delete')
-nnoremap <silent><buffer><expr> p
-			\ denite#do_map('do_action', 'preview')
-nnoremap <silent><buffer><expr> q
-			\ denite#do_map('quit')
-nnoremap <silent><buffer><expr> i
-			\ denite#do_map('open_filter_buffer')
-nnoremap <silent><buffer><expr> <Space>
-			\ denite#do_map('toggle_select').j
-endfunction
-
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
-
-" Custom options for ripgrep
-"   --vimgrep:  Show results with every match on it's own line
-"   --hidden:   Search hidden directories and files
-"   --heading:  Show the file name above clusters of matches from each file
-"   --S:        Search case insensitively if the pattern is all lowercase
-call denite#custom#var('grep', 'default_opts', ['--hidden', '--heading', '-S'])
-
-" Recommended defaults for ripgrep via Denite docs
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-" Ripgrep command on grep source
-call denite#custom#var('grep', {
-		\ 'command': ['rg'],
-		\ 'default_opts': ['-S', '--vimgrep', '--no-heading'],
-		\ 'recursive_opts': [],
-		\ 'pattern_opt': ['--regexp'],
-		\ 'separator': ['--'],
-		\ 'final_opts': [],
-		\ })
-
-" Custom options for Denite
-"   auto_resize             - Auto resize the Denite window height automatically.
-"   prompt                  - Customize denite prompt
-"   direction               - Specify Denite window direction as directly below current pane
-"   winminheight            - Specify min height for Denite window
-"   highlight_mode_insert   - Specify h1-CursorLine in insert mode
-"   prompt_highlight        - Specify color of prompt
-"   highlight_matched_char  - Matched characters highlight
-"   highlight_matched_range - matched range highlight
-
-let s:denite_options = {'default' : {
-		\ 'prompt': '$',
-		\ 'split': 'floating',
-		\ 'floating-preview': 1,
-		\ 'auto_resize': 1,
-		\ 'source_names': 'short',
-		\ 'direction': 'botright',
-		\ 'unique': 1,
-		\ }}
-
-" Loop through denite options and enable them
-function! s:profile(opts) abort
-for l:fname in keys(a:opts)
-	for l:dopt in keys(a:opts[l:fname])
-		call denite#custom#option(l:fname, l:dopt, a:opts[l:fname][l:dopt])
-	endfor
-endfor
-endfunction
-
-call s:profile(s:denite_options)
-
-nmap <leader>cc :Clap coc_commands<cr>
-nmap <leader>ce :Denite coc-extension<cr>
-nmap <leader>cs :Denite coc-symbols<cr>
-nmap <leader>cr :CocRestart<cr>
-nmap <leader>el :Clap coc_diagnostics<cr>
+nnoremap <silent> <leader>cc :Clap coc_commands<cr>
+nnoremap <silent> <leader>ce :Clap coc_extension<cr>
+nnoremap <silent> <leader>cs :Clap coc_symbols<cr>
+nnoremap <silent> <leader>cr :CocRestart<cr>
+nnoremap <silent> <leader>el :Clap coc_diagnostics<cr>
 
 " Startify config
 let g:startify_session_dir = '~/.vim/session'
@@ -479,126 +385,5 @@ let g:webdevicons_enable_startify = 1
 let g:webdevicons_enable_denite = 1
 
 if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
+	call webdevicons#refresh()
 endif
-
-" Defx
-
-" Git
-let g:defx_git#indicators = {
-  \ 'Modified'  : '✹',
-  \ 'Staged'    : '✚',
-  \ 'Untracked' : '✭',
-  \ 'Renamed'   : '➜',
-  \ 'Unmerged'  : '═',
-  \ 'Ignored'   : '☒',
-  \ 'Deleted'   : '✖',
-  \ 'Unknown'   : '?'
-  \ }
-let g:defx_git#column_length = 1
-let g:defx_git#show_ignored = 0
-let g:defx_git#raw_mode = 0
-
-" Icons
-"
-let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 2
-let g:defx_icons_directory_icon = ''
-let g:defx_icons_mark_icon = '*'
-let g:defx_icons_parent_icon = ''
-let g:defx_icons_default_icon = ''
-let g:defx_icons_directory_symlink_icon = ''
-
-" Options below are applicable only when using "tree" feature
-let g:defx_icons_root_opened_tree_icon = ''
-let g:defx_icons_nested_opened_tree_icon = ''
-let g:defx_icons_nested_closed_tree_icon = ''
-
-call defx#custom#column('filename', {
-\ 'min_width': 120,
-\})
-
-call defx#custom#option('_', {
-\ 'winwidth': 150,
-\ 'ignored_files': '.*,target*',
-\ 'direction': 'leftabove',
-\ 'columns': 'mark:git:size:indent:icons:filename:time',
-\ 'split': 'floating',
-\ })
-
-"nnoremap <space>ee :Defx<CR>
-"nnoremap <space>E :Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
-
-autocmd FileType defx call s:defx_my_settings() 
-	function! s:defx_my_settings() abort
-	  " Define mappings
-		nnoremap <silent><buffer><expr> <CR>
-		\ defx#is_directory() ?
-		\ defx#do_action('open_directory') :
-		\ defx#do_action('multi', ['drop', 'quit'])
-	  nnoremap <silent><buffer><expr> c
-	  \ defx#do_action('copy')
-	  nnoremap <silent><buffer><expr> m
-	  \ defx#do_action('move')
-	  nnoremap <silent><buffer><expr> p
-	  \ defx#do_action('paste')
-	  nnoremap <silent><buffer><expr> l
-	  \ defx#do_action('open')
-	  nnoremap <silent><buffer><expr> E
-	  \ defx#do_action('drop', 'vsplit')
-	  nnoremap <silent><buffer><expr> P
-	  \ defx#do_action('preview')
-	  nnoremap <silent><buffer><expr> o
-	  \ defx#do_action('open_tree', 'toggle')
-	  nnoremap <silent><buffer><expr> K
-	  \ defx#do_action('new_directory')
-	  nnoremap <silent><buffer><expr> N
-	  \ defx#do_action('new_file')
-	  nnoremap <silent><buffer><expr> M
-	  \ defx#do_action('new_multiple_files')
-	  nnoremap <silent><buffer><expr> C
-	  \ defx#do_action('toggle_columns',
-	  \                'mark:indent:icon:filename:type:size:time')
-	  nnoremap <silent><buffer><expr> S
-	  \ defx#do_action('toggle_sort', 'time')
-	  nnoremap <silent><buffer><expr> d
-	  \ defx#do_action('remove')
-	  nnoremap <silent><buffer><expr> r
-	  \ defx#do_action('rename')
-	  nnoremap <silent><buffer><expr> !
-	  \ defx#do_action('execute_command')
-	  nnoremap <silent><buffer><expr> x
-	  \ defx#do_action('execute_system')
-	  nnoremap <silent><buffer><expr> yy
-	  \ defx#do_action('yank_path')
-	  nnoremap <silent><buffer><expr> .
-	  \ defx#do_action('toggle_ignored_files')
-	  nnoremap <silent><buffer><expr> ;
-	  \ defx#do_action('repeat')
-	  nnoremap <silent><buffer><expr> -
-	  \ defx#do_action('cd', ['..'])
-	  nnoremap <silent><buffer><expr> ~
-	  \ defx#do_action('cd')
-	  nnoremap <silent><buffer><expr> q
-	  \ defx#do_action('quit')
-	  nnoremap <silent><buffer><expr> <Space>
-	  \ defx#do_action('toggle_select') . 'j'
-	  nnoremap <silent><buffer><expr> *
-	  \ defx#do_action('toggle_select_all')
-	  nnoremap <silent><buffer><expr> j
-	  \ line('.') == line('$') ? 'gg' : 'j'
-	  nnoremap <silent><buffer><expr> k
-	  \ line('.') == 1 ? 'G' : 'k'
-	  nnoremap <silent><buffer><expr> <C-l>
-	  \ defx#do_action('redraw')
-	  nnoremap <silent><buffer><expr> <C-g>
-	  \ defx#do_action('print')
-	  nnoremap <silent><buffer><expr> cd
-	  \ defx#do_action('change_vim_cwd')
-	endfunction
-
-" nnn config
-
-let g:nnn#set_default_mappings = 0
-nnoremap <silent><leader>ee :e.<CR>
-nnoremap <silent><leader>E :Ex<CR>

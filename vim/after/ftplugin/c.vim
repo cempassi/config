@@ -21,5 +21,6 @@ function! Norme()
 	echom "Normed successfully"
 endfunction
 
-" Automatic norme
-nnoremap <silent><leader>nm :call Norme()<cr>:w<cr>
+set foldenable
+set foldnestmax=1
+set foldmethod=syntax
