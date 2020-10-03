@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/09/16 00:37:11 by cempassi         ###   ########.fr        "
+"    Updated: 2020/10/03 22:18:17 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -33,7 +33,7 @@ set hidden
 set mouse=a
 set scrolloff=5
 set shortmess+=AaO	"Remove swap files message
-set textwidth=80
+set textwidth=0
 set splitbelow
 set ignorecase
 set smartcase
@@ -59,22 +59,19 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	" Add or remove your plugins here like this:
 	call dein#add('wsdjeg/dein-ui.vim')
 	call dein#add('neoclide/coc.nvim', {'rev': 'release'})
+	call dein#add('vn-ki/coc-clap')
 	call dein#add('pbondoer/vim-42header')
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('vim-airline/vim-airline-themes')
 	call dein#add('sheerun/vim-polyglot')
 	call dein#add('liuchengxu/vim-clap', {'build': 'make'})
-	call dein#add('Shougo/denite.nvim')
-	call dein#add('neoclide/coc-denite')
-	call dein#add('vn-ki/coc-clap')
-	call dein#add('tpope/vim-fugitive')
-	call dein#add('liuchengxu/vim-which-key')
+	call dein#add('tpope/vim-fugitive', {'lazy': 1})
+	call dein#add('liuchengxu/vim-which-key', {'lazy': 1})
 	call dein#add('mhinz/vim-startify')
 	call dein#add('ryanoasis/vim-devicons')
-	call dein#add('kristijanhusak/defx-git')
-	call dein#add('kristijanhusak/defx-icons')
 	call dein#add('jackguo380/vim-lsp-cxx-highlight')
 	call dein#add('honza/vim-snippets')
+	call dein#add('vimwiki/vimwiki', {'lazy': 1})
 	"call dein#add('Shougo/neosnippet-snippets')
 
 	" Required:
@@ -143,7 +140,7 @@ if has ('folding')
 		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
 	endif
 	set foldenable
-	set foldnestmax=1
+	set foldnestmax=3
 	set foldmethod=syntax
 endif
 
@@ -213,6 +210,8 @@ let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
 " Insert mode
 " change escape to jk
 inoremap jk <esc>
+
+"Close surrondings
 inoremap <> <><Left>
 inoremap (( ()<Left>
 inoremap {{ {}<Left>
@@ -220,6 +219,13 @@ inoremap [[ []<Left>
 inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
+
+"Move on wrapped lines
+nmap <D-j> gj
+nmap <D-k> gk
+nmap <D-4> g$
+nmap <D-6> g^
+nmap <D-0> g^
 
 " Visual mode
 " change escape to jk
@@ -257,12 +263,13 @@ nnoremap <silent><leader>> <C-w>>
 nnoremap <silent><leader>< <C-w><
 
 " save files and quit
-nnoremap <silent><leader>ww :w<cr>
-nnoremap <silent><leader>wa :wa<cr>
-nnoremap <silent><leader>xx :x<cr>
+"nnoremap <silent><leader>ww :w<cr>
+"nnoremap <silent><leader>wa :wa<cr>
+"nnoremap <silent><leader>xx :x<cr>
 nnoremap <silent><leader>xa :xa<cr>
 nnoremap <silent><leader>qq :q<cr>
 nnoremap <silent><leader>qa :qa<cr>
+
 
 " Split window
 nnoremap <silent><leader>vs :vsplit<cr>
@@ -378,6 +385,7 @@ let g:startify_change_to_dir = 0
 nmap <leader>sl :SLoad<cr>
 nmap <leader>ss :SSave!<cr>
 
+" Omnisharp configuration
 let g:OmniSharp_server_stdio = 1
 
 "" Devicons
@@ -387,3 +395,5 @@ let g:webdevicons_enable_denite = 1
 if exists("g:loaded_webdevicons")
 	call webdevicons#refresh()
 endif
+
+" VimWiki

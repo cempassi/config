@@ -1,0 +1,158 @@
+set folder = ~/Mail
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/config/certs.pem
+
+set mailcap_path = "~/.mutt/mailcap"
+alternative_order text/html text/plain
+set implicit_autoview 
+
+# Default Mail
+set realname = "Cedric M'Passi"
+source ~/.mutt/accounts/main.mutt
+
+# when changing into other mailboxes, use different adresses etc.
+folder-hook main/* source ~/.mutt/accounts/main.mutt
+folder-hook pro/* source ~/.mutt/accounts/pro.mutt
+
+bind index <tab> sync-mailbox
+
+unmailboxes *
+named-mailboxes "Main" +main/inbox
+named-mailboxes "\tSent" +main/sent "\tDraft" +main/drafts "\tTrash" +main/trash "\tArchive" +main/all
+
+named-mailboxes "Pro" +pro/inbox 
+named-mailboxes "\tSent" +pro/sent "\tDraft" +pro/drafts "\tTrash" +pro/trash "\tArchive" +pro/all
+
+set mbox_type=Maildir
+set wait_key = no
+set timeout = 3
+set mail_check = 0
+set delete
+set quit
+set thorough_search
+set mail_check_stats
+unset confirmappend
+unset move
+unset mark_old
+unset beep_new
+
+# compose View Options
+set envelope_from                    # which from?
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set fcc_attach                       # save attachments with the body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+set editor = "nvim"
+set text_flowed
+unset sig_dashes                     # no dashes before sig
+unset mime_forward                   # forward attachments as part of body
+
+#Date format, sorting
+set status_chars = " *%A"
+set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+set index_format = "[%Z] %?X?A&-? %D  %-20.20F  %s"
+set date_format = "%d.%m.%Y %H:%M"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set send_charset = "utf-8:iso-8859-1:us-ascii"
+set charset = "utf-8"
+
+# Pager View Options
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
+# email headers and attachments
+ignore *
+unignore from: to: cc: bcc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: bcc: date: subject:
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+
+# sidebar patch config
+set sidebar_visible
+#set sidebar_short_path
+set sidebar_folder_indent
+set sidebar_divider_char = ' | '
+set sidebar_indent_string = '  '
+set sidebar_delim_chars="/"
+set sidebar_format = "%D %* [%?N?%N / ?%5S]"
+
+# basic colors ---------------------------------------------------------
+color normal        white           default
+color error         red             default
+color tilde         black           default
+color message       cyan            default
+color markers       red             white
+color attachment    white           default
+color search        brightmagenta   default
+color indicator     brightblack     yellow
+color tree          green          default
+
+# index ----------------------------------------------------------------
+
+color index         red             default         "~A"    # all messages
+color index         brightred       default         "~E"    # expired messages
+color index         blue            default         "~N"    # new messages
+color index         blue            default         "~O"    # old messages
+color index         brightmagenta   default         "~Q"    # messages that have been replied to
+color index         brightwhite           default         "~R"    # read messages
+color index         blue            default         "~U"    # unread messages
+color index         brightyellow    default         "~v"    # messages part of a collapsed thread
+color index         brightyellow    default         "~P"    # messages from me
+color index         red             default         "~F"    # flagged messages
+color index         black           red             "~D"    # deleted messages
+
+# message headers ------------------------------------------------------
+
+color hdrdefault    brightgreen     default
+color header        brightyellow    default         "^(From)"
+color header        blue            default         "^(Subject)"
+
+# body -----------------------------------------------------------------
+
+color quoted        blue            default
+color quoted1       cyan            default
+color quoted2       yellow          default
+color quoted3       red             default
+color quoted4       brightred       default
+
+color signature     brightblack     default
+color bold          black           default
+color underline     black           default
+color normal        default         default
+
+# some sane vim-like keybindings
+bind index,pager k previous-entry
+bind index,pager j next-entry
+bind index,pager g noop
+bind index,pager \Cu half-up
+bind index,pager \Cd half-down
+bind pager gg top
+bind index gg first-entry
+bind pager G bottom
+bind index G last-entry
+
+# Sidebar Navigation
+bind index,pager J sidebar-next
+bind index,pager K sidebar-prev
+bind index,pager <space> sidebar-open
+
+# opening urls with urlscan
+macro index,pager \cb "<pipe-message>urlscan -c <enter>" "call urlscan to extract URLs out of a message"
+# Sync all email
+macro index,pager O "<shell-escape>mbsync -a<enter>" "run mbsync to sync all mail"
+

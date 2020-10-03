@@ -1,0 +1,30 @@
+set from = "cedricmpassi@gmail.com"
+set sendmail = "/usr/local/bin/msmtp -a main"
+
+# Set folders
+set spoolfile = "+main/inbox"
+set mbox = "+main/all"
+set postponed = "+main/drafts"
+set record = "+main/sent"
+set trash = "+main/trash"
+
+# custom signaure
+# set signature = ~/.mutt/signatures/work
+
+color status cyan default
+
+macro index o "<shell-escape>mbsync main<enter>" "run mbsync to sync mail for this account"
+
+macro index,pager M \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+main/junk<enter>" \
+  "mark as read and move to junk folder"
+
+macro index,pager A \
+  "<save-message>+main/all<enter>"  \
+  "move message to the archive"
+
+macro index,pager I \
+  "<save-message>+main/INBOX<enter>"  \
+  "move message to the inbox"

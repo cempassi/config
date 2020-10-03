@@ -1,0 +1,105 @@
+Create Both
+Expunge Both
+SyncState *
+
+#### Account Main ####
+
+IMAPAccount main
+Host imap.gmail.com
+Port 993
+User cedricmpassi@gmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/config/main.gpg"
+SSLType IMAPS
+AuthMechs LOGIN
+
+IMAPStore main-remote
+Account main
+
+MaildirStore main-local
+Path ~/Mail/Main/
+Inbox ~/Mail/Main/inbox
+Subfolders Verbatim
+
+Channel main-inbox
+Master :main-remote:
+Slave :main-local:
+Patterns "INBOX"
+
+Channel main-all
+Master :main-remote:"[Gmail]/Tous les messages"
+Slave :main-local:all
+
+Channel main-sent
+Master :main-remote:"[Gmail]/Messages envoy&AOk-s"
+Slave :main-local:sent
+
+Channel main-brouillons
+Master :main-remote:"[Gmail]/Brouillons"
+Slave :main-local:drafts
+
+Channel main-trash
+Master :main-remote:"[Gmail]/Corbeille"
+Slave :main-local:trash
+
+Channel main-spam
+Master :main-remote:"[Gmail]/Spam"
+Slave :main-local:spam
+
+Group main
+Channel main-inbox
+Channel main-all
+Channel main-sent
+Channel main-brouillons
+Channel main-trash
+Channel main-spam
+
+#### Account Pro ####
+
+IMAPAccount pro
+Host imap.gmail.com
+Port 993
+User cedricmpassi75@gmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/config/pro.gpg"
+SSLType IMAPS
+AuthMechs LOGIN
+
+IMAPStore pro-remote
+Account pro
+
+MaildirStore pro-local
+Path ~/Mail/Pro/
+Inbox ~/Mail/Pro/inbox
+Subfolders Verbatim
+
+Channel pro-inbox
+Master :pro-remote:
+Slave :pro-local:
+Patterns "INBOX"
+
+Channel pro-all
+Master :pro-remote:"[Gmail]/Tous les messages"
+Slave :pro-local:all
+
+Channel pro-sent
+Master :pro-remote:"[Gmail]/Messages envoy&AOk-s"
+Slave :pro-local:sent
+
+Channel pro-brouillons
+Master :pro-remote:"[Gmail]/Brouillons"
+Slave :pro-local:drafts
+
+Channel pro-trash
+Master :pro-remote:"[Gmail]/Corbeille"
+Slave :pro-local:trash
+
+Channel pro-spam
+Master :pro-remote:"[Gmail]/Spam"
+Slave :pro-local:spam
+
+Group pro
+Channel pro-all
+Channel pro-inbox
+Channel pro-sent
+Channel pro-brouillons
+Channel pro-trash
+Channel pro-spam
