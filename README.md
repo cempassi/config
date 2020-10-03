@@ -1,2 +1,3 @@
-# config
-My configuration files
+# Dotfiles
+
+My configuration files, managed with Stow.
