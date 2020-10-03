@@ -1,0 +1,9 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Cedric M'Passi
+	email = cedricmpassi@gmail.com
+[core]
+	excludesFile = ~/.dotfiles/git/.gitignore
+[pull]
+	rebase = false
