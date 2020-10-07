@@ -1,12 +1,12 @@
 " **************************************************************************** "
 "                                                                              "
 "                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
+"    init.vim                                           :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/07 03:13:12 by cempassi         ###   ########.fr        "
+"    Updated: 2020/10/07 06:33:14 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -33,13 +33,14 @@ set hidden
 set mouse=a
 set scrolloff=5
 set shortmess+=AaO	"Remove swap files message
-set textwidth=0
+set textwidth=80
 set splitbelow
 set ignorecase
 set smartcase
 set wrap linebreak nolist
 set switchbuf="useopen,usetab"
-set timeoutlen=500
+set timeoutlen=500 
+set formatoptions=tcor1jp
 
 "Reload file after external modification
 set autoread
@@ -223,6 +224,9 @@ inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
 
+" Accents
+inoremap <silent>,. <C-k>
+
 "Sane line moves
 noremap <silent> k gk
 noremap <silent> j gj
@@ -232,6 +236,7 @@ noremap <silent> $ g$
 " Visual mode
 " change escape to jk
 vnoremap jk <esc>
+
 
 " System copy-paste
 vnoremap <silent><leader>y "*
@@ -248,6 +253,7 @@ nnoremap <silent><leader>bd :bp\|bdelete! #<cr>
 " File exploration
 nnoremap <silent><leader>fe :e.<CR>
 nnoremap <silent><leader>fE :Ex<CR>
+
 
 " Window shortcuts
 nnoremap <silent><leader>k :wincmd k<CR>

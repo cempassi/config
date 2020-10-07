@@ -1,9 +1,47 @@
-# This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
+
 	name = Cedric M'Passi
 	email = cedricmpassi@gmail.com
+
 [core]
+
 	excludesFile = ~/.dotfiles/git/.gitignore
+	pager = cat
+
 [pull]
+
 	rebase = false
+
+[diff]
+
+	tool = nvimdiff
+
+[difftool "nvimdiff"]
+
+	cmd = "nvim -d -u ~/.vimrc \"$LOCAL\" \"$REMOTE\""
+
+[format]
+	pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)[%aN]%C(auto)%d %Creset%s
+
+[alias]
+
+	ls = log --relative-date --graph --abbrev-commit --decorate
+
+[color "branch"]
+
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+
+	added = green
+	changed = blue
+	untracked = red
