@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/07 02:48:43 by cempassi         ###   ########.fr        "
+"    Updated: 2020/10/07 03:06:39 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -41,9 +41,6 @@ set wrap linebreak nolist
 set switchbuf="useopen,usetab"
 set timeoutlen=500
 
-" Define base syntax
-filetype plugin indent on
-syntax on 
 
 "Reload file after external modification
 set autoread
@@ -86,6 +83,10 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#end()
 	call dein#save_state()
 endif
+
+" Define base syntax
+filetype plugin indent on
+syntax on 
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
@@ -417,11 +418,6 @@ let g:vimwiki_list = [
 
 " Goyo
 nnoremap <silent> <leader>zz :Goyo<cr>
-
-"Color Settings
-if exists('termguicolors')
-	set termguicolors
-endif
 
 
 " Vim which Key
