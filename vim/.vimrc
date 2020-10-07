@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/07 03:06:39 by cempassi         ###   ########.fr        "
+"    Updated: 2020/10/07 03:10:55 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -40,7 +40,6 @@ set smartcase
 set wrap linebreak nolist
 set switchbuf="useopen,usetab"
 set timeoutlen=500
-
 
 "Reload file after external modification
 set autoread
@@ -84,14 +83,14 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#save_state()
 endif
 
-" Define base syntax
-filetype plugin indent on
-syntax on 
-
 " If you want to install not installed plugins on startup.
 if dein#check_install()
 	call dein#install()
 endif
+
+" Define base syntax
+filetype plugin indent on
+syntax on 
 
 "End dein Scripts-------------------------
 
@@ -170,7 +169,7 @@ endfunction
 
 "Netrw settings
 autocmd FileType netrw setl bufhidden=wipe
-let g:netrw_fastbrowse = 0
+let g:netrw_fastbrowse=0
 let g:netrw_browse_split = 0
 
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
@@ -419,6 +418,31 @@ let g:vimwiki_list = [
 " Goyo
 nnoremap <silent> <leader>zz :Goyo<cr>
 
+"Color Settings
+if exists('termguicolors')
+	set termguicolors
+endif
+
+function! s:goyo_enter()
+	hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
+	hi LineNr ctermfg=white
+	hi CursorLineNr ctermfg=cyan
+	highlight Pmenu ctermbg=16 ctermfg=111 
+	highlight clear SignColumn
+	highlight CocErrorFloat cterm=none ctermfg=8 ctermbg=none
+endfunction
+
+function! s:goyo_leave()
+	hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
+	hi LineNr ctermfg=white
+	hi CursorLineNr ctermfg=cyan
+	highlight Pmenu ctermbg=16 ctermfg=111 
+	highlight clear SignColumn
+	highlight CocErrorFloat cterm=none ctermfg=8 ctermbg=none
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Vim which Key
 
