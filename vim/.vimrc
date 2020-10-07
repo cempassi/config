@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/07 03:10:55 by cempassi         ###   ########.fr        "
+"    Updated: 2020/10/07 03:13:12 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -417,11 +417,6 @@ let g:vimwiki_list = [
 
 " Goyo
 nnoremap <silent> <leader>zz :Goyo<cr>
-
-"Color Settings
-if exists('termguicolors')
-	set termguicolors
-endif
 
 function! s:goyo_enter()
 	hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
