@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/10 05:33:43 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/10/10 07:30:20 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -41,18 +41,8 @@ set switchbuf="useopen,usetab"
 set timeoutlen=500 
 set relativenumber numberwidth=3
 set number
-set shortmess=atAOI 	" No help Uganda information, and overwrite read messages to avoid PRESS ENTER prompts
+set shortmess=atAOI
 
-set formatoptions-=a    " Turn off auto formating.
-set formatoptions-=t    " Turn off auto formating.
-set formatoptions+=c    " In general, I like it when comments respect textwidth
-set formatoptions+=q    " Allow formatting comments w/ gq
-set formatoptions-=o    " O and o, don't continue comments
-set formatoptions+=r    " But do continue when pressing enter.
-set formatoptions+=n    " Indent past the formatlistpat, not underneath it.
-set formatoptions+=j    " Auto-remove comments if possible.
-set formatoptions-=2    " Useless option
-set nojoinspaces        " Useless option 2
 
 "" Plugin Management
 "" Required:
@@ -105,12 +95,24 @@ endif
 
 "End dein Scripts-------------------------
 
-" Turn bell off
-set belloff=all
-
 " Define base syntax
 filetype plugin indent on
 syntax on 
+
+"Formating options
+set formatoptions-=a    " Turn off auto formating.
+set formatoptions-=t    " Turn off auto formating.
+set formatoptions+=c    " Comment respect textwidth
+set formatoptions+=q    " Allow formatting comments w/ gq
+set formatoptions-=o    " O and o, don't continue comments
+set formatoptions+=r    " But do continue when pressing enter.
+set formatoptions+=n    " Indent past the formatlistpat, not underneath it.
+set formatoptions+=j    " Auto-remove comments if possible.
+set formatoptions-=2    " Useless option
+set nojoinspaces        " Useless option 2
+
+" Turn bell off
+set belloff=all
 
 if has('nvim')
 	set signcolumn = number
@@ -187,13 +189,6 @@ function! TrailingWhitespaces()
 	:%s/\s\+$//ge
 endfunction
 
-" "Netrw settings
-" autocmd FileType netrw setl bufhidden=wipe
-" let g:netrw_list_hide= '.*\.swp$, *.pyc'
-" let g:netrw_hide = 1
-" let g:netrw_fastbrowse=0
-" let g:netrw_browse_split = 0
-" 
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
 let g:colorcoder_enable_filetypes=['c', 'cpp', 'python']
