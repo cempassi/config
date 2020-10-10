@@ -6,15 +6,6 @@ match Type /\<e_[a-z]\+\>\|\<t_[a-z]\+\>\|\<s_[a-z]\+\>\|\<u_[a-z]\+\>\|\<[a-z]*
 " Remove whitespaces on save
 autocmd BufWrite *h,*.c :call TrailingWhitespaces()
 
-function! SpaceAfterIdentifier()
-	12,$s/if (/if (/ge
-	12,$s/while (/while (/ge
-	12,$s/return (/return (/ge
-	12,$s/break;/break ;/ge
-	12,$s/return;/return ;/ge
-	12,$s/\(\s*,\)\(\S\)/, \2/ge
-endfunction
-
 function! Norme()
 	call SpaceAfterIdentifier()
 	let @/ = ""
@@ -24,3 +15,6 @@ endfunction
 set foldenable
 set foldnestmax=1
 set foldmethod=syntax
+set suffixesadd=.c,.h
+set tabstop=4
+set shiftwidth=4

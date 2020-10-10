@@ -77,6 +77,8 @@ source $ZSH/oh-my-zsh.sh
 
 export CDPATH=:..:~:~/Programming:~/Programming/42
 
+export BAT_THEME=Nord
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -111,9 +113,7 @@ vimwiki () {
 }
 
 
-alias ls="ls -G -l"
-
-alias ll="clear ; ls -G -l"
+alias ls="exa -l --icons"
 
 alias status="git status"
 
@@ -137,7 +137,9 @@ alias uconf=~/.config/update_config.sh
 
 alias chrome="open -a /Applications/Google\ Chrome.app"
 
-export USER=cempassi
+alias cat=bat
+
+export USER=cedricmpassi
 
 export MAIL=cempassi@student.42.fr 
 

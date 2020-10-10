@@ -81,6 +81,13 @@ live_config_reload: true
 # it is recommended to set `use_thin_strokes` to `false`.
 use_thin_strokes: true
 
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach -t Main || tmux new -s Main"
+
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: C, mods: Control|Shift, action: Copy }

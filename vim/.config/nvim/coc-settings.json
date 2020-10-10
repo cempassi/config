@@ -15,6 +15,17 @@
     "typescript": ["javascript"]
   },
   "languageserver": {
+    "lua": {
+      "command": "/Users/cedricmpassi/Applications/lua-language-server/bin/macOS/lua-language-server",
+      "args": [
+        "-E",
+        "-e",
+        "LANG=en",
+        "/Users/cedricmpassi/Applications/lua-language-server/main.lua"
+      ],
+      "filetypes": ["lua"],
+      "rootPatterns": [".git/"]
+    },
     "dockerfile": {
       "command": "docker-langserver",
       "filetypes": ["dockerfile", "Dockerfile"],
