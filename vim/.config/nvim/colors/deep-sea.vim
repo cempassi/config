@@ -1,6 +1,6 @@
 " Name:       deep-sea.vim
 " Version:    0.1
-" Maintainer: github.com/andreypopp
+" Maintainer: github.com/cempassi
 " License:    The MIT License (MIT)
 "
 " Based on
