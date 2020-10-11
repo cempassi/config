@@ -128,3 +128,6 @@ nnoremap <silent> <Leader>z6 :set foldlevel=6<CR>
 nnoremap <silent> <Leader>z7 :set foldlevel=7<CR>
 nnoremap <silent> <Leader>z8 :set foldlevel=8<CR>
 nnoremap <silent> <Leader>z9 :set foldlevel=9<CR>
+
+"Goyo
+nnoremap <silent> <leader><leader> :Goyo<cr>

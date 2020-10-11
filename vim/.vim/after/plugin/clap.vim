@@ -8,7 +8,7 @@ nnoremap <silent> <leader>cs :Clap coc_symbols<cr>
 
 nnoremap <silent> <leader>rl :Clap registers<cr>
 nnoremap <silent><leader>yl :Clap yanks<cr>
-nnoremap <silent><leader><leader> :Clap maps<cr>
+nnoremap <silent><leader>ml :Clap maps<cr>
 
 " Errors mappings
 nnoremap <silent> <leader>el :Clap coc_diagnostics<cr>

@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/10 07:30:20 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/10/11 10:22:16 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -42,8 +42,7 @@ set timeoutlen=500
 set relativenumber numberwidth=3
 set number
 set shortmess=atAOI
-
-
+  
 "" Plugin Management
 "" Required:
 set runtimepath+=/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -77,7 +76,8 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('nvim-lua/plenary.nvim')
 	call dein#add('nvim-lua/telescope.nvim')
 	call dein#add('vim-airline/vim-airline-themes')
-
+	call dein#add('mhinz/vim-signify')
+	call dein#add('norcalli/nvim-colorizer.lua')
 	"call dein#add('ryanoasis/vim-devicons')
 	"call dein#add('jackguo380/vim-lsp-cxx-highlight')
 	"call dein#add('honza/vim-snippets')
@@ -98,6 +98,15 @@ endif
 " Define base syntax
 filetype plugin indent on
 syntax on 
+
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+let g:edge_style = 'neon'
+set termguicolors
+
+lua require'colorizer'.setup()
+
+colorscheme deep-sea
 
 "Formating options
 set formatoptions-=a    " Turn off auto formating.
@@ -158,8 +167,6 @@ set wildignore=*.o,*.pyc
 set complete-=i
 
 " Numbers
-hi LineNr ctermfg=white
-hi CursorLineNr ctermfg=cyan
 
 " Folding and windows
 if has ('folding')
@@ -167,7 +174,6 @@ if has ('folding')
 		set fillchars=vert:\│ 			"Box drawing
 		set fillchars+=fold:∙
 		set fillchars+=eob:\ 
-		hi VertSplit term=NONE cterm=NONE gui=NONE guifg=bg guibg=bg
 	endif
 	set foldenable
 	set foldnestmax=3
@@ -193,10 +199,16 @@ autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
 let g:colorcoder_enable_filetypes=['c', 'cpp', 'python']
 
-"Get syntax group
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+"get syntax group
+map <f10> :echo "hi<" . synidattr(synid(line("."),col("."),1),"name") . '> trans<'
+			\ . synidattr(synid(line("."),col("."),0),"name") . "> lo<"
+			\ . synidattr(synidtrans(synid(line("."),col("."),1)),"name") . ">"<cr>
+
+map <f10> :call SynGroup()<cr>
+function! SynGroup()                                                            
+    let l:s = synID(line('.'), col('.'), 1)                                       
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
 
 "mutt syntax
 autocmd BufNewFile,BufRead *.mutt set syntax=neomuttrc
@@ -238,6 +250,5 @@ if exists("g:loaded_webdevicons")
 endif
 
 nnoremap <Leader>p <cmd>lua require'telescope.builtin'.grep_string{}<CR>
-nnoremap <Leader>p <cmd>lua require'telescope.builtin'.find_text{}<CR>
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank{"Substract", 200}

@@ -87,6 +87,8 @@ shell:
     - -l
     - -c
     - "tmux attach -t Main || tmux new -s Main"
+env:
+  TERM: xterm-256color
 
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
