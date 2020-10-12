@@ -1,6 +1,11 @@
 " Clap mappings
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_provider_grep_opts =  '-H --no-heading --vimgrep --smart-case --hidden -g "!.git/"'
+
+"Clap floaterm
+
+nnoremap <silent> <leader>tl :Clap floaterm<cr>
+"Clap for coc
 nnoremap <silent> <leader>bb :Clap buffers<cr> 
 nnoremap <silent> <leader>cc :Clap coc_commands<cr> 
 nnoremap <silent> <leader>ce :Clap coc_extensions<cr>

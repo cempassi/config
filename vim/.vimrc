@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/11 10:22:16 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/10/12 10:56:32 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -78,6 +78,10 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('vim-airline/vim-airline-themes')
 	call dein#add('mhinz/vim-signify')
 	call dein#add('norcalli/nvim-colorizer.lua')
+	call dein#add('voldikss/vim-floaterm')
+	call dein#add('skywind3000/asynctasks.vim')
+	call dein#add('skywind3000/asyncrun.vim')
+
 	"call dein#add('ryanoasis/vim-devicons')
 	"call dein#add('jackguo380/vim-lsp-cxx-highlight')
 	"call dein#add('honza/vim-snippets')
@@ -90,8 +94,6 @@ endif
 if dein#check_install()
 	call dein#install()
 endif
-
-
 
 "End dein Scripts-------------------------
 

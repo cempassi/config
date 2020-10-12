@@ -24,7 +24,6 @@ inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
 
-
 " Accents
 inoremap <silent>,. <C-k>
 inoremap <right>l <C-x><C-l>
@@ -89,13 +88,6 @@ nnoremap <silent><leader>Q :qa!<cr>
 nnoremap <silent><leader>vs :vsplit<cr>
 nnoremap <silent><leader>sb :split<cr>
 
-" tab shortcuts
-nnoremap <silent><leader>tt :tabs<cr>
-nnoremap <silent><leader>tn :tabn<cr>
-nnoremap <silent><leader>tc :tabnew<cr>
-nnoremap <silent><leader>tp :tabp<cr>
-nnoremap <silent><silent><leader>td :tabclose<cr>
-
 " Old cursor
 nnoremap <silent><leader>o <C-o>
 nnoremap <silent><leader>i <C-i>
@@ -131,3 +123,6 @@ nnoremap <silent> <Leader>z9 :set foldlevel=9<CR>
 
 "Goyo
 nnoremap <silent> <leader><leader> :Goyo<cr>
+
+"Do macro
+nnoremap <silent> <leader>d @
