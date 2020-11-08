@@ -15,27 +15,29 @@ function! gitstatus#GitStatus()
 endfunction
 
 function! gitstatus#GitAdd()
-	let file = expand("<cfile>")
-	if (filereadable(file))
-		execute "Git add " . file
-		execute "%d"
-		execute "silent read !git status"
-		execute "g/(.*/d|noh | normal! gg"
-	else
-		echo "No file"
+	let file = expand("<cWORD>")
+	if file =~ '\h.*'
+		let file = "./" . file
 	endif
+	execute "Git add " . file
+	execute "%d"
+	silent read !git status
+	g/(.*/d
+	execute "noh"
+	normal! M
 endfunction
 
 function! gitstatus#GitUnstage()
-	let file = expand("<cfile>")
-	if (filereadable(file))
-		execute "%d"
-		execute "silent Git restore --staged " . file
-		execute "silent read !git status"
-		execute "g/(.*/d|noh | normal! gg"
-	else
-		echo "No file"
+	let file = expand("<cWORD>")
+	if file =~ '\h*'
+		let file = "./" . file
 	endif
+	execute "silent Git restore --staged " . file
+	execute "%d"
+	silent read !git status
+	g/(.*/d
+	execute "noh"
+	normal! M
 endfunction
 
 nnoremap <leader>gs :call gitstatus#GitStatus()<cr>
