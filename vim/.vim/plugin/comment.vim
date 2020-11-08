@@ -39,6 +39,6 @@ function! CommentStr()
 endfunction
 
 nnoremap <Leader>cm <Esc>:set opfunc=DoCommentOp<CR>g@
-nnoremap <Leader>uc <Esc>:set opfunc=UnCommentOp<CR>g@
+nnoremap <Leader>C <Esc>:set opfunc=UnCommentOp<CR>g@
 vnoremap <Leader>cm <Esc>:call CommentMark(1,'<','>')<CR>
-vnoremap <Leader>um <Esc>:call CommentMark(0,'<','>')<CR>
+vnoremap <Leader>C <Esc>:call CommentMark(0,'<','>')<CR>

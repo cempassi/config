@@ -77,11 +77,13 @@ nnoremap <silent><leader>> <C-w>r
 nnoremap <silent><leader>< <C-w>R
 nnoremap <silent><leader>O <C-w>o
 
-
 " save files and quit
 nnoremap <silent><leader>x :x<cr>
 nnoremap <silent><leader>q :q<cr>
 nnoremap <silent><leader>Q :qa!<cr>
+
+" Redo
+nnoremap <silent><leader>u <c-r>
 
 " Split window
 nnoremap <silent><leader>vs :vsplit<cr>
