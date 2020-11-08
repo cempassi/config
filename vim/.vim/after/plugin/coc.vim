@@ -22,7 +22,15 @@ nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>ct <Plug>(coc-type-definition)
 nmap <silent> <leader>ci <Plug>(coc-implementation)
 nmap <silent> <leader>cr <Plug>(coc-references)
-nmap <silent> <leader>ch :call CocAction('doHover')<cr>
+nmap <silent> <leader>en <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
+
+" Symbol renaming.
+nmap <silent> <leader>cn <Plug>(coc-rename)
+
+" Apply AutoFix to problem on the current line.
+nmap <silent> <leader>ef  <Plug>(coc-fix-current)
+
 let g:coc_snippet_next = '<leader>sn'
 let g:coc_snippet_prev = '<leader>sp'
 
@@ -35,4 +43,29 @@ nmap <silent> <leader>* :call CocActionAsync('highlight')<cr>
 "Completion menu hilighting
 highlight Pmenu ctermbg=16 ctermfg=111 
 highlight clear SignColumn
+highlight CocHintSign guifg=#00AFF5
+
 highlight CocErrorFloat cterm=none ctermfg=8 ctermbg=none
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>ca :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>ca :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+" Rust InlayHints togle
+nmap <silent> <leader>ch :CocCommand rust-analyzer.toggleInlayHints<cr>
