@@ -3,13 +3,17 @@
 " leader settings
 nnoremap <Space> <nop>
 
-" Insert mode
 " change escape to jk
 inoremap jk <esc>
 cnoremap jk <C-c>
+tnoremap jk <C-\><C-n>
+vnoremap jk <esc>
 
+"Invert colon and semicolon
 nnoremap ; :
 nnoremap , ;
+
+" Remap next/previous f or t
 nnoremap <Bslash> ,
 vnoremap ; :
 vnoremap , ;
@@ -36,10 +40,6 @@ noremap <silent> k gk
 noremap <silent> j gj
 noremap <silent> 0 g0
 noremap <silent> $ g$
-
-" Visual mode
-" change escape to jk
-vnoremap jk <esc>
 
 " Unmap Q
 noremap Q <nop>
@@ -77,20 +77,22 @@ nnoremap <silent><leader>> <C-w>r
 nnoremap <silent><leader>< <C-w>R
 nnoremap <silent><leader>O <C-w>o
 
-nnoremap <silent><leader>pf <C-^>
 
 " save files and quit
-nnoremap <silent><leader>xd :w\|bdelete<cr>
+nnoremap <silent><leader>x :x<cr>
 nnoremap <silent><leader>q :q<cr>
 nnoremap <silent><leader>Q :qa!<cr>
 
 " Split window
 nnoremap <silent><leader>vs :vsplit<cr>
-nnoremap <silent><leader>sb :split<cr>
+nnoremap <silent><leader>hs :split<cr>
 
 " Old cursor
 nnoremap <silent><leader>o <C-o>
 nnoremap <silent><leader>i <C-i>
+
+" Previous buffer
+nnoremap <silent><leader>p <C-^>
 
 "visual block
 nnoremap <leader>vb <C-v>
@@ -102,12 +104,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<c
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
 
-"Make shortcuts
-nnoremap <silent><leader>mk :wa<cr>:bo terminal make<CR>
-nnoremap <silent><leader>mc :wa<cr>:bo terminal make clean<CR>
-nnoremap <silent><leader>mn :cn<CR>
-nnoremap <silent><leader>mp :cp<CR>
-nnoremap <silent><leader>me :cw<CR>
 
 "Folding
 nnoremap <silent> <Leader>z0 :set foldlevel=0<CR>
