@@ -14,7 +14,7 @@ export VISUAL="nvim"
 
 export EDITOR="nvim"
 
-export CDPATH=:..:~:~/Programming:~/Programming/42
+export CDPATH=:..:~:~/Programming:~/Programming/42:~/Programming/Web
 
 export BAT_THEME=Nord
 
