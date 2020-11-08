@@ -26,6 +26,7 @@
 *.rar
 *.tar
 *.zip
+*.clangd
 
 # OS generated files #
 ######################
