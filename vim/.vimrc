@@ -1,12 +1,12 @@
 " **************************************************************************** "
 "                                                                              "
 "                                                         :::      ::::::::    "
-"    .vimrc                                             :+:      :+:    :+:    "
+"    init.vim                                           :+:      :+:    :+:    "
 "                                                     +:+ +:+         +:+      "
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/10/12 10:56:32 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/08 00:57:55 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -47,8 +47,6 @@ set shortmess=atAOI
 "" Required:
 set runtimepath+=/Users/cedricmpassi/.cache/dein/repos/github.com/Shougo/dein.vim
 
-"" Remove tilde at end of file
-
 "" Required:
 if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#begin('/Users/cedricmpassi/.cache/dein')
@@ -63,9 +61,9 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('vn-ki/coc-clap')
 	call dein#add('pbondoer/vim-42header')
 	call dein#add('vim-airline/vim-airline')
-	call dein#add('sheerun/vim-polyglot')
 	call dein#add('liuchengxu/vim-clap', {'build': 'make'})
-	call dein#add('tpope/vim-fugitive', {'lazy': 1})
+	call dein#add('tpope/vim-fugitive')
+	call dein#add('tpope/vim-git')
 	call dein#add('liuchengxu/vim-which-key')
 	call dein#add('mhinz/vim-startify')
 	call dein#add('vimwiki/vimwiki')
@@ -76,7 +74,6 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('nvim-lua/plenary.nvim')
 	call dein#add('nvim-lua/telescope.nvim')
 	call dein#add('vim-airline/vim-airline-themes')
-	call dein#add('mhinz/vim-signify')
 	call dein#add('norcalli/nvim-colorizer.lua')
 	call dein#add('voldikss/vim-floaterm')
 	call dein#add('skywind3000/asynctasks.vim')
@@ -85,10 +82,9 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('jackguo380/vim-lsp-cxx-highlight')
 	call dein#add('airblade/vim-gitgutter')
 
+	"call dein#add('mhinz/vim-signify')
 	"call dein#add('sheerun/vim-polyglot')
 	"call dein#add('ryanoasis/vim-devicons')
-	"call dein#add('jackguo380/vim-lsp-cxx-highlight')
-	"call dein#add('honza/vim-snippets')
 	" Required:
 	call dein#end()
 	call dein#save_state()
@@ -107,12 +103,15 @@ syntax on
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-let g:edge_style = 'neon'
 set termguicolors
 
 lua require'colorizer'.setup()
 
 colorscheme deep-sea
+
+"python configuration
+let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
 
 "Formating options
 set formatoptions-=a    " Turn off auto formating.
@@ -130,7 +129,7 @@ set nojoinspaces        " Useless option 2
 set belloff=all
 
 if has('nvim')
-	set signcolumn = number
+	set signcolumn=number
 endif
 
 "Reload file after external modification
@@ -172,8 +171,6 @@ set wildignore=*.o,*.pyc
 " Remove system include from completion
 set complete-=i
 
-" Numbers
-
 " Folding and windows
 if has ('folding')
 	if has ('windows')
@@ -182,7 +179,7 @@ if has ('folding')
 		set fillchars+=eob:\ 
 	endif
 	set foldenable
-	set foldnestmax=3
+	set foldnestmax=1
 	set foldmethod=syntax
 endif
 
@@ -211,6 +208,7 @@ map <f10> :echo "hi<" . synidattr(synid(line("."),col("."),1),"name") . '> trans
 			\ . synidattr(synidtrans(synid(line("."),col("."),1)),"name") . ">"<cr>
 
 map <f10> :call SynGroup()<cr>
+
 function! SynGroup()                                                            
     let l:s = synID(line('.'), col('.'), 1)                                       
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
@@ -219,11 +217,11 @@ endfun
 "mutt syntax
 autocmd BufNewFile,BufRead *.mutt set syntax=neomuttrc
 
-autocmd BufWritePost *.vim source %
-
+" Source vim configuration files on save
 if has("autocmd")
 	augroup config
 		autocmd!
+		autocmd BufWritePost *.vim source %
 		autocmd bufwritepost .vimrc,*.vim :source $MYVIMRC
 	augroup END
 endif
@@ -236,13 +234,9 @@ au BufReadPost *
 			\ |   exe "normal! g`\""
 			\ | endif
 
-"python configuration
-let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
 
 
-" ------------------------------------- Plugins -------------------------------
-
+" ------------------------------------- Testing -------------------------------
 
 " Omnisharp configuration
 let g:OmniSharp_server_stdio = 1
@@ -255,6 +249,6 @@ if exists("g:loaded_webdevicons")
 	call webdevicons#refresh()
 endif
 
-nnoremap <Leader>p <cmd>lua require'telescope.builtin'.grep_string{}<CR>
+nnoremap <Leader>a <cmd>lua require'telescope.builtin'.grep_string{}<CR>
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank{"Substract", 200}
