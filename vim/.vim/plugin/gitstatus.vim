@@ -1,17 +1,30 @@
+augroup gitstatus
+    autocmd!
+	autocmd BufEnter gitstatus silent call gitstatus#GitStatusUpdate()
+augroup END
 
 function! gitstatus#GitStatus()
 	if bufloaded("gitstatus") 
-		echo "Already there"
+		silent call gitstatus#GitStatusUpdate()
 	else
-		execute "bo split gitstatus| silent read !git status \| grep -v '('"
-		execute "setlocal filetype=gitstatus"
-		execute "normal! zR"
-		execute "nmap <buffer> <leader>ga :call gitstatus#GitAdd()<cr>"
-		execute "nmap <buffer> <leader>gu :call gitstatus#GitUnstage()<cr>"
-		execute "setlocal buftype=nofile"
-		execute "setlocal bufhidden=wipe"
-		execute "setlocal nobuflisted"
+		execute "bo split gitstatus"
+		setlocal filetype=gitstatus
+		setlocal buftype=nofile
+		setlocal bufhidden=wipe
+		setlocal nobuflisted
+		nmap <buffer> <leader>ga :call gitstatus#GitAdd()<cr>
+		nmap <buffer> <leader>gu :call gitstatus#GitUnstage()<cr>
+		nmap <buffer> <leader>gr :call gitstatus#GitRemove()<cr>
+		normal! zR
 	endif
+endfunction
+
+function! gitstatus#GitStatusUpdate()
+	execute "%d"
+	silent read !git status
+	g/(.*/d
+	execute "noh"
+	normal! M
 endfunction
 
 function! gitstatus#GitAdd()
@@ -20,6 +33,19 @@ function! gitstatus#GitAdd()
 		let file = "./" . file
 	endif
 	execute "Git add " . file
+	execute "%d"
+	silent read !git status
+	g/(.*/d
+	execute "noh"
+	normal! M
+endfunction
+
+function! gitstatus#GitRemove()
+	let file = expand("<cWORD>")
+	if file =~ '\h.*'
+		let file = "./" . file
+	endif
+	execute "Git rm -f " . file
 	execute "%d"
 	silent read !git status
 	g/(.*/d
