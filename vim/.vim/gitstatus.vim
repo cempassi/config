@@ -2,23 +2,6 @@
 "     autocmd!
 " 	autocmd BufEnter gitstatus silent call gitstatus#Update()
 " augroup END
-" 
-" function! gitstatus#Status()
-" 	if bufloaded("gitstatus") 
-" 		silent call gitstatus#GitStatusUpdate()
-" 	else
-" 		execute "bo split gitstatus"
-" 		setlocal filetype=gitstatus
-" 		setlocal buftype=nofile
-" 		setlocal bufhidden=wipe
-" 		setlocal nobuflisted
-" 		nmap <buffer> <Plug>GitstatusStage 	:call gitstatus#Stage()<cr>
-" 		nmap <buffer> <Plug>GitstatusUnstage :call gitstatus#Unstage()<cr>
-" 		nmap <buffer> <Plug>GitstatusRemove :call gitstatus#Remove()<cr>
-" 		normal! zR
-" 	endif
-" endfunction
-" 
 " nnoremap <Plug>Gitstatus 		:call gitstatus#Status()<cr>
 " nnoremap <Plug>GitstatusStage 	:call gitstatus#Stage()<cr>
 " nnoremap <Plug>GitstatusUnstage :call gitstatus#Unstage()<cr>
@@ -33,16 +16,6 @@
 " 	normal! M
 " endfunction
 " 
-" function! gitstatus#Stage()
-" 	let file = expand("<cWORD>")
-" 	if file =~ '\h.*'
-" 		let file = "./" . file
-" 	endif
-" 	execute "Git add " . file
-" 	execute "%d"
-" 	silent read !git status
-" 	g/(.*/d
-" 	execute "noh"
 " 	normal! M
 " endfunction
 " 
