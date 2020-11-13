@@ -5,6 +5,7 @@
   "python.jediEnabled": false,
   "coc.preferences.colorSupport": true,
   "clangd.semanticHighlighting": true,
+  "markdownlint.config": {"line-length": false},
   "snippets.ultisnips.directories": [
     "UtilSnips",
     "/Users/cedricmpassi/.cache/dein/repos/github.com/honza/vim-snippets/snippets"
@@ -24,7 +25,26 @@
         "/Users/cedricmpassi/Applications/lua-language-server/main.lua"
       ],
       "filetypes": ["lua"],
-      "rootPatterns": [".git/"]
+      "rootPatterns": [".git/"],
+	  "settings": {
+		  "Lua": {
+			  "workspace": {
+				  "library" : {
+					  "/usr/local/share/nvim/runtime/lua": true
+				  },
+				  "maxPreload": 2000,
+				  "preloadFileSize": 1000
+			  },
+			  "runtime": {
+				  "version": "LuaJIT"
+			  },
+			  "diagnostics" : {
+				  "enable": true,
+				  "globals": ["hs", "vim", "it", "describe", "before_each", "after_each"],
+				  "disable": ["lowercase-global"]
+			  }
+		  }
+	  }
     },
     "dockerfile": {
       "command": "docker-langserver",

@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/08 00:57:55 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/11 11:22:11 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -37,11 +37,14 @@ set splitbelow
 set ignorecase
 set smartcase
 set wrap linebreak nolist
-set switchbuf="useopen,usetab"
+set switchbuf="useopen,usetab,uselast"
 set timeoutlen=500 
 set relativenumber numberwidth=3
 set number
 set shortmess=atAOI
+set autoread
+set autowrite
+set autowriteall
   
 "" Plugin Management
 "" Required:
@@ -82,7 +85,6 @@ if dein#load_state('/Users/cedricmpassi/.cache/dein')
 	call dein#add('jackguo380/vim-lsp-cxx-highlight')
 	call dein#add('airblade/vim-gitgutter')
 
-	"call dein#add('mhinz/vim-signify')
 	"call dein#add('sheerun/vim-polyglot')
 	"call dein#add('ryanoasis/vim-devicons')
 	" Required:
@@ -100,6 +102,12 @@ endif
 " Define base syntax
 filetype plugin indent on
 syntax on 
+
+"Save all the files, all the times
+augroup save
+  au!
+  au FocusLost * wall
+augroup END
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -235,11 +243,14 @@ au BufReadPost *
 			\ | endif
 
 
-
 " ------------------------------------- Testing -------------------------------
 
 " Omnisharp configuration
 let g:OmniSharp_server_stdio = 1
+
+" Clap mappings
+let g:clap_layout = { 'relative': 'editor' }
+
 
 "" Devicons
 let g:webdevicons_enable_startify = 1

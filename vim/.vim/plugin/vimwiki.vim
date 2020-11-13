@@ -1,4 +1,5 @@
 " VimWiki
+
 let g:vimwiki_global_ext = 0
 let g:vimwiki_table_mappings = 0 "tab completion
 let g:vimwiki_dir_link = 'index'

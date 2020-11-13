@@ -15,11 +15,14 @@ highlight link GitGutterChange DiffChange
 highlight link GitGutterDelete DiffDelete
 
 "Toggle Gitgutter and line highlighting
-nmap <leader>gg :GitGutterToggle<cr>
+nmap <leader>ge :GitGutterToggle<cr>
 nmap <leader>gh :GitGutterLineHighlightsToggle<cr>
 
+"Preview hunk
+nmap <leader>g? <Plug>(GitGutterPreviewHunk)
+
 "Stage or undo hunk
-nmap <leader>gw <Plug>(GitGutterStageHunk)
+nmap <leader>gs <Plug>(GitGutterStageHunk)
 nmap <leader>gu <Plug>(GitGutterUndoHunk)
 
 "Move between hunks

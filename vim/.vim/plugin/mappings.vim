@@ -120,7 +120,7 @@ nnoremap <silent> <Leader>z8 :set foldlevel=8<CR>
 nnoremap <silent> <Leader>z9 :set foldlevel=9<CR>
 
 "Goyo
-nnoremap <silent> <leader><leader> :Goyo<cr>
+nnoremap <silent> <leader>zz :Goyo<cr>
 
 "Do macro
 nnoremap <silent> <leader>d @

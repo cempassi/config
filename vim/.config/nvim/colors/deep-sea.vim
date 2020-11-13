@@ -171,7 +171,10 @@ hi! link Boolean          Constant
 hi! link Float            Constant
 hi! link String           Constant
 hi! link Directory        Constant
-hi! link Title            Constant
+
+" __Title__
+"call s:h("Title",         {"fg": {"gui": "#caf0f8", "cterm":"#caf0f8"} } )
+call s:h("Title",         {"fg": { "gui": "#caf0f8", "cterm": "45"   }} )
 
 " __Statement__
 call s:h("Statement",     {"fg": s:norm, "gui": "bold"})
