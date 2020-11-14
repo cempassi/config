@@ -2,7 +2,7 @@
 
 let g:floaterm_rootmarkers = ['.project', '.git', '.hg', '.svn', '.root', '.gitignore'] 
 
-let g:floaterm_autoclose = 1
+let g:floaterm_autoclose = 0
 
 let g:floaterm_gitcommit = 'vsplit'
 

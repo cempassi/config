@@ -28,19 +28,19 @@ endif
 
 let s:black           = { "gui": "#222222", "cterm": "0"   }
 let s:medium_gray     = { "gui": "#767676", "cterm": "243" }
-let s:white           = { "gui": "#F1F1F1", "cterm": "15"  }
+let s:white           = { "gui": "#F5F5F5", "cterm": "15"  }
 let s:light_black     = { "gui": "#424242", "cterm": "8"   }
 let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
 let s:subtle_black    = { "gui": "#303030", "cterm": "236" }
 let s:light_gray      = { "gui": "#999999", "cterm": "249" }
 let s:lighter_gray    = { "gui": "#CCCCCC", "cterm": "251" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "251" }
-let s:dark_red        = { "gui": "#752000", "cterm": "1"   }
-let s:light_red       = { "gui": "#C35B5B", "cterm": "1"   }
-let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:light_blue      = { "gui": "#98B4C4", "cterm": "153" }
-let s:dark_cyan       = { "gui": "#011940", "cterm": "6"   }
-let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
+let s:dark_red        = { "gui": "#bb010b", "cterm": "1"   }
+let s:light_red       = { "gui": "#b23a48", "cterm": "1"   }
+let s:dark_blue       = { "gui": "#005CA3 ", "cterm": "4"   }
+let s:light_blue      = { "gui": "#339CFF", "cterm": "153" }
+let s:dark_cyan       = { "gui": "#005d5d", "cterm": "6"   }
+let s:light_cyan      = { "gui": "#48bfe3", "cterm": "14"  }
 let s:dark_green      = { "gui": "#71A253", "cterm": "2"   }
 let s:light_green     = { "gui": "#aaf683", "cterm": "10"  }
 let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
@@ -173,7 +173,6 @@ hi! link String           Constant
 hi! link Directory        Constant
 
 " __Title__
-"call s:h("Title",         {"fg": {"gui": "#caf0f8", "cterm":"#caf0f8"} } )
 call s:h("Title",         {"fg": { "gui": "#caf0f8", "cterm": "45"   }} )
 
 " __Statement__
@@ -203,6 +202,7 @@ hi! link qfLineNr         NonText
 " __Search__
 call s:h("Search",        {"bg": s:selection, "fg": s:selection_fg})
 call s:h("IncSearch",     {"bg": s:selection, "fg": s:selection_fg, "gui": "bold"})
+
 
 " __Visual__
 call s:h("Visual",        {"bg": s:visual})
@@ -276,11 +276,6 @@ hi link diffRemoved       DiffDelete
 hi link diffAdded         DiffAdd
 
 " Signify, git-gutter
-call s:h("SignifySignAdd",  {"fg": s:ok})
-call s:h("SignifySignDelete",  {"fg": s:error})
-call s:h("SignifySignChange",  {"fg": s:yellow})
-hi link SignifySignDelete           LineNr
-hi link SignifySignChange           LineNr
 hi link GitGutterAdd                LineNr
 hi link GitGutterDelete             LineNr
 hi link GitGutterChange             LineNr

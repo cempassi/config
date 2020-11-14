@@ -1,4 +1,4 @@
-alias ls="exa -l --icons"
+alias ls="exa -1 --icons"
 
 alias status="git status"
 
