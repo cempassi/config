@@ -83,10 +83,10 @@ use_thin_strokes: true
 
 shell:
   program: /bin/zsh
-  #args:
-  #  - -l
-  #  - -c
-  #  - "tmux attach -t Main || tmux new -s Main"
+  args:
+    - -l
+    - -c
+    - "tmux attach -t Main || tmux new -s Main"
 
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
