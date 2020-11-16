@@ -15,14 +15,3 @@ endfunction
 let g:asyncrun_runner = get(g:, 'asyncrun_runner', {})
 let g:asyncrun_runner.floaterm = function('s:runner_proc')
 let g:asynctasks_term_pos="floaterm"
-
-"Make shortcuts
-nnoremap <silent><leader>mk :AsyncTask build<cr>
-nnoremap <silent><leader>mc :AsyncTask clean<cr>
-nnoremap <silent><leader>mr :AsyncTask run<cr>
-nnoremap <silent><leader>mt :AsyncTask test<cr>
-nnoremap <silent><leader>me :AsyncTask -e<cr><cr>
-nnoremap <silent><leader>mE :AsyncTask -E<cr><cr>
-nnoremap <silent><leader>mn :cn<CR>
-nnoremap <silent><leader>mp :cp<CR>
-nnoremap <silent><leader>mw :cw<CR>

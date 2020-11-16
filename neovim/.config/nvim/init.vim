@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/14 03:41:36 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/16 08:13:30 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -20,7 +20,6 @@ if &compatible
 	set nocompatible
 endif
 
-
 " General settings
 scriptencoding UTF-8
 set encoding=UTF-8
@@ -31,7 +30,7 @@ set showcmd
 set hlsearch
 set hidden
 set mouse=a
-set scrolloff=5
+set scrolloff=10
 set textwidth=80
 set splitbelow
 set ignorecase
@@ -99,7 +98,7 @@ au FocusGained * :checktime
 " Map leader key
 let mapleader=" "
 
-"Persistent undo
+" Persistent undo
 " Keep undo history across sessions by storing it in a file
 if has('persistent_undo')
 	" define a path to store persistent_undo files.
@@ -162,7 +161,7 @@ autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
 let g:colorcoder_enable_filetypes=['c', 'cpp', 'python']
 
-"get syntax group
+" Get syntax group
 map <f10> :echo "hi<" . synidattr(synid(line("."),col("."),1),"name") . '> trans<'
 			\ . synidattr(synid(line("."),col("."),0),"name") . "> lo<"
 			\ . synidattr(synidtrans(synid(line("."),col("."),1)),"name") . ">"<cr>
@@ -200,19 +199,12 @@ au BufReadPost *
 " Omnisharp configuration
 let g:OmniSharp_server_stdio = 1
 
-" Clap mappings
-let g:clap_layout = { 'relative': 'editor' }
-
-
 "" Devicons
 let g:webdevicons_enable_startify = 1
-let g:webdevicons_enable_denite = 1
 
 if exists("g:loaded_webdevicons")
 	call webdevicons#refresh()
 endif
-
-nnoremap <Leader>a <cmd>lua require'telescope.builtin'.grep_string{}<CR>
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank{"Substract", 200}
 
@@ -229,5 +221,6 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()

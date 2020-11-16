@@ -26,4 +26,6 @@ return require('packer').startup(function()
 	use 'skywind3000/asyncrun.vim'
 	use 'honza/vim-snippets'
 	use 'airblade/vim-gitgutter'
+
+	--use 'cempassi/neogit'
 	end)

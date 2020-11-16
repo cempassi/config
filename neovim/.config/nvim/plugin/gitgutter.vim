@@ -13,24 +13,3 @@ let g:gitgutter_sign_priority = 5
 highlight link GitGutterAdd    DiffAdd
 highlight link GitGutterChange DiffChange
 highlight link GitGutterDelete DiffDelete
-
-"Toggle Gitgutter and line highlighting
-nmap <leader>ge :GitGutterToggle<cr>
-nmap <leader>gh :GitGutterLineHighlightsToggle<cr>
-
-"Preview hunk
-nmap <leader>g? <Plug>(GitGutterPreviewHunk)
-
-"Stage or undo hunk
-nmap <leader>gs <Plug>(GitGutterStageHunk)
-nmap <leader>gu <Plug>(GitGutterUndoHunk)
-
-"Move between hunks
-nmap <leader>gj <Plug>(GitGutterNextHunk)
-nmap <leader>gk <Plug>(GitGutterPrevHunk)
-
-"Hunk text object
-omap ih <Plug>(GitGutterTextObjectInnerPending)
-omap ah <Plug>(GitGutterTextObjectOuterPending)
-xmap ih <Plug>(GitGutterTextObjectInnerVisual)
-xmap ah <Plug>(GitGutterTextObjectOuterVisual)

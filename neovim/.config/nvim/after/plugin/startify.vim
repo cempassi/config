@@ -9,6 +9,3 @@ let g:startify_session_sort = 1
 
 
 autocmd User Startified setlocal buflisted
-
-nmap <leader>sl :SLoad<cr>
-nmap <leader>ss :SSave!<cr>
