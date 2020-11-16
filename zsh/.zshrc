@@ -47,3 +47,6 @@ eval "$(pyenv virtualenv-init -)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+
