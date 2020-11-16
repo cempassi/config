@@ -5,6 +5,7 @@ return require('packer').startup(function()
 
 	use {'neoclide/coc.nvim', branch = 'release'}
 	use {'liuchengxu/vim-clap', run = 'make'}
+	use {'ms-jpq/chadtree', branch = 'chad'}
 	use 'vn-ki/coc-clap'
 	use 'pbondoer/vim-42header'
 	use 'vim-airline/vim-airline'
@@ -15,7 +16,7 @@ return require('packer').startup(function()
 	use 'vimwiki/vimwiki'
 	use 'junegunn/goyo.vim'
 	use 'wellle/targets.vim'
-	use 'justinmk/vim-dirvish.git'
+	--use 'justinmk/vim-dirvish.git'
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'nvim-lua/telescope.nvim'

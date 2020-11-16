@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/16 08:13:30 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/16 08:49:21 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -19,6 +19,9 @@ endif
 if &compatible
 	set nocompatible
 endif
+
+" Map leader key
+let mapleader=" "
 
 " General settings
 scriptencoding UTF-8
@@ -46,8 +49,7 @@ set autowrite
 set autowriteall
   
 "" Plugin Management
-"" Required:
-
+lua require('init')
 lua require('plugins')
 
 " Define base syntax
@@ -95,8 +97,6 @@ endif
 set autoread
 au FocusGained * :checktime
 
-" Map leader key
-let mapleader=" "
 
 " Persistent undo
 " Keep undo history across sessions by storing it in a file
