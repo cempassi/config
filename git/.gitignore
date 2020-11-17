@@ -15,6 +15,7 @@
 *.swo
 *.swn
 .tags
+.tasks
 
 # Packages #
 ############
@@ -27,6 +28,7 @@
 *.tar
 *.zip
 *.clangd
+Cargo.lock
 
 # OS generated files #
 ######################

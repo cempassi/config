@@ -1,23 +1,33 @@
 [user]
 
 	name = Cedric M'Passi
-	email = cedricmpassi@gmail.com
+	email = cempassi@student.42.fr
+	signingkey = 6BA2609E132F914E514B5AE960DAF37FBF3B541F
 
 [core]
 
 	excludesFile = ~/.dotfiles/git/.gitignore
-	pager = cat
+	pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
 
 [pull]
-
 	rebase = false
 
 [diff]
-
 	tool = nvimdiff
 
 [difftool "nvimdiff"]
-
 	cmd = "nvim -d -u ~/.vimrc \"$LOCAL\" \"$REMOTE\""
 
 [format]
@@ -41,7 +51,9 @@
 	new = green # additions
 
 [color "status"]
-
 	added = green
 	changed = blue
 	untracked = red
+
+[commit]
+	gpgsign = true
