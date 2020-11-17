@@ -4,6 +4,23 @@ function! s:check_back_space() abort
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Tab completion
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -11,9 +28,6 @@ let g:coc_snippet_next = '<leader>sn'
 let g:coc_snippet_prev = '<leader>sp'
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Highlight the symbol and its references when holding the cursor.
-nmap <silent> <leader>* :call CocActionAsync('highlight')<cr>
 
 "Completion menu hilighting
 highlight Pmenu ctermbg=16 ctermfg=111 
@@ -31,6 +45,9 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort

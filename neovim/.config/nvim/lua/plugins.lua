@@ -4,7 +4,10 @@ return require('packer').startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 
 	use {'neoclide/coc.nvim', branch = 'release'}
+
 	use {'liuchengxu/vim-clap', run = 'make'}
+
+	-- File tree
 	use {'ms-jpq/chadtree', branch = 'chad'}
 	use 'vn-ki/coc-clap'
 	use 'pbondoer/vim-42header'
@@ -27,6 +30,7 @@ return require('packer').startup(function()
 	use 'skywind3000/asyncrun.vim'
 	use 'honza/vim-snippets'
 	use 'airblade/vim-gitgutter'
+	use 'nvim-treesitter/playground'
 
 	--use 'cempassi/neogit'
 	end)

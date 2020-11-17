@@ -117,18 +117,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr> :echom ".vimrc sourced successfully!"<c
 "delete previous hilighting turn of hilighting
 nnoremap <silent><leader>nh :let @/ = ""<cr>
 
-"Folding
-nnoremap <silent> <Leader>z0 :set foldlevel=0<CR>
-nnoremap <silent> <Leader>z1 :set foldlevel=1<CR>
-nnoremap <silent> <Leader>z2 :set foldlevel=2<CR>
-nnoremap <silent> <Leader>z3 :set foldlevel=3<CR>
-nnoremap <silent> <Leader>z4 :set foldlevel=4<CR>
-nnoremap <silent> <Leader>z5 :set foldlevel=5<CR>
-nnoremap <silent> <Leader>z6 :set foldlevel=6<CR>
-nnoremap <silent> <Leader>z7 :set foldlevel=7<CR>
-nnoremap <silent> <Leader>z8 :set foldlevel=8<CR>
-nnoremap <silent> <Leader>z9 :set foldlevel=9<CR>
-
 " Goyo
 nnoremap <silent> <leader>zz :Goyo<cr>
 
@@ -148,29 +136,17 @@ nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
 " Formating
 nmap <silent> <leader>cf <Plug>(coc-format)
 
-" Tab completion
-inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<TAB>" :
-			\ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 " Apply AutoFix to problem on the current line.
 nmap <silent> <leader>ef  <Plug>(coc-fix-current)
 
 " Symbol renaming.
 nmap <silent> <leader>cn <Plug>(coc-rename)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 " Rust InlayHints togle
 nmap <silent> <leader>ch :CocCommand rust-analyzer.toggleInlayHints<cr>
+
+" Highlight the symbol and its references when holding the cursor.
+nmap <silent> <leader>* :call CocActionAsync('highlight')<cr>
 
 " Git
 nnoremap <silent> <leader>d<leader> :Clap git_diff_files<cr>
@@ -216,6 +192,7 @@ nnoremap <silent> <leader>fj :Clap jumps<cr>
 " Floaterm 
 nnoremap   <silent>   <leader>tc    :FloatermNew<CR>
 tnoremap   <silent>   <leader>tc    <C-\><C-n>:FloatermNew<CR>
+tnoremap   <silent>   <leader>q    <C-\><C-n>:FloatermKill<CR>
 nnoremap   <silent>   <leader>tp    :FloatermPrev<CR>
 tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
 nnoremap   <silent>   <leader>tn    :FloatermNext<CR>
