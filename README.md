@@ -40,8 +40,8 @@ I'm always looking for a better way to use neovim and stole ideas in other
 people's configurations, watch content, read blogposts. So thanks to everyone taking the time to
 share, special mentions:
 
-[Greg Hurell](https://github.com/wincent/wincent)
-[TJDeVries](https://www.twitch.tv/teej_dv)
-[The Primagen](https://www.youtube.com/c/ThePrimeagen)
-[ChrisAtMachine](https://www.youtube.com/playlist?list=PLhoH5vyxr6QqPtKMp03pcJd_Vg8FZ0rtg)
-[Vim Conf](https://www.youtube.com/playlist?list=PLcTu2VkAIIWzD2kicFNHN2c35XQCeZdsv)
+- [Greg Hurell](https://github.com/wincent/wincent)
+- [TJDeVries](https://www.twitch.tv/teej_dv)
+- [The Primagen](https://www.youtube.com/c/ThePrimeagen)
+- [ChrisAtMachine](https://www.youtube.com/playlist?list=PLhoH5vyxr6QqPtKMp03pcJd_Vg8FZ0rtg)
+- [Vim Conf](https://www.youtube.com/playlist?list=PLcTu2VkAIIWzD2kicFNHN2c35XQCeZdsv)
