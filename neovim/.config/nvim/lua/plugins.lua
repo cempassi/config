@@ -6,6 +6,7 @@ return require('packer').startup(function()
 	use {'neoclide/coc.nvim', branch = 'release'}
 
 	use {'liuchengxu/vim-clap', run = 'make'}
+	use 'bfredl/nvim-luadev'
 
 	-- File tree
 	use {'ms-jpq/chadtree', branch = 'chad'}

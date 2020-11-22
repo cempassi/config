@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/16 10:14:18 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/17 16:11:49 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -230,3 +230,7 @@ EOF
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+
+"Lua eval
+
+nmap <leader>le <Plug>(Luadev-RunLine)
