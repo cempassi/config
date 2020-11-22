@@ -1,11 +1,9 @@
 [user]
-
 	name = Cedric M'Passi
 	email = cempassi@student.42.fr
 	signingkey = 6BA2609E132F914E514B5AE960DAF37FBF3B541F
 
 [core]
-
 	excludesFile = ~/.dotfiles/git/.gitignore
 	pager = delta
 
@@ -57,3 +55,5 @@
 
 [commit]
 	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
