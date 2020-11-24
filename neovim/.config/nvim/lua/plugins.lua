@@ -3,35 +3,54 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 
+	-- Status bar
+	use 'vim-airline/vim-airline'
+	use 'vim-airline/vim-airline-themes'
+
+	-- Completion
 	use {'neoclide/coc.nvim', branch = 'release'}
 
+	-- Floating Lists
 	use {'liuchengxu/vim-clap', run = 'make'}
-	use 'bfredl/nvim-luadev'
-
-	-- File tree
-	use {'ms-jpq/chadtree', branch = 'chad'}
 	use 'vn-ki/coc-clap'
-	use 'pbondoer/vim-42header'
-	use 'vim-airline/vim-airline'
-	use 'tpope/vim-fugitive'
-	use 'tpope/vim-git'
-	use 'liuchengxu/vim-which-key'
-	use 'mhinz/vim-startify'
-	use 'vimwiki/vimwiki'
-	use 'junegunn/goyo.vim'
-	use 'wellle/targets.vim'
-	--use 'justinmk/vim-dirvish.git'
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'nvim-lua/telescope.nvim'
-	use 'vim-airline/vim-airline-themes'
-	use 'norcalli/nvim-colorizer.lua'
+
+	-- File Navigation
+	use {'ms-jpq/chadtree', branch = 'chad'}
+	use 'justinmk/vim-dirvish.git'
+
+	-- Git integration
+	use 'tpope/vim-fugitive'
+	use 'tpope/vim-git'
+	use 'airblade/vim-gitgutter'
+	use 'rhysd/git-messenger.vim'
+
+	-- Floating terminal
 	use 'voldikss/vim-floaterm'
+
+	-- Async tasks
 	use 'skywind3000/asynctasks.vim'
 	use 'skywind3000/asyncrun.vim'
-	use 'honza/vim-snippets'
-	use 'airblade/vim-gitgutter'
+
+	-- Startup
+	use 'mhinz/vim-startify'
+	use 'dstein64/vim-startuptime'
+
+	-- Lua development
+	use 'bfredl/nvim-luadev'
 	use 'nvim-treesitter/playground'
+
+	-- Misc
+	use 'pbondoer/vim-42header'
+	use 'liuchengxu/vim-which-key'
+	--use 'vimwiki/vimwiki'
+	use 'wincent/corpus'
+	use 'junegunn/goyo.vim'
+	use 'wellle/targets.vim'
+	use 'norcalli/nvim-colorizer.lua'
+	use 'honza/vim-snippets'
 
 	--use 'cempassi/neogit'
 	end)
