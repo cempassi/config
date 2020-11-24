@@ -222,4 +222,7 @@ vnoremap <Leader>cm <Esc>:call CommentMark(1,'<','>')<CR>
 vnoremap <Leader>C <Esc>:call CommentMark(0,'<','>')<CR>
 
 " CHADtree
-nnoremap - :CHADopen<cr>
+nnoremap _ :CHADopen<cr>
+
+" Corpus notes
+nmap <leader>n <Plug>(Corpus)
