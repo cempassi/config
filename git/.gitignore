@@ -17,6 +17,29 @@
 .tags
 .tasks
 
+# Local configuration #
+#######################
+.env.local
+.env.*.local
+
+# Log files #
+#############
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files #
+################################
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.clang-format
+compile_commands.json
+
 # Packages #
 ############
 *.7z
@@ -29,6 +52,7 @@
 *.zip
 *.clangd
 Cargo.lock
+node_modules
 
 # OS generated files #
 ######################
@@ -41,3 +65,7 @@ Cargo.lock
 ehthumbs.db
 Thumbs.db
 .python-version
+
+# Never push #
+##############
+secrets.zsh
