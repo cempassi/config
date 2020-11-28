@@ -15,7 +15,7 @@ return require('packer').startup(function()
 	use 'vn-ki/coc-clap'
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/plenary.nvim'
-	use 'nvim-lua/telescope.nvim'
+	--use 'nvim-lua/telescope.nvim'
 
 	-- File Navigation
 	use {'ms-jpq/chadtree', branch = 'chad'}
