@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/24 09:26:08 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/26 10:30:09 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -47,6 +47,7 @@ set shortmess=atAOI
 set autoread
 set autowrite
 set autowriteall
+set guicursor=
   
 "" Plugin Management
 lua require('init')
@@ -147,8 +148,8 @@ set backspace=indent,eol,start
 
 " Default Indentation
 set autoindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 set updatetime=300
 
@@ -213,4 +214,6 @@ set foldexpr=nvim_treesitter#foldexpr()
 
 "Lua eval
 
+" Replace netrw
+let g:loaded_netrwPlugin = 1
 nmap <leader>le <Plug>(Luadev-RunLine)
