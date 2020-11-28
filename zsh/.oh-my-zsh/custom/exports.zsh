@@ -23,3 +23,5 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 export KEYTIMEOUT=1
 
 export GPG_TTY=${TTY}
+
+source ~/.oh-my-zsh/custom/secrets.zsh
