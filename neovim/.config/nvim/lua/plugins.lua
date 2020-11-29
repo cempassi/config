@@ -11,8 +11,6 @@ return require('packer').startup(function()
 	use {'neoclide/coc.nvim', branch = 'release'}
 
 	-- Floating Lists
-	use {'liuchengxu/vim-clap', run = 'make'}
-	use 'vn-ki/coc-clap'
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/plenary.nvim'
 	--use 'nvim-lua/telescope.nvim'
@@ -35,7 +33,7 @@ return require('packer').startup(function()
 	use 'skywind3000/asyncrun.vim'
 
 	-- Startup
-	use 'mhinz/vim-startify'
+  use 'glepnir/dashboard-nvim'
 	use 'dstein64/vim-startuptime'
 
 	-- Lua development
@@ -52,5 +50,4 @@ return require('packer').startup(function()
 	use 'norcalli/nvim-colorizer.lua'
 	use 'honza/vim-snippets'
 
-	--use 'cempassi/neogit'
 	end)

@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/26 10:30:09 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/29 03:29:23 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -217,3 +217,4 @@ set foldexpr=nvim_treesitter#foldexpr()
 " Replace netrw
 let g:loaded_netrwPlugin = 1
 nmap <leader>le <Plug>(Luadev-RunLine)
+let g:dashboard_default_executive ='telescope'
