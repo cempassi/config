@@ -33,7 +33,7 @@
 
 [alias]
 
-	ls = log --relative-date --graph --abbrev-commit --decorate
+	ls = log -n 20 --relative-date --graph --abbrev-commit --decorate
 
 [color "branch"]
 
