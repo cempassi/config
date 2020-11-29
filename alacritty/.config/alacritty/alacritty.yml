@@ -30,16 +30,16 @@ background_opacity: 1.0
 
 font:
   normal:
-    family: "Hasklug Nerd Font Mono"
+    family: "Hasklig Light"
     style: Light
   bold:
-    family: "Hasklug Nerd Font Mono"
+    family: "Hasklug Light"
     style: Medium
   italic:
-    family: "Hasklug Nerd Font Mono"
+    family: "Hasklug Light"
     style: Italic
   bold_italic:
-    family: "Hasklug Nerd Font Mono"
+    family: "Hasklug Light"
     style: Bold Italic
 
   # Point size
