@@ -38,7 +38,7 @@ let s:lighter_gray    = { "gui": "#CCCCCC", "cterm": "251" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "251" }
 let s:dark_red        = { "gui": "#bb010b", "cterm": "1"   }
 let s:light_red       = { "gui": "#b23a48", "cterm": "1"   }
-let s:subtle_blue 		= { "gui": "#9EC5E6", "cterm": "1"   }
+let s:subtle_blue 	  = { "gui": "#9EC5E6", "cterm": "1"   }
 let s:dark_blue       = { "gui": "#005CA3 ", "cterm": "4"  }
 let s:light_blue      = { "gui": "#339CFF", "cterm": "153" }
 let s:lightest_blue   = { "gui": "#caf0f8", "cterm": "45"  }
@@ -66,9 +66,9 @@ if &background == "dark"
   let s:visual           = s:lighter_black
   let s:cursor_line      = s:subtle_black
   let s:constant         = s:light_blue
-	let s:type             = s:dark_green
-	let s:title            = s:lightest_blue
-	let s:preproc          = s:subtle_blue
+  let s:type             = s:dark_green
+  let s:title            = s:lightest_blue
+  let s:preproc          = s:subtle_blue
   let s:comment          = s:light_gray
   let s:selection        = s:light_blue
   let s:selection_fg     = s:black
@@ -159,8 +159,6 @@ call s:h("PreProc",      {"fg": s:preproc})
 hi! link Define           PreProc
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
-hi! link rustDerive 			PreProc
-hi! link rustDeriveTrait 	PreProc
 
 " __Type__
 call s:h("Type",      {"fg": s:type})
@@ -192,16 +190,15 @@ hi! link Directory        Constant
 call s:h("Title",         {"fg": s:lightest_blue} )
 
 " __Statement__
-call s:h("Statement",     {"fg": s:norm, "gui": "bold"})
+call s:h("Statement",     {"fg": s:keyword, "gui": "bold"})
 hi! link Include          Statement
-hi! link Conditonal       Statement
 hi! link Label            Statement
 hi! link Exception        Statement
 
 " __Keyword__
 call s:h("Keyword",     {"fg": s:keyword, "gui": "bold"})
 hi! link Repeat           Keyword
-hi! link rustRepeat 			Repeat
+hi! link Conditonal       Keyword
 
 " __ErrorMsg__
 call s:h("ErrorMsg",      {"fg": s:error})
@@ -301,6 +298,13 @@ hi link GitGutterAdd                LineNr
 hi link GitGutterDelete             LineNr
 hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
+
+" Rust
+hi! link rustSigil        Noise
+hi! link rustModPath      Noise
+hi! link rustRepeat 			Repeat
+hi! link rustDerive 			PreProc
+hi! link rustDeriveTrait 	PreProc
 
 hi link jsFlowTypeKeyword Statement
 hi link jsFlowImportType Statement
