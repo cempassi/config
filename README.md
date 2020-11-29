@@ -30,10 +30,10 @@ possible with as little as i can. So there's a core logic to my setup that I gen
 - Explore the default possibilities before looking for a plugin
 - Personnal mapping taking more keystrokes than regular one are dismissed...
 - But avoid using ctrl as much as possible
-- Have one <leader> + key for a group of functionalites, not by plugin
+- Have one `<leader> + key` for a group of functionalites, not by plugin
 - Mappings have to play well with vim's modal logic
 - Be as conservative as possible with plugins that I keep
 
-# Credit
+## Credit
 
 Deep thanks to the vim/neovim community.

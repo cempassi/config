@@ -39,6 +39,7 @@ return require('packer').startup(function()
 	-- Lua development
 	use 'bfredl/nvim-luadev'
 	use 'nvim-treesitter/playground'
+  use {'glacambre/firenvim'}
 
 	-- Misc
 	use 'pbondoer/vim-42header'
