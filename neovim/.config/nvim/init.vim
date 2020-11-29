@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/29 03:29:23 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/11/29 20:38:07 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -23,12 +23,13 @@ endif
 " Map leader key
 let mapleader=" "
 
+
 " General settings
 scriptencoding UTF-8
 set encoding=UTF-8
 let &packpath = &runtimepath
 set lazyredraw
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 set showcmd
 set hlsearch
 set hidden
@@ -48,14 +49,21 @@ set autoread
 set autowrite
 set autowriteall
 set guicursor=
+
+" Define base syntax
+filetype plugin indent on
+syntax on 
+
+set guifont=Hasklig\ Light:h15
+set termguicolors
+colorscheme deep-sea
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
   
 "" Plugin Management
 lua require('init')
 lua require('plugins')
 
-" Define base syntax
-filetype plugin indent on
-syntax on 
 
 "Save all the files, all the times
 augroup save
@@ -63,13 +71,9 @@ augroup save
   au FocusLost * wall
 augroup END
 
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
 lua require'colorizer'.setup()
 
-colorscheme deep-sea
 
 "python configuration
 let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
@@ -218,3 +222,5 @@ set foldexpr=nvim_treesitter#foldexpr()
 let g:loaded_netrwPlugin = 1
 nmap <leader>le <Plug>(Luadev-RunLine)
 let g:dashboard_default_executive ='telescope'
+let g:neovide_fullscreen=v:true
+highlight link TelescopeMatching Question
