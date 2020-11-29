@@ -31,25 +31,28 @@ let s:medium_gray     = { "gui": "#767676", "cterm": "243" }
 let s:white           = { "gui": "#F5F5F5", "cterm": "15"  }
 let s:light_black     = { "gui": "#424242", "cterm": "8"   }
 let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
+let s:lightest_black  = { "gui": "#1F262D", "cterm": "20"  }
 let s:subtle_black    = { "gui": "#303030", "cterm": "236" }
 let s:light_gray      = { "gui": "#999999", "cterm": "249" }
 let s:lighter_gray    = { "gui": "#CCCCCC", "cterm": "251" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "251" }
 let s:dark_red        = { "gui": "#bb010b", "cterm": "1"   }
 let s:light_red       = { "gui": "#b23a48", "cterm": "1"   }
-let s:dark_blue       = { "gui": "#005CA3 ", "cterm": "4"   }
+let s:subtle_blue 		= { "gui": "#9EC5E6", "cterm": "1"   }
+let s:dark_blue       = { "gui": "#005CA3 ", "cterm": "4"  }
 let s:light_blue      = { "gui": "#339CFF", "cterm": "153" }
+let s:lightest_blue   = { "gui": "#caf0f8", "cterm": "45"  }
 let s:dark_cyan       = { "gui": "#005d5d", "cterm": "6"   }
 let s:light_cyan      = { "gui": "#48bfe3", "cterm": "14"  }
-let s:dark_green      = { "gui": "#71A253", "cterm": "2"   }
-let s:light_green     = { "gui": "#aaf683", "cterm": "10"  }
+let s:dark_green      = { "gui": "#74AA80", "cterm": "2"   }
+let s:light_green     = { "gui": "#AAf683", "cterm": "10"  }
 let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
 let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
 let s:light_yellow    = { "gui": "#F3E430", "cterm": "11"  }
-let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
+let s:dark_yellow     = { "gui": "#FED485", "cterm": "3"   }
 
 if &background == "dark"
-  let s:bg               = s:black
+  let s:bg               = s:lightest_black
   let s:bg_subtle        = s:light_black
   let s:bg_very_subtle   = s:subtle_black
   let s:norm             = s:lighter_gray
@@ -63,12 +66,16 @@ if &background == "dark"
   let s:visual           = s:lighter_black
   let s:cursor_line      = s:subtle_black
   let s:constant         = s:light_blue
+	let s:type             = s:dark_green
+	let s:title            = s:lightest_blue
+	let s:preproc          = s:subtle_blue
   let s:comment          = s:light_gray
   let s:selection        = s:light_blue
   let s:selection_fg     = s:black
   let s:ok               = s:light_green
   let s:warning          = s:yellow
   let s:error            = s:light_red
+	let s:keyword 				 = s:dark_yellow
 else
   let s:bg               = s:white
   let s:bg_subtle        = s:lighter_gray
@@ -97,6 +104,7 @@ unlet s:medium_gray
 unlet s:white
 unlet s:light_black
 unlet s:lighter_black
+unlet s:lightest_black
 unlet s:subtle_black
 unlet s:light_gray
 unlet s:lighter_gray
@@ -128,18 +136,15 @@ endfunction
 
 " __Normal__
 if has("gui")
+    call s:h("Normal",    {"guifg": s:norm, "guibg": s:bg})
+    call s:h("Cursor",    {"guifg": s:bg, "guibg": s:norm})
+else
     call s:h("Normal",    {"fg": s:norm, "bg": s:bg})
     call s:h("Cursor",    {"fg": s:bg, "bg": s:norm})
-else
-    call s:h("Normal",    {"fg": s:norm})
-    hi! link Cursor       Identifier
 endif
+
 hi! link Identifier       Normal
 hi! link Function         Identifier
-hi! link Type             Normal
-hi! link StorageClass     Type
-hi! link Structure        Type
-hi! link Typedef          Type
 hi! link Special          Normal
 hi! link SpecialChar      Special
 hi! link Tag              Special
@@ -147,10 +152,21 @@ hi! link Delimiter        Special
 hi! link SpecialComment   Special
 hi! link Debug            Special
 hi! link VertSplit        Normal
-hi! link PreProc          Normal
+
+
+" __PreProc__
+call s:h("PreProc",      {"fg": s:preproc})
 hi! link Define           PreProc
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
+hi! link rustDerive 			PreProc
+hi! link rustDeriveTrait 	PreProc
+
+" __Type__
+call s:h("Type",      {"fg": s:type})
+hi! link StorageClass     Type
+hi! link Structure        Type
+hi! link Typedef          Type
 
 " __Operator__
 call s:h("Noise",         {"fg": s:norm_subtle, "gui": "NONE"})
@@ -173,23 +189,28 @@ hi! link String           Constant
 hi! link Directory        Constant
 
 " __Title__
-call s:h("Title",         {"fg": { "gui": "#caf0f8", "cterm": "45"   }} )
+call s:h("Title",         {"fg": s:lightest_blue} )
 
 " __Statement__
 call s:h("Statement",     {"fg": s:norm, "gui": "bold"})
 hi! link Include          Statement
 hi! link Conditonal       Statement
-hi! link Repeat           Statement
 hi! link Label            Statement
-hi! link Keyword          Statement
 hi! link Exception        Statement
+
+" __Keyword__
+call s:h("Keyword",     {"fg": s:keyword, "gui": "bold"})
+hi! link Repeat           Keyword
+hi! link rustRepeat 			Repeat
 
 " __ErrorMsg__
 call s:h("ErrorMsg",      {"fg": s:error})
 hi! link Error            ErrorMsg
 hi! link Question         ErrorMsg
+
 " __WarningMsg__
 call s:h("WarningMsg",    {"fg": s:warning})
+
 " __MoreMsg__
 call s:h("MoreMsg",       {"fg": s:norm_subtle, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg          MoreMsg
@@ -202,7 +223,6 @@ hi! link qfLineNr         NonText
 " __Search__
 call s:h("Search",        {"bg": s:selection, "fg": s:selection_fg})
 call s:h("IncSearch",     {"bg": s:selection, "fg": s:selection_fg, "gui": "bold"})
-
 
 " __Visual__
 call s:h("Visual",        {"bg": s:visual})
@@ -250,8 +270,9 @@ call s:h("StatusLineWarning", {"gui": "underline", "bg": s:bg, "fg": s:warning})
 call s:h("Pmenu",         {"fg": s:norm, "bg": s:cursor_line})
 hi! link PmenuSbar        Pmenu
 hi! link PmenuThumb       Pmenu
+
 " __PmenuSel__
-call s:h("PmenuSel",      {"fg": s:norm, "bg": s:cursor_line, "gui": "bold"})
+call s:h("PmenuSel",      {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold"})
 
 hi! link TabLine          Normal
 hi! link TabLineSel       Keyword
