@@ -34,14 +34,6 @@ possible with as little as i can. So there's a core logic to my setup that I gen
 - Mappings have to play well with vim's modal logic
 - Be as conservative as possible with plugins that I keep
 
-# Sources
+# Credit
 
-I'm always looking for a better way to use neovim and stole ideas in other
-people's configurations, watch content, read blogposts. So thanks to everyone taking the time to
-share, special mentions:
-
-- [Greg Hurell](https://github.com/wincent/wincent)
-- [TJDeVries](https://www.twitch.tv/teej_dv)
-- [The Primagen](https://www.youtube.com/c/ThePrimeagen)
-- [ChrisAtMachine](https://www.youtube.com/playlist?list=PLhoH5vyxr6QqPtKMp03pcJd_Vg8FZ0rtg)
-- [Vim Conf](https://www.youtube.com/playlist?list=PLcTu2VkAIIWzD2kicFNHN2c35XQCeZdsv)
+Deep thanks to the vim/neovim community.
