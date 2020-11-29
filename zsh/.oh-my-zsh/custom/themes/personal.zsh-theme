@@ -3,17 +3,17 @@
 #Vim mode color Autoupdate
 
 function zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/green}/(main|viins)/blue}"
+    VIMODE="${${KEYMAP/vicmd/196}/(main|viins)/75}"
     zle reset-prompt
 }
 
 zle -N zle-keymap-select
 
-PERSONAL_DATE="%{$fg[yellow]%}%D %T%{$reset_color%}"
+PERSONAL_DATE="%F{222}%D %T%f"
 
-PROMPT='%{$fg[$VIMODE]%}[%c] %{$reset_color%}'
+PROMPT='%F{$VIMODE}[%c] %f'
 
-RPROMPT='$(git_prompt_status)%{$reset_color%} %{$fg[cyan]%}$(git_prompt_info)%{$reset_color%} [$PERSONAL_DATE]'
+RPROMPT='$(git_prompt_status)%{$reset_color%} %F{167}$(git_prompt_info)%f [$PERSONAL_DATE]'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""

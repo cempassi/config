@@ -24,4 +24,6 @@ export KEYTIMEOUT=1
 
 export GPG_TTY=${TTY}
 
+export LS_COLORS="$(vivid generate solarized-dark)"
+
 source ~/.oh-my-zsh/custom/secrets.zsh

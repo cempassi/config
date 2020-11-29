@@ -5,7 +5,7 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/Applications/bin:/usr/local/sbin:/usr/local/bin:$(getconf PATH)
+export PATH=$HOME/.luarocks/bin:$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/Applications/bin:/usr/local/sbin:/usr/local/bin:$(getconf PATH)
 
 ZSH_THEME=personal
 
