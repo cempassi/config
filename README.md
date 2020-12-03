@@ -2,6 +2,8 @@
 
 My configuration files, managed with Stow. Constant work in progress!
 
+![Capture d’écran 2020-11-29 à 16 09 05](https://user-images.githubusercontent.com/25014717/100999754-681e9f00-355d-11eb-8a6c-6fc150af1ad7.png)
+
 ## Table of contents
 
 - [General info](#general-info)
