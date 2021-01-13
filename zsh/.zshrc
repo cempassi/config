@@ -42,11 +42,11 @@ for config_file ($ZSH_CUSTOM/*.zsh(N)) source $config_file
 
 # Pyenv setup
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
