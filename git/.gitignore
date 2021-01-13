@@ -69,3 +69,4 @@ Thumbs.db
 # Never push #
 ##############
 secrets.zsh
+*.gpg
