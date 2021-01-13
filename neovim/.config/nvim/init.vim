@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/11/29 20:38:07 by cedricmpa        ###   ########.fr        "
+"    Updated: 2020/12/04 05:46:24 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -23,13 +23,12 @@ endif
 " Map leader key
 let mapleader=" "
 
-
 " General settings
 scriptencoding UTF-8
 set encoding=UTF-8
 let &packpath = &runtimepath
 set lazyredraw
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set showcmd
 set hlsearch
 set hidden
@@ -63,6 +62,7 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 "" Plugin Management
 lua require('init')
 lua require('plugins')
+lua require'colorizer'.setup()
 
 
 "Save all the files, all the times
@@ -70,10 +70,6 @@ augroup save
   au!
   au FocusLost * wall
 augroup END
-
-
-lua require'colorizer'.setup()
-
 
 "python configuration
 let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
@@ -101,7 +97,6 @@ endif
 "Reload file after external modification
 set autoread
 au FocusGained * :checktime
-
 
 " Persistent undo
 " Keep undo history across sessions by storing it in a file
@@ -224,3 +219,13 @@ nmap <leader>le <Plug>(Luadev-RunLine)
 let g:dashboard_default_executive ='telescope'
 let g:neovide_fullscreen=v:true
 highlight link TelescopeMatching Question
+
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.repl.run_last()<CR>
