@@ -193,7 +193,7 @@ nnoremap <silent> <leader>fj :Clap jumps<cr>
 nnoremap   <silent>   <leader>tc    :FloatermNew<CR>
 tnoremap   <silent>   <leader>tc    <C-\><C-n>:FloatermNew<CR>
 tnoremap   <silent>   <leader>q    <C-\><C-n>:FloatermKill<CR>
-nnoremap   <silent>   <leader>tp    :FloatermPrev<CR>
+ noremap   <silent>   <leader>tp    :FloatermPrev<CR>
 tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
 nnoremap   <silent>   <leader>tn    :FloatermNext<CR>
 tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNext<CR>

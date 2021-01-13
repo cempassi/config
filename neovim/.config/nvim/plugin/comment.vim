@@ -26,6 +26,8 @@ function! CommentStr()
     return '//'
   elseif &ft == 'lua'
     return '--'
+  elseif &ft == 'rust'
+    return '//'
   elseif &ft == 'vim'
     return '"'
   elseif &ft == 'python' || &ft == 'perl' || &ft == 'sh' || &ft == 'R'

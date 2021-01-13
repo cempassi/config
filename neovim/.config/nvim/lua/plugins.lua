@@ -12,8 +12,7 @@ return require('packer').startup(function()
 
 	-- Floating Lists
 	use 'nvim-lua/popup.nvim'
-	use 'nvim-lua/plenary.nvim'
-	--use 'nvim-lua/telescope.nvim'
+  --use 'nvim-lua/telescope.nvim'
 
 	-- File Navigation
 	use {'ms-jpq/chadtree', branch = 'chad'}
@@ -44,11 +43,19 @@ return require('packer').startup(function()
 	-- Misc
 	use 'pbondoer/vim-42header'
 	use 'liuchengxu/vim-which-key'
-	--use 'vimwiki/vimwiki'
+  use 'kyazdani42/nvim-web-devicons'
 	use 'wincent/corpus'
 	use 'junegunn/goyo.vim'
 	use 'wellle/targets.vim'
 	use 'norcalli/nvim-colorizer.lua'
 	use 'honza/vim-snippets'
+  use 'hashivim/vim-terraform'
 
+  --local development, only use at home
+  use '~/Programming/nvim/nvim-dap'
+  use '~/Programming/nvim/nvim-dap-virtual-text'
+  use '~/Programming/nvim/plenary.nvim'
+  use '~/Programming/nvim/telescope.nvim'
+  use '~/Programming/nvim/telescope-packer.nvim'
+  use '~/Programming/nvim/telescope-github.nvim'
 	end)
