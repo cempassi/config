@@ -1,0 +1,130 @@
+colors:
+  # Based on the light mode of `Nord`
+  #
+  # The assignment of colors to file types roughly follows `dircolors`
+
+  base03  :  '339CFF'
+  base02  :  '339CFF'
+  base01  :  '339CFF'
+  base00  :  'E5E9F0'
+  base0   :  '839496'
+  base1   :  '93a1a1'
+  base2   :  'eee8d5'
+  base3   :  'fdf6e3'
+
+  black:   '4C566A'
+  red:     'BF616A'
+  green:   'A3BE8C'
+  yellow:  'EBCB8B'
+  blue:    '81A1C1'
+  magenta: 'B48EAD'
+  cyan:    '339CFF'
+  white:   'ECEFF4'
+
+core:
+  regular_file:
+    foreground: base00
+
+  directory:
+    foreground: blue
+    font-style: bold
+
+  executable_file:
+    foreground: red
+    font-style: bold
+
+  symlink:
+    foreground: yellow
+    font-style: italic
+
+  broken_symlink:
+    foreground: red
+    background: base02
+    font-style: bold
+
+  missing_symlink_target:
+    foreground: red
+    background: base02
+    font-style: bold
+
+  fifo:
+    foreground: yellow
+    background: base02
+    font-style: bold
+
+  socket:
+    foreground: magenta
+    background: base02
+    font-style: bold
+
+  character_device:
+    foreground: yellow
+    background: base02
+    font-style: bold
+
+  block_device:
+    foreground: yellow
+    background: base02
+    font-style: bold
+
+  normal_text:
+    foreground: base00
+
+  other_writable:
+    {}
+
+  sticky:
+    {}
+
+  sticky_other_writable:
+    {}
+
+text:
+  special:
+    foreground: yellow
+
+  todo:
+    foreground: yellow
+    font-style: bold
+
+  licenses:
+    foreground: yellow
+
+  configuration:
+    foreground: yellow
+
+  other:
+    foreground: yellow
+
+markup:
+  foreground: yellow
+
+programming:
+  foreground: red
+
+media:
+  image:
+    foreground: yellow
+
+  audio:
+    foreground: yellow
+
+  video:
+    foreground: yellow
+    font-style: bold
+
+  fonts:
+    foreground: yellow
+
+office:
+  foreground: yellow
+
+archives:
+  foreground: red
+  font-style: bold
+
+executable:
+  foreground: yellow
+
+unimportant:
+  foreground: base1
