@@ -5,7 +5,13 @@
 export ZSH=~/.oh-my-zsh
 
 #Path export
-export PATH=$HOME/.luarocks/bin:$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/Applications/bin:/usr/local/sbin:/usr/local/bin:$(getconf PATH)
+LUA_PATH=$HOME/.luarocks/bin
+RUST_PATH=$HOME/.cargo/bin
+BREW_PATH=$HOME/.brew/bin
+LOCAL_PATH=$HOME/Applications/bin
+BASE_PATH=/usr/local/sbin:/usr/local/bin:$(getconf PATH)
+
+export PATH=$LUA_PATH:$RUST_PATH:$BREW_PATH:$LOCAL_PATH:$BASE_PATH
 
 ZSH_THEME=personal
 
@@ -25,7 +31,6 @@ plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting rust docker)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=230'
 
-
 # FROM: https://gist.github.com/ctechols/ca1035271ad134841284#gistcomment-2609770
 # On slow systems, checking the cached .zcompdump file to see if it must be
 # regenerated adds a noticable delay to zsh startup.  This little hack restricts
@@ -40,13 +45,13 @@ source $ZSH/oh-my-zsh.sh
 
 for config_file ($ZSH_CUSTOM/*.zsh(N)) source $config_file
 
-# Pyenv setup
-
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
+[ -f "/Users/cedricmpassi/.ghcup/env" ] && source "/Users/cedricmpassi/.ghcup/env" # ghcup-env
+
+# Pyenv setup
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

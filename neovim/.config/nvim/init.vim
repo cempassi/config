@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/12/04 05:46:24 by cedricmpa        ###   ########.fr        "
+"    Updated: 2021/01/14 01:44:26 by cedricmpa        ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -63,7 +63,6 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 lua require('init')
 lua require('plugins')
 lua require'colorizer'.setup()
-
 
 "Save all the files, all the times
 augroup save
@@ -147,8 +146,9 @@ set backspace=indent,eol,start
 
 " Default Indentation
 set autoindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set updatetime=300
 
