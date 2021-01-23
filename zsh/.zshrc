@@ -50,7 +50,7 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
-[ -f "/Users/cedricmpassi/.ghcup/env" ] && source "/Users/cedricmpassi/.ghcup/env" # ghcup-env
+[ -f "/Users/cempassi/.ghcup/env" ] && source "/Users/cempassi/.ghcup/env" # ghcup-env
 
 # Pyenv setup
 eval "$(pyenv init -)"
