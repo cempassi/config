@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2020/12/04 05:46:24 by cedricmpa        ###   ########.fr        "
+"    Updated: 2021/01/18 14:52:27 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -72,8 +72,8 @@ augroup save
 augroup END
 
 "python configuration
-let g:python_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog='/Users/cedricmpassi/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog='~/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog='~/.pyenv/versions/neovim3/bin/python'
 
 "Formating options
 set formatoptions-=a    " Turn off auto formating.

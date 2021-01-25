@@ -1,4 +1,4 @@
-export USER=cedricmpassi
+export USER=cempassi
 
 export MAIL=cempassi@student.42.fr 
 
@@ -31,4 +31,4 @@ export GPG_TTY=${TTY}
 
 #export LS_COLORS=$(vivid generate ~/.dotfiles/zsh/.oh-my-zsh/custom/themes/personal.yml)
 
-source ~/.oh-my-zsh/custom/secrets.zsh
+#source ~/.oh-my-zsh/custom/secrets.zsh

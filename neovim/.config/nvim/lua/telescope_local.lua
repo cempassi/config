@@ -43,4 +43,4 @@ require('telescope').setup {
   }
 }
 
-require('telescope').load_extension('ghcli')
+--require('telescope').load_extension('ghcli')

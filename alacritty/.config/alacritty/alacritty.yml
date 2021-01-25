@@ -30,16 +30,16 @@ background_opacity: 1.0
 
 font:
   normal:
-    family: "Hasklig Light"
+    family: "Hasklug Nerd Font"
     style: Light
   bold:
-    family: "Hasklug Light"
+    family: "Hasklug Nerd Font"
     style: Medium
   italic:
-    family: "Hasklug Light"
+    family: "Hasklug Nerd Font"
     style: Italic
   bold_italic:
-    family: "Hasklug Light"
+    family: "Hasklug Nerd Font"
     style: Bold Italic
 
   # Point size
@@ -83,17 +83,11 @@ use_thin_strokes: true
 
 shell:
   program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - "tmux attach -t Main || tmux new -s Main"
+  #  args:
+#    - -l
+#    - -c
+#    - "tmux attach -t Main || tmux new -s Main"
 
 key_bindings:
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: C, mods: Control|Shift, action: Copy }
-  - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: Equals, mods: Control, action: IncreaseFontSize }
-  - { key: Add, mods: Control, action: IncreaseFontSize }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize }
-  - { key: Minus, mods: Control, action: DecreaseFontSize }
-  - { key: N, mods: Control, action: SpawnNewInstance }

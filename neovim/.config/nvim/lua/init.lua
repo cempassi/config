@@ -17,57 +17,57 @@ api.nvim_set_var("chadtree_settings",{
 )
 -- nvim-dap
 --
-local dap = require 'dap'
+--local dap = require 'dap'
 
-dap.adapters.c = {
-      type = 'executable',
-      attach = {
-        pidProperty = "pid",
-        pidSelect = "ask"
-      },
-      command = 'lldb-vscode', -- my binary was called 'lldb-vscode-11'
-      env = {
-        LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
-      },
-      name = "lldb"
-    }
-
-dap.adapters.rust = {
-      type = 'executable',
-      attach = {
-        pidProperty = "pid",
-        pidSelect = "ask"
-      },
-      command = 'lldb-vscode', -- my binary was called 'lldb-vscode-11'
-      env = {
-        LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
-      },
-      name = "lldb"
-    }
-
-dap.configurations.c = {
-      {
-        type = 'c';
-        request = 'launch';
-        name = "ft_ping";
-        program = "./ft_pingdb";
-        args = {"google.fr"}
-      },
-    }
-
-dap.configurations.rust = {
-      {
-        type = 'c';
-        request = 'launch';
-        name = "day05";
-        program = "./target/debug/deps/day05";
-        args = {"google.fr"}
-      },
-    }
-
-vim.cmd [[
-    command! -complete=file -nargs=* DebugC lua require "my_debug".start_c_debugger({<f-args>}, "lldb")
-]]
+--dap.adapters.c = {
+--      type = 'executable',
+--      attach = {
+--        pidProperty = "pid",
+--        pidSelect = "ask"
+--      },
+--      command = 'lldb-vscode', -- my binary was called 'lldb-vscode-11'
+--      env = {
+--        LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
+--      },
+--      name = "lldb"
+--    }
+--
+--dap.adapters.rust = {
+--      type = 'executable',
+--      attach = {
+--        pidProperty = "pid",
+--        pidSelect = "ask"
+--      },
+--      command = 'lldb-vscode', -- my binary was called 'lldb-vscode-11'
+--      env = {
+--        LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES"
+--      },
+--      name = "lldb"
+--    }
+--
+--dap.configurations.c = {
+--      {
+--        type = 'c';
+--        request = 'launch';
+--        name = "ft_ping";
+--        program = "./ft_pingdb";
+--        args = {"google.fr"}
+--      },
+--    }
+--
+--dap.configurations.rust = {
+--      {
+--        type = 'c';
+--        request = 'launch';
+--        name = "day05";
+--        program = "./target/debug/deps/day05";
+--        args = {"google.fr"}
+--      },
+--    }
+--
+--vim.cmd [[
+--    command! -complete=file -nargs=* DebugC lua require "my_debug".start_c_debugger({<f-args>}, "lldb")
+--]]
 
 -- Tree-sitter configuration
 require'nvim-treesitter.configs'.setup {

@@ -4,9 +4,11 @@
   "diagnostic.warningSign": "⚠︎",
   "python.jediEnabled": false,
   "coc.preferences.colorSupport": true,
-  "clangd.path": "/Users/cedricmpassi/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "clangd.path": "/Users/cempassi/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
   "clangd.semanticHighlighting": true,
   "markdownlint.config": {"line-length": false},
+	"rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  "rust-analyzer.procMacro.enable": true,
   "snippets.ultisnips.directories": [
     "UtilSnips",
     "/Users/cedricmpassi/.cache/dein/repos/github.com/honza/vim-snippets/snippets"
@@ -18,12 +20,12 @@
   },
   "languageserver": {
     "lua": {
-      "command": "/Users/cedricmpassi/Applications/lua-language-server/bin/macOS/lua-language-server",
+      "command": "/Users/cempassi/Applications/lua-language-server/bin/macOS/lua-language-server",
       "args": [
         "-E",
         "-e",
         "LANG=en",
-        "/Users/cedricmpassi/Applications/lua-language-server/main.lua"
+        "/Users/cempassi/Applications/lua-language-server/main.lua"
       ],
       "filetypes": ["lua"],
       "rootPatterns": [".git/"],
