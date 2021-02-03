@@ -7,12 +7,23 @@ return require('packer').startup(function()
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
 
-	-- Completion
-	use {'neoclide/coc.nvim', branch = 'release'}
+  -- Completion
+  use 'nvim-lua/completion-nvim'
 
-	-- Floating Lists
-	use 'nvim-lua/popup.nvim'
-  --use 'nvim-lua/telescope.nvim'
+	-- LSP
+  use 'neovim/nvim-lspconfig'
+  use 'glepnir/lspsaga.nvim'
+
+	-- Telescope
+  use {
+    'nvim-lua/telescope.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'}, 
+      {'nvim-lua/popup.nvim'}}
+}
+
+  -- dap
+  use 'mfussenegger/nvim-dap'
 
 	-- File Navigation
 	use {'ms-jpq/chadtree', branch = 'chad'}
@@ -44,18 +55,18 @@ return require('packer').startup(function()
 	use 'pbondoer/vim-42header'
 	use 'liuchengxu/vim-which-key'
   use 'kyazdani42/nvim-web-devicons'
-	use 'wincent/corpus'
 	use 'junegunn/goyo.vim'
 	use 'wellle/targets.vim'
 	use 'norcalli/nvim-colorizer.lua'
 	use 'honza/vim-snippets'
   use 'hashivim/vim-terraform'
+  use 'tjdevries/astronauta.nvim'
 
   --local development, only use at home
-  use '~/Programming/nvim/nvim-dap'
-  use '~/Programming/nvim/nvim-dap-virtual-text'
-  use '~/Programming/nvim/plenary.nvim'
-  use '~/Programming/nvim/telescope.nvim'
-  use '~/Programming/nvim/telescope-packer.nvim'
-  use '~/Programming/nvim/telescope-github.nvim'
+  --use '~/Programming/nvim/nvim-dap'
+  --use '~/Programming/nvim/nvim-dap-virtual-text'
+  --use '~/Programming/nvim/plenary.nvim'
+  --use '~/Programming/nvim/telescope.nvim'
+  --use '~/Programming/nvim/telescope-packer.nvim'
+  --use '~/Programming/nvim/telescope-github.nvim'
 	end)
