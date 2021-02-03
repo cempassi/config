@@ -1,4 +1,10 @@
-alias ls="exa -1 --icons "
+alias ls="exa --icons "
+
+alias ll="exa -1 --icons "
+
+alias le="exa -l --icons "
+
+alias lt="exa -T --icons "
 
 alias status="git status"
 

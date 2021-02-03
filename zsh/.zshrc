@@ -10,8 +10,9 @@ RUST_PATH=$HOME/.cargo/bin
 BREW_PATH=$HOME/.brew/bin
 LOCAL_PATH=$HOME/Applications/bin
 BASE_PATH=/usr/local/sbin:/usr/local/bin:$(getconf PATH)
+SNAP_PATH=/snap/bin
 
-export PATH=$LUA_PATH:$RUST_PATH:$BREW_PATH:$LOCAL_PATH:$BASE_PATH
+export PATH=$LUA_PATH:$RUST_PATH:$BREW_PATH:$LOCAL_PATH:$SNAP_PATH:$BASE_PATH
 
 ZSH_THEME=personal
 
@@ -51,6 +52,10 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 [ -f "/Users/cempassi/.ghcup/env" ] && source "/Users/cempassi/.ghcup/env" # ghcup-env
+
+#nvr setup
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Pyenv setup
 eval "$(pyenv init -)"
