@@ -1,5 +1,6 @@
 require('_telescope')
 require('_treesitter')
+require('_neuron')
 require('modules.lsp')
 
 --require'lspconfig'.vimls.setup{}
