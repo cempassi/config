@@ -91,7 +91,31 @@ nvim_lsp.cssls.setup{
 nvim_lsp.rust_analyzer.setup{
   on_attach = custom_on_attach,
   on_init = custom_on_init,
-  capabilities = custom_capabilities()
+  capabilities = custom_capabilities(),
+
+settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importMergeBehaviour = "full",
+      },
+
+      callInfo = {
+        full = true,
+      };
+
+      cargo = {
+        loadOutDirsFromCheck = true
+      },
+
+      checkOnSave = {
+        allFeatures = true,
+      },
+
+      procMacro = {
+        enable = true,
+      },
+    },
+  },
 }
 
 nvim_lsp.terraformls.setup{
@@ -121,9 +145,16 @@ nvim_lsp.sumneko_lua.setup{
         enable = true,
         globals = {
           "vim", "describe", "it", "before_each", "after_each",
-          "awesome", "theme", "client", "P"
+          "awesome", "theme", "client", "P", "use"
+        },
+        workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
         },
       },
     }
+  }
   }
 }
