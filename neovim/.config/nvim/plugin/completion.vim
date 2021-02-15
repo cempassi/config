@@ -18,9 +18,9 @@ autocmd BufEnter * lua require'completion'.on_attach()
 
 "let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_chain_complete_list = [
-  \{'complete_items': ['path']},
   \{'complete_items': ['lsp']},
   \{'complete_items': ['snippet']},
+  \{'complete_items': ['path']},
   \{'mode': '<c-s>'},
   \{'mode': '<c-t>'}
 \]
