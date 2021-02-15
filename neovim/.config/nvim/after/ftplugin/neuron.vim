@@ -1,8 +1,6 @@
 " click enter on [[my_link]] or [[[my_link]]] to enter it
 nnoremap <buffer> <CR> <cmd>lua require'neuron'.enter_link()<CR>
 
-" create a new note
-nnoremap <buffer> <leader>ne <cmd>lua require'neuron/cmd'.new_edit(require'neuron'.config.neuron_dir)<CR>
 
 " insert the id of the note that is found
 nnoremap <buffer> <leader>N<leader> <cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>

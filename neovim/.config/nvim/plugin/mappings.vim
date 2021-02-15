@@ -150,8 +150,9 @@ nnoremap <silent> <leader>zz :Goyo<cr>
 
 " Git
 nnoremap <silent> <leader>d<leader> :Clap git_diff_files<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gc :Git commit<cr>
+nmap <leader>ga :Git commit --amend --no-edit<cr>
+nmap <leader>gcm :Git commit<cr>
+nmap <leader>gca :Git commit<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>gf :Git fetch<cr>
 

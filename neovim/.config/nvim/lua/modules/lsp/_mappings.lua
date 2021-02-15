@@ -14,6 +14,7 @@ local diagnostic = require("lspsaga.diagnostic")
 M.lsp_mappings = function()
   inoremap{'<leader>cs', sig_help.signature_help, { silent = true }}
   nnoremap{'K', hover.render_hover_doc, { silent = true }}
+  nnoremap{'<leader>cf', vim.lsp.buf.formatting, { silent = true }}
   nnoremap{'<leader>ca', codeaction.code_action, { silent = true }}
   nnoremap{'<leader>ci', require("lspsaga.provider").preview_definition, { silent = true }}
   nnoremap{'<leader>cd', vim.lsp.buf.definition, { silent = true }}

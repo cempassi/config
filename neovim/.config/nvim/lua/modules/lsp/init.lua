@@ -34,6 +34,9 @@ lspconfig.bashls.setup{
 
 lspconfig.yamlls.setup{
   on_attach = custom_on_attach,
+  on_init = custom_on_init,
+  capabilities = capabilites,
+  root_dir = vim.loop.cwd,
   settings = {
     yaml = {
       schemaStore = {
@@ -122,6 +125,25 @@ lspconfig.terraformls.setup{
   capabilities = capabilities
 }
 
+-- lspconfig.pyright.setup{
+--   on_attach = custom_on_attach,
+--   on_init = custom_on_init,
+--   capabilities = capabilities,
+--   cmd = {"pyright"},
+--}
+lspconfig.pyls.setup {
+    on_attach = custom_on_attach,
+    on_init = custom_on_init,
+    capabilities = capabilities,
+    enable = true,
+    plugins = {
+    pyls_mypy = {
+      enabled = true,
+      live_mode = false
+    }
+  },
+}
+
 lspconfig.clangd.setup({
   on_attach = custom_on_attach,
   on_init = custom_on_init,
@@ -138,32 +160,32 @@ lspconfig.clangd.setup({
   },
 })
 
-local sumneko_root = os.getenv("HOME") .. "/Applications/lua-language-server"
-lspconfig.sumneko_lua.setup{
-  cmd = {
-    sumneko_root
-    .. "/bin/macOS/lua-language-server", "-E",
-    sumneko_root .. "/main.lua"
-  },
-  on_attach = custom_on_attach,
-  on_init = custom_on_init,
-  settings = {
-    Lua = {
-      runtime = { version = "LuaJIT", path = vim.split(package.path, ";"), },
-      diagnostics = {
-        enable = true,
-        globals = {
-          "vim", "describe", "it", "before_each", "after_each",
-          "awesome", "theme", "client", "P", "use"
-        },
-        workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-    }
-  }
-  }
-}
+-- local sumneko_root = os.getenv("HOME") .. "/Applications/lua-language-server"
+-- lspconfig.sumneko_lua.setup{
+--   cmd = {
+--     sumneko_root
+--     .. "/bin/macOS/lua-language-server", "-E",
+--     sumneko_root .. "/main.lua"
+--   },
+--   on_attach = custom_on_attach,
+--   on_init = custom_on_init,
+--   settings = {
+--     Lua = {
+--       runtime = { version = "LuaJIT", path = vim.split(package.path, ";"), },
+--       diagnostics = {
+--         enable = true,
+--         globals = {
+--           "vim", "describe", "it", "before_each", "after_each",
+--           "awesome", "theme", "client", "P", "use"
+--         },
+--         workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = {
+--           [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+--           [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+--         },
+--       },
+--     }
+--   }
+--   }
+--}

@@ -70,3 +70,4 @@ Thumbs.db
 ##############
 secrets.zsh
 *.gpg
+.terraform*

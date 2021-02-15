@@ -10,6 +10,9 @@ return require('packer').startup(function()
   -- Completion
   use 'nvim-lua/completion-nvim'
 
+  -- Treesitter
+  use 'nvim-treesitter/nvim-treesitter'
+
 	-- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
@@ -50,9 +53,9 @@ return require('packer').startup(function()
 	use 'dstein64/vim-startuptime'
 
 	-- Lua development
-	use 'bfredl/nvim-luadev'
-	use 'nvim-treesitter/playground'
-  use {'glacambre/firenvim'}
+	--use 'bfredl/nvim-luadev'
+	--use 'nvim-treesitter/playground'
+  --use {'glacambre/firenvim'}
 
 	-- Misc
 	use 'pbondoer/vim-42header'

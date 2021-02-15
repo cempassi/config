@@ -24,6 +24,7 @@ let g:completion_chain_complete_list = [
   \{'mode': '<c-s>'},
   \{'mode': '<c-t>'}
 \]
+
 let g:completion_trigger_character = ['.', '::']
 let g:completion_trigger_on_delete = 1
 let g:completion_auto_change_source = 1
