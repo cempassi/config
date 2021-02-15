@@ -9,10 +9,12 @@ LUA_PATH=$HOME/.luarocks/bin
 RUST_PATH=$HOME/.cargo/bin
 BREW_PATH=$HOME/.brew/bin
 LOCAL_PATH=$HOME/Applications/bin
-BASE_PATH=/usr/local/sbin:/usr/local/bin:$(getconf PATH)
 SNAP_PATH=/snap/bin
+GO_PATH=/usr/local/go/bin:$HOME/.go
+BASE_PATH=/usr/local/sbin:/usr/local/bin:$(getconf PATH)
 
-export PATH=$LUA_PATH:$RUST_PATH:$BREW_PATH:$LOCAL_PATH:$SNAP_PATH:$BASE_PATH
+export GOPATH=$HOME/.go
+export PATH=$LUA_PATH:$RUST_PATH:$BREW_PATH:$LOCAL_PATH:$SNAP_PATH:$GO_PATH:$BASE_PATH
 
 ZSH_THEME=personal
 
@@ -46,9 +48,6 @@ source $ZSH/oh-my-zsh.sh
 
 for config_file ($ZSH_CUSTOM/*.zsh(N)) source $config_file
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
-
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 
 [ -f "/Users/cempassi/.ghcup/env" ] && source "/Users/cempassi/.ghcup/env" # ghcup-env
@@ -60,3 +59,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Pyenv setup
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+if [ -e /home/cempassi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cempassi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
