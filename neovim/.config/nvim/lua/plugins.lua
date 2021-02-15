@@ -25,6 +25,9 @@ return require('packer').startup(function()
   -- dap
   use 'mfussenegger/nvim-dap'
 
+  -- Notes
+  use {'oberblastmeister/neuron.nvim', branch = 'unstable'}
+
 	-- File Navigation
 	use {'ms-jpq/chadtree', branch = 'chad'}
 	use 'justinmk/vim-dirvish.git'
