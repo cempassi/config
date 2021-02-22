@@ -55,3 +55,4 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 # Pyenv setup
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+if [ -e /Users/cempassi/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/cempassi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
