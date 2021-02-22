@@ -20,7 +20,10 @@ return require('packer').startup(function()
     requires = {
       {'nvim-lua/plenary.nvim'},
       {'nvim-lua/popup.nvim'}}
-}
+  }
+
+  -- Treesitter
+  use 'nvim-treesitter/nvim-treesitter'
 
   -- dap
   use 'mfussenegger/nvim-dap'
