@@ -67,6 +67,7 @@ return require('packer').startup(function()
 	use 'honza/vim-snippets'
   use 'hashivim/vim-terraform'
   use 'tjdevries/astronauta.nvim'
+  use 'rust-lang/rust.vim'
 
   --local development, only use at home
   --use '~/Programming/nvim/nvim-dap'

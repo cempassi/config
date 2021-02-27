@@ -15,10 +15,10 @@ require('telescope').setup {
       ["<C-j>"] = actions.move_selection_next,
       ["<C-k>"] = actions.move_selection_previous,
 
-      ["<CR>"] = actions.goto_file_selection_edit + actions.center,
-      ["<leader>hs"] = actions.goto_file_selection_split,
-      ["<leader>vs"] = actions.goto_file_selection_vsplit,
-      ["<leader>te"] = actions.goto_file_selection_tabedit,
+      ["<CR>"] = actions.select_default + actions.center,
+      ["<leader>hs"] = actions.select_horizontal,
+      ["<leader>vs"] = actions.select_vertical,
+      ["<leader>te"] = actions.select_tab,
 
       ["<C-u>"] = actions.preview_scrolling_up,
       ["<C-d>"] = actions.preview_scrolling_down,
@@ -28,10 +28,10 @@ require('telescope').setup {
     n = {
       ["jk"] = actions.close,
       ["<leader>q"] = actions.close,
-      ["<CR>"] = actions.goto_file_selection_edit + actions.center,
-      ["<C-x>"] = actions.goto_file_selection_split,
-      ["<C-v>"] = actions.goto_file_selection_vsplit,
-      ["<C-t>"] = actions.goto_file_selection_tabedit,
+      ["<CR>"] = actions.select_default + actions.center,
+      ["<C-x>"] = actions.select_horizontal,
+      ["<C-v>"] = actions.select_vertical,
+      ["<C-t>"] = actions.select_tab,
 
       ["j"] = actions.move_selection_next,
       ["k"] = actions.move_selection_previous,

@@ -20,6 +20,7 @@ M.lsp_mappings = function()
   nnoremap{'<leader>c<leader>', require("telescope.builtin").lsp_references, { silent = true }}
   nnoremap{'<leader>cn', rename.rename, { silent = true }}
   nnoremap{'<leader>cr', require("lspsaga.provider").lsp_finder, { silent = true }}
+  nnoremap{'<leader>cf', vim.lsp.buf.formatting, { silent = true }}
   nnoremap{'<leader>ce', diagnostic.show_line_diagnostics, { silent = true }}
   nnoremap{ '<leader>ep', diagnostic.lsp_jump_diagnostic_prev, {silent = true}}
   nnoremap{ '<leader>en', diagnostic.lsp_jump_diagnostic_next, {silent = true}}
