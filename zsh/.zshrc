@@ -27,7 +27,7 @@ bindkey -v
  DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting rust docker)
+plugins=(git zsh-autosuggestions vi-mode zsh-syntax-highlighting rust docker zsh-completions)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=230'
 

@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2021/02/22 13:54:30 by cempassi         ###   ########.fr        "
+"    Updated: 2021/03/03 20:19:11 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -58,6 +58,16 @@ set termguicolors
 colorscheme deep-sea
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+
+" Color scheme for :Term
+let g:terminal_color_0 = '#3B4252'
+let g:terminal_color_1 = '#BF616A'
+let g:terminal_color_2 = '#A3BE8C'
+let g:terminal_color_3 = '#EBCB8B'
+let g:terminal_color_4 = '#81A1C1'
+let g:terminal_color_5 = '#B48EAD'
+let g:terminal_color_6 = '#88C0D0'
+let g:terminal_color_7 = '#E5E9F0'
   
 "" Plugin Management
 lua require('init')
