@@ -18,7 +18,7 @@ local custom_on_attach = function(client, bufnr)
     client.config.flags.allow_incremental_sync = true
   end
 
-  api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  --api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
 local custom_on_init = function()
@@ -117,6 +117,12 @@ settings = {
 }
 
 lspconfig.terraformls.setup{
+  on_attach = custom_on_attach,
+  on_init = custom_on_init,
+  capabilities = capabilities
+}
+
+lspconfig.vuels.setup{
   on_attach = custom_on_attach,
   on_init = custom_on_init,
   capabilities = capabilities

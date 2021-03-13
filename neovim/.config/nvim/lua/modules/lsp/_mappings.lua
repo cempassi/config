@@ -25,14 +25,14 @@ M.lsp_mappings = function()
   nnoremap{ '<leader>ep', diagnostic.lsp_jump_diagnostic_prev, {silent = true}}
   nnoremap{ '<leader>en', diagnostic.lsp_jump_diagnostic_next, {silent = true}}
   nnoremap{
-    '<C-j>',
+    '<C-k>',
     function()
       return hover.has_saga_hover() and hover.scroll_in_hover(-1)
     end,
     { silent = true },
   }
   nnoremap{
-    '<C-k>',
+    '<C-j>',
     function()
       return hover.has_saga_hover() and hover.scroll_in_hover(1)
     end,
