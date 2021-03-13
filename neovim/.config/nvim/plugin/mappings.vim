@@ -190,15 +190,15 @@ nnoremap <silent> <leader>fl :Clap lines<cr>
 nnoremap <silent> <leader>fj :Clap jumps<cr>
 
 " Floaterm 
-nnoremap   <silent>   <leader>tc    :FloatermNew<CR>
-tnoremap   <silent>   <leader>tc    <C-\><C-n>:FloatermNew<CR>
-tnoremap   <silent>   <leader>q    <C-\><C-n>:FloatermKill<CR>
- noremap   <silent>   <leader>tp    :FloatermPrev<CR>
-tnoremap   <silent>   <leader>tp    <C-\><C-n>:FloatermPrev<CR>
-nnoremap   <silent>   <leader>tn    :FloatermNext<CR>
-tnoremap   <silent>   <leader>tn    <C-\><C-n>:FloatermNext<CR>
-nnoremap   <silent>   <leader><leader>   :FloatermToggle<CR>
-tnoremap   <silent>   <leader><leader>   <C-\><C-n>:FloatermToggle<CR>
+nnoremap   <silent>   <leader>tc        :FloatermNew<CR>
+tnoremap   <silent>   <leader>tc        <C-\><C-n>:FloatermNew<CR>
+tnoremap   <silent>   <leader>q         <C-\><C-n>:FloatermKill<CR>
+ noremap   <silent>   <leader>tp        :FloatermPrev<CR>
+tnoremap   <silent>   <leader>tp        <C-\><C-n>:FloatermPrev<CR>
+nnoremap   <silent>   <leader>tn        :FloatermNext<CR>
+tnoremap   <silent>   <leader>tn        <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <leader><leader>  :FloatermToggle<CR>
+tnoremap   <silent>   <leader><leader>  <C-\><C-n>:FloatermToggle<CR>
 
 " Session
 nmap <leader>sl :SLoad<cr>
@@ -225,3 +225,26 @@ vnoremap <Leader>C <Esc>:call CommentMark(0,'<','>')<CR>
 
 " CHADtree
 nnoremap _ :CHADopen<cr>
+
+"Dashboard mappings
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+
+nnoremap <silent> <Leader>fh        :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>f<leader> :DashboardFindFile<CR>
+nnoremap <silent> <Leader>fc        :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fw        :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb        :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>e.        :DashboardNewFile<CR>
+
+" Telescope
+nnoremap <Leader>f<leader> <cmd>Telescope find_files find_command=rg,-i,--hidden,--files,-g,!.git<CR>
+nnoremap <Leader>fh<leader> <cmd>Telescope oldfiles<CR>
+nnoremap <Leader>. <cmd>Telescope find_files find_command=rg,-i,--hidden,--files,-g,!.git cwd=~/.dotfiles<CR>
+nnoremap <Leader>/ <cmd>Telescope live_grep<CR>
+nnoremap <Leader>? <cmd>Telescope help_tags<CR>
+nnoremap <leader>b<leader> <cmd>Telescope buffers<cr>
+nnoremap <leader>g<leader> <cmd>Telescope git_status<CR>
+nnoremap <leader>gb<leader> <cmd>Telescope git_branches<CR>
+nnoremap <leader>gc<leader> <cmd>Telescope git_commits<CR>
+nnoremap <leader>gcb<leader> <cmd>Telescopre git_bcommits<CR>
