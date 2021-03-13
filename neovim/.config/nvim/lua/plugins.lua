@@ -8,7 +8,8 @@ return require('packer').startup(function()
 	use 'vim-airline/vim-airline-themes'
 
   -- Completion
-  use 'nvim-lua/completion-nvim'
+  use 'hrsh7th/nvim-compe'
+  --use 'nvim-lua/completion-nvim'
 
 	-- LSP
   use 'neovim/nvim-lspconfig'
