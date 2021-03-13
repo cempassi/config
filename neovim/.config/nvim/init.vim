@@ -6,7 +6,7 @@
 "    By: cempassi <cempassi@student.42.fr>          +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2020/07/26 21:26:49 by cempassi          #+#    #+#              "
-"    Updated: 2021/03/03 20:19:11 by cempassi         ###   ########.fr        "
+"    Updated: 2021/03/13 17:28:23 by cempassi         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -48,6 +48,7 @@ set autoread
 set autowrite
 set autowriteall
 set guicursor=
+
 
 " Define base syntax
 filetype plugin indent on
@@ -186,15 +187,6 @@ endfun
 "mutt syntax
 autocmd BufNewFile,BufRead *.mutt set syntax=neomuttrc
 
-" Source vim configuration files on save
-if has("autocmd")
-	augroup config
-		autocmd!
-		autocmd BufWritePost *.vim source %
-		autocmd bufwritepost .vimrc,*.vim :source $MYVIMRC
-	augroup END
-endif
-
 "This autocommand jumps to the last known position in a file
 "just after opening it, if the '" mark is set:
 
@@ -221,13 +213,10 @@ au TextYankPost * silent! lua require'vim.highlight'.on_yank{"Substract", 200}
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-"Lua eval
-
 " Replace netrw
 let g:loaded_netrwPlugin = 1
 
 "nmap <leader>le <Plug>(Luadev-RunLine)
-let g:dashboard_default_executive ='telescope'
 let g:neovide_fullscreen=v:true
 highlight link TelescopeMatching Question
 
